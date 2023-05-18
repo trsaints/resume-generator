@@ -1,0 +1,14 @@
+@import url("./reset.css");
+
+@font-face {
+  font-family: 'RH Display';
+  src: url('../../public/fonts/RedHatDisplay-VariableFont_wght.ttf');
+}
+
+:root {
+
+}
+
+body {
+  
+}
