@@ -1,15 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Currículo Online</title>
-  <link rel="stylesheet" href="./public/icons/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
-  <link rel="stylesheet" href="./public/icons/fontawesome-free-6.4.0-web/css/solid.min.css">
-  <link rel="stylesheet" href="./app/styles/style.css">
-  <script src="./app/src/index.js" type="module" defer></script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Currículo Online</title>
+    <link
+      rel="stylesheet"
+      href="./public/icons/fontawesome-free-6.4.0-web/css/fontawesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./public/icons/fontawesome-free-6.4.0-web/css/solid.min.css"
+    />
+    <link rel="stylesheet" href="./app/styles/style.css" />
+    <script src="./app/src/index.js" type="module" defer></script>
+  </head>
+  <body>
+    <h1>novo currículo</h1>
+
+    <form novalidate>
+      <fieldset>
+        <legend>informações pessoais</legend>
+
+        <div>
+          <label for="name">nome:</label>
+
+          <input type="text" id="name" />
+        </div>
+
+        <div>
+          <label for="job-title">cargo:</label>
+
+          <input type="text" id="job-title" />
+        </div>
+
+        <div>
+          <label for="desc">descrição:</label>
+
+          <textarea name="" id="desc" cols="30" rows="10"></textarea>
+        </div>
+
+        <div>
+          <label for="email">email:</label>
+
+          <input type="email" id="email" />
+        </div>
+
+        <div>
+          <label for="website">site:</label>
+
+          <input type="url" id="website" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>experiências</legend>
+
+        <div></div>
+
+        <menu>
+          <button type="button">adicionar experiência</button>
+        </menu>
+
+        <dialog>
+          <div>
+            <label for="job-company">nome da empresa:</label>
+
+            <input type="text" id="job-company" />
+          </div>
+
+          <div>
+            <label for="job-name">cargo:</label>
+
+            <input type="text" id="job-name" />
+          </div>
+
+          <div>
+            <label for="job-period">período:</label>
+
+            <input type="text" id="job-period" />
+          </div>
+
+          <div>
+            <label for="job-desc">descrição:</label>
+
+            <textarea name="" id="job-desc" cols="30" rows="10"></textarea>
+          </div>
+
+          <menu>
+            <button type="button">adicionar</button>
+
+            <button type="button">cancelar</button>
+          </menu>
+        </dialog>
+      </fieldset>
+
+      <fieldset>
+        <legend>formações</legend>
+
+        <menu>
+          <button type="button">adicionar formação</button>
+        </menu>
+
+        <dialog>
+          <div>
+            <label for="degree-name">curso:</label>
+
+            <input type="text" id="degree-name" />
+          </div>
+
+          <div>
+            <label for="degree-school">instituição:</label>
+
+            <input type="text" id="degree-school" />
+          </div>
+
+          <div>
+            <label for="degree-period">período:</label>
+
+            <input type="text" id="degree-period" />
+          </div>
+
+          <div>
+            <label for="degree-desc">descrição:</label>
+
+            <textarea name="" id="degree-desc" cols="30" rows="10"></textarea>
+          </div>
+
+          <menu>
+            <button type="button">adicionar</button>
+
+            <button type="button">cancelar</button>
+          </menu>
+        </dialog>
+      </fieldset>
+
+      <button type="submit">gerar currículo</button>
+    </form>
+  </body>
 </html>
