@@ -1,14 +1,30 @@
 @import url("./reset.css");
 
-@font-face {
-  font-family: 'RH Display';
-  src: url('../../public/fonts/RedHatDisplay-VariableFont_wght.ttf');
+:root {
+  --c-black: hsl(260, 14%, 4%);
+  --c-black-l: hsl(260, 14%, 8%);
+  --c-gray-d: hsl(257, 5%, 50%);
+  --c-gray: hsl(257, 5%, 60%);
+  --c-gray-l: hsl(255, 5%, 70%);
+  --c-gray-ls: hsl(255, 5%, 80%);
+  --c-main-ls: hsl(196, 84%, 80%);
+  --c-main-l: hsl(196, 84%, 70%);
+  --c-main: hsl(196, 84%, 60%);
+  --c-main-d: hsl(196, 84%, 50%);
+  --c-main-ds: hsl(196, 84%, 40%);
+  --c-white: hsl(260, 48%, 97%);
+  --c-white-d: hsl(260, 48%, 92%);
 }
 
-:root {
-
+@font-face {
+  font-family: "RedHat Display";
+  src: url("../../public/fonts/RedHatDisplay-VariableFont_wght.ttf");
 }
 
 body {
-  
+  font-family: "RedHat Display";
+  color: var(--c-black-l);
+  font-size: 1.125rem;
+  background-color: var(--c-white);
+  padding: 3rem 1.5rem;
 }
