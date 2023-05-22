@@ -26,5 +26,86 @@ body {
   color: var(--c-black-l);
   font-size: 1.125rem;
   background-color: var(--c-white);
+}
+
+.main,
+.footer {
   padding: 3rem 1.5rem;
+}
+
+.main__title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: grid;
+  gap: 2rem;
+}
+
+.form__fieldset {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--c-gray-ls);
+  border-radius: 0.5rem;
+}
+
+.form__legend {
+  background-color: var(--c-gray-ls);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.25rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.form__field {
+  border-radius: 0.25rem;
+  background-color: var(--c-white);
+}
+
+.form__label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--c-main);
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+}
+
+.form__button,
+.form__submit {
+  padding: 0.5rem 1rem;
+  border-radius: 0.125rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form__button {
+  background-color: var(--c-black);
+  color: var(--c-white);
+}
+
+.form__submit {
+  background-color: var(--c-main);
+}
+
+.footer {
+  background-color: var(--c-black-l);
+  color: var(--c-white);
+  text-align: center;
+}
+
+.footer__title {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.footer__link {
+  color: var(--c-main);
+  text-decoration: underline;
 }

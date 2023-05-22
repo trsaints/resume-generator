@@ -16,126 +16,144 @@
     <script src="./app/src/index.js" type="module" defer></script>
   </head>
   <body>
-    <h1>novo currículo</h1>
+    <main class="main">
+      <h1 class="main__title">novo currículo</h1>
 
-    <form novalidate>
-      <fieldset>
-        <legend>informações pessoais</legend>
+      <form class="form" novalidate>
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">informações pessoais</legend>
 
-        <div>
-          <label for="name">nome:</label>
+          <div class="form__field">
+            <label class="form__label" for="name">nome:</label>
 
-          <input type="text" id="name" />
-        </div>
-
-        <div>
-          <label for="job-title">cargo:</label>
-
-          <input type="text" id="job-title" />
-        </div>
-
-        <div>
-          <label for="desc">descrição:</label>
-
-          <textarea name="" id="desc" cols="30" rows="10"></textarea>
-        </div>
-
-        <div>
-          <label for="email">email:</label>
-
-          <input type="email" id="email" />
-        </div>
-
-        <div>
-          <label for="website">site:</label>
-
-          <input type="url" id="website" />
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>experiências</legend>
-
-        <div></div>
-
-        <menu>
-          <button type="button">adicionar experiência</button>
-        </menu>
-
-        <dialog>
-          <div>
-            <label for="job-company">nome da empresa:</label>
-
-            <input type="text" id="job-company" />
+            <input type="text" id="name" />
           </div>
 
-          <div>
-            <label for="job-name">cargo:</label>
+          <div class="form__field">
+            <label class="form__label" for="job-title">cargo:</label>
 
-            <input type="text" id="job-name" />
+            <input type="text" id="job-title" />
           </div>
 
-          <div>
-            <label for="job-period">período:</label>
+          <div class="form__field">
+            <label class="form__label" for="desc">descrição:</label>
 
-            <input type="text" id="job-period" />
+            <textarea name="" id="desc" cols="30" rows="10"></textarea>
           </div>
 
-          <div>
-            <label for="job-desc">descrição:</label>
+          <div class="form__field">
+            <label class="form__label" for="email">email:</label>
 
-            <textarea name="" id="job-desc" cols="30" rows="10"></textarea>
+            <input type="email" id="email" />
           </div>
+
+          <div class="form__field">
+            <label class="form__label" for="website">site:</label>
+
+            <input type="url" id="website" />
+          </div>
+        </fieldset>
+
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">experiências</legend>
+
+          <div></div>
 
           <menu>
-            <button type="button">adicionar</button>
-
-            <button type="button">cancelar</button>
+            <button class="form__button" type="button">
+              adicionar experiência
+            </button>
           </menu>
-        </dialog>
-      </fieldset>
 
-      <fieldset>
-        <legend>formações</legend>
+          <dialog>
+            <div>
+              <label class="form__label" for="job-company"
+                >nome da empresa:</label
+              >
 
-        <menu>
-          <button type="button">adicionar formação</button>
-        </menu>
+              <input type="text" id="job-company" />
+            </div>
 
-        <dialog>
-          <div>
-            <label for="degree-name">curso:</label>
+            <div>
+              <label class="form__label" for="job-name">cargo:</label>
 
-            <input type="text" id="degree-name" />
-          </div>
+              <input type="text" id="job-name" />
+            </div>
 
-          <div>
-            <label for="degree-school">instituição:</label>
+            <div>
+              <label class="form__label" for="job-period">período:</label>
 
-            <input type="text" id="degree-school" />
-          </div>
+              <input type="text" id="job-period" />
+            </div>
 
-          <div>
-            <label for="degree-period">período:</label>
+            <div>
+              <label class="form__label" for="job-desc">descrição:</label>
 
-            <input type="text" id="degree-period" />
-          </div>
+              <textarea name="" id="job-desc" cols="30" rows="10"></textarea>
+            </div>
 
-          <div>
-            <label for="degree-desc">descrição:</label>
+            <menu>
+              <button class="form__button" type="button">adicionar</button>
 
-            <textarea name="" id="degree-desc" cols="30" rows="10"></textarea>
-          </div>
+              <button class="form__button" type="button">cancelar</button>
+            </menu>
+          </dialog>
+        </fieldset>
+
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">formações</legend>
+
+          <div></div>
 
           <menu>
-            <button type="button">adicionar</button>
-
-            <button type="button">cancelar</button>
+            <button class="form__button" type="button">
+              adicionar formação
+            </button>
           </menu>
-        </dialog>
-      </fieldset>
 
-      <button type="submit">gerar currículo</button>
-    </form>
+          <dialog>
+            <div>
+              <label class="form__label" for="degree-name">curso:</label>
+
+              <input type="text" id="degree-name" />
+            </div>
+
+            <div>
+              <label class="form__label" for="degree-school"
+                >instituição:</label
+              >
+
+              <input type="text" id="degree-school" />
+            </div>
+
+            <div>
+              <label class="form__label" for="degree-period">período:</label>
+
+              <input type="text" id="degree-period" />
+            </div>
+
+            <div>
+              <label class="form__label" for="degree-desc">descrição:</label>
+
+              <textarea name="" id="degree-desc" cols="30" rows="10"></textarea>
+            </div>
+
+            <menu>
+              <button class="form__button" type="button">adicionar</button>
+
+              <button class="form__button" type="button">cancelar</button>
+            </menu>
+          </dialog>
+        </fieldset>
+
+        <button class="form__submit" type="submit">gerar currículo</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <h2 class="footer__title">Resume Generator ─ 2023</h2>
+
+      <p class="footer__desc">Feito por <a class="footer__link" target="_blank" rel="noopener" href="https://github.com/trsaints/">@trsaints</a></p>
+    </footer>
   </body>
 </html>
