@@ -19,38 +19,38 @@
     <main class="main">
       <h1 class="main__title">novo currículo</h1>
 
-      <form class="form" novalidate>
+      <form data-element="form" class="form" novalidate>
         <fieldset class="form__fieldset">
           <legend class="form__legend">informações pessoais</legend>
 
           <div class="form__field">
             <label class="form__label" for="name">nome:</label>
 
-            <input type="text" id="name" />
+            <input type="text" id="name" name="name" />
           </div>
 
           <div class="form__field">
             <label class="form__label" for="job-title">cargo:</label>
 
-            <input type="text" id="job-title" />
+            <input type="text" id="job-title" name="job" />
           </div>
 
           <div class="form__field">
             <label class="form__label" for="desc">descrição:</label>
 
-            <textarea name="" id="desc" cols="30" rows="10"></textarea>
+            <textarea id="desc" cols="30" rows="10" name="desc"></textarea>
           </div>
 
           <div class="form__field">
             <label class="form__label" for="email">email:</label>
 
-            <input type="email" id="email" />
+            <input type="email" id="email" name="email" />
           </div>
 
           <div class="form__field">
             <label class="form__label" for="website">site:</label>
 
-            <input type="url" id="website" />
+            <input type="url" id="website" name="website" />
           </div>
         </fieldset>
 
@@ -60,12 +60,12 @@
           <div></div>
 
           <menu>
-            <button class="form__button" type="button">
+            <button data-action="setExperience" class="form__button" type="button">
               adicionar experiência
             </button>
           </menu>
 
-          <dialog>
+          <dialog data-element="experiences">
             <div>
               <label class="form__label" for="job-company"
                 >nome da empresa:</label
@@ -95,7 +95,7 @@
             <menu>
               <button class="form__button" type="button">adicionar</button>
 
-              <button class="form__button" type="button">cancelar</button>
+              <button data-action="cancel" data-cancel="experiences" class="form__button" type="button">cancelar</button>
             </menu>
           </dialog>
         </fieldset>
@@ -106,12 +106,12 @@
           <div></div>
 
           <menu>
-            <button class="form__button" type="button">
+            <button data-action="setDegree" class="form__button" type="button">
               adicionar formação
             </button>
           </menu>
 
-          <dialog>
+          <dialog data-element="degrees">
             <div>
               <label class="form__label" for="degree-name">curso:</label>
 
@@ -141,12 +141,12 @@
             <menu>
               <button class="form__button" type="button">adicionar</button>
 
-              <button class="form__button" type="button">cancelar</button>
+              <button data-action="cancel" data-cancel="degrees" class="form__button" type="button">cancelar</button>
             </menu>
           </dialog>
         </fieldset>
 
-        <button class="form__submit" type="submit">gerar currículo</button>
+        <button data-action="generate" class="form__submit" type="submit">gerar currículo</button>
       </form>
     </main>
 
