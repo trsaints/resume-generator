@@ -20,11 +20,13 @@ function setInteractions({ callbacks, components }) {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
     addExperience: () => {
-      callbacks.addExperience({ callbacks });
+      const exp = callbacks.addExperience({ callbacks });
+      callbacks.renderExperience({ callbacks, components, exp });
       callbacks.closeMenu("experiences");
     },
     addDegree: () => {
-      callbacks.addDegree({ callbacks });
+      const deg = callbacks.addDegree({ callbacks });
+      callbacks.renderDegree({ callbacks, components, deg });
       callbacks.closeMenu("degrees");
     },
   };

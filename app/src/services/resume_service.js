@@ -24,11 +24,15 @@ export function addExperience({ callbacks }) {
 
   if (experiences === undefined) resume.experiences = [];
 
-  resume.experiences.push(getExperience({ callbacks }));
+  const exp = getExperience({ callbacks });
+
+  resume.experiences.push(exp);
 
   localStorage.setItem("resume", JSON.stringify(resume));
 
   console.warn("New experience has been added");
+
+  return exp;
 }
 
 export function addDegree({ callbacks }) {
@@ -37,11 +41,15 @@ export function addDegree({ callbacks }) {
 
   if (degrees === undefined) resume.degrees = [];
 
-  resume.degrees.push(getDegree({ callbacks }));
+  const deg = getDegree({ callbacks });
+
+  resume.degrees.push(deg);
 
   localStorage.setItem("resume", JSON.stringify(resume));
 
   console.warn("New degree has been added");
+
+  return deg;
 }
 
 function getExperience({ callbacks }) {
@@ -50,8 +58,8 @@ function getExperience({ callbacks }) {
   const { jobCompany, jobTitle, jobPeriod, jobDesc } = form.elements;
 
   const experience = {
-    company: jobCompany.value,
     title: jobTitle.value,
+    company: jobCompany.value,
     period: jobPeriod.value,
     desc: jobDesc.value,
   };
@@ -67,8 +75,8 @@ function getDegree({ callbacks }) {
   const { degreeSchool, degreeName, degreePeriod, degreeDesc } = form.elements;
 
   const degree = {
-    school: degreeSchool.value,
     title: degreeName.value,
+    school: degreeSchool.value,
     period: degreePeriod.value,
     desc: degreeDesc.value,
   };
