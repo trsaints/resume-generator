@@ -19,7 +19,7 @@ function setInteractions({ callbacks, components }) {
     generateResume: () => {},
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addExperience: () => callbacks.addExperience(),
+    addExperience: () => callbacks.addExperience({ callbacks }),
     addDegree: () => {},
   };
 

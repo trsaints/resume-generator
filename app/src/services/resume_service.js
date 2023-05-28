@@ -18,18 +18,34 @@ function extractFormData(form) {
   return resume;
 }
 
-export function addExperience(exp) {
+export function addExperience({ callbacks }) {
   const resume = JSON.parse(localStorage.getItem("resume"));
   const { experiences } = resume;
 
   if (experiences === undefined) resume.experiences = [];
 
-  resume.experiences.push(exp);
+  resume.experiences.push(getExperience({ callbacks }));
 
   localStorage.setItem("resume", JSON.stringify(resume));
 
   console.warn("New experience has been added");
-  console.table(exp);
+}
+
+function getExperience({ callbacks }) {
+  const form = callbacks.getElement("form");
+
+  const { jobCompany, jobTitle, jobPeriod, jobDesc } = form.elements;
+
+  const experience = {
+    company: jobCompany.value,
+    title: jobTitle.value,
+    period: jobPeriod.value,
+    desc: jobDesc.value
+  }
+
+  console.table(experience);
+
+  return experience;
 }
 
 export function syncFormState({ callbacks }) {
