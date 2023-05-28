@@ -3,16 +3,25 @@ export function initialize(deps) {
 }
 
 function init({ callbacks, components }) {
+  localStorage.removeItem("resume");
+
   const form = callbacks.getElement("form");
 
-  const actions = {
-    generate: () => callbacks.generateResume({ components, form }),
-    setExperience: () => callbacks.showModal("experiences"),
-    setDegree: () => callbacks.showModal("degrees"),
-    cancel: ({ dataset }) => callbacks.closeModal(dataset.cancel),
-  };
+  callbacks.syncFormState({ callbacks });
 
   form.addEventListener("submit", (e) => e.preventDefault());
+
+  setInteractions({ callbacks, components });
+}
+
+function setInteractions({ callbacks, components }) {
+  const actions = {
+    generateResume: () => {},
+    openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
+    closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
+    addExperience: () => callbacks.addExperience(),
+    addDegree: () => {},
+  };
 
   document.addEventListener("click", ({ target }) => {
     const { action } = target.dataset;

@@ -1,30 +1,32 @@
 import { initialize } from "./controller/controller.js";
-import Resume from "./models/Resume.js";
-import { generateResume } from "./services/resume_service.js";
 import {
   clearContent,
-  closeModal,
+  closeMenu,
   getElement,
   getElements,
   hideElement,
+  openMenu,
   showElement,
   showPopup,
-  showModal
 } from "./views/dom_view.js";
+
+import { saveFormState, syncFormState, addExperience } from "./services/resume_service.js";
+
 const dependencies = {
   callbacks: {
-    closeModal,
+    addExperience,
+    closeMenu,
     getElement,
     getElements,
     clearContent,
     hideElement,
     showElement,
     showPopup,
-    generateResume,
-    showModal
+    saveFormState,
+    openMenu,
+    syncFormState,
   },
   components: {
-    Resume,
   },
 };
 

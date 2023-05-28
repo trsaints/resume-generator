@@ -30,9 +30,9 @@
           </div>
 
           <div class="form__field">
-            <label class="form__label" for="job-title">cargo:</label>
+            <label class="form__label" for="job">cargo:</label>
 
-            <input type="text" id="job-title" name="job" />
+            <input type="text" id="job" name="job" />
           </div>
 
           <div class="form__field">
@@ -60,42 +60,42 @@
           <div></div>
 
           <menu>
-            <button data-action="setExperience" class="form__button" type="button">
+            <button data-action="openMenu" data-dialog="experiences" class="form__button" type="button">
               adicionar experiência
             </button>
           </menu>
 
           <dialog data-element="experiences">
             <div>
-              <label class="form__label" for="job-company"
+              <label class="form__label" for="jobCompany"
                 >nome da empresa:</label
               >
 
-              <input type="text" id="job-company" />
+              <input type="text" id="jobCompany" />
             </div>
 
             <div>
-              <label class="form__label" for="job-name">cargo:</label>
+              <label class="form__label" for="jobTitle">cargo:</label>
 
-              <input type="text" id="job-name" />
+              <input type="text" id="jobTitle" />
             </div>
 
             <div>
-              <label class="form__label" for="job-period">período:</label>
+              <label class="form__label" for="jobPeriod">período:</label>
 
-              <input type="text" id="job-period" />
+              <input type="text" id="jobPeriod" />
             </div>
 
             <div>
-              <label class="form__label" for="job-desc">descrição:</label>
+              <label class="form__label" for="jobDesc">descrição:</label>
 
-              <textarea name="" id="job-desc" cols="30" rows="10"></textarea>
+              <textarea name="" id="jobDesc" cols="30" rows="10"></textarea>
             </div>
 
             <menu>
-              <button class="form__button" type="button">adicionar</button>
+              <button data-action="addExperience" class="form__button" type="button">adicionar</button>
 
-              <button data-action="cancel" data-cancel="experiences" class="form__button" type="button">cancelar</button>
+              <button data-action="closeMenu" data-dialog="experiences" class="form__button" type="button">cancelar</button>
             </menu>
           </dialog>
         </fieldset>
@@ -106,42 +106,42 @@
           <div></div>
 
           <menu>
-            <button data-action="setDegree" class="form__button" type="button">
+            <button data-action="openMenu" data-dialog="degrees" class="form__button" type="button">
               adicionar formação
             </button>
           </menu>
 
           <dialog data-element="degrees">
             <div>
-              <label class="form__label" for="degree-name">curso:</label>
+              <label class="form__label" for="degreeName">curso:</label>
 
-              <input type="text" id="degree-name" />
+              <input type="text" id="degreeName" />
             </div>
 
             <div>
-              <label class="form__label" for="degree-school"
+              <label class="form__label" for="degreeSchool"
                 >instituição:</label
               >
 
-              <input type="text" id="degree-school" />
+              <input type="text" id="degreeSchool" />
             </div>
 
             <div>
-              <label class="form__label" for="degree-period">período:</label>
+              <label class="form__label" for="degreePeriod">período:</label>
 
-              <input type="text" id="degree-period" />
+              <input type="text" id="degreePeriod" />
             </div>
 
             <div>
-              <label class="form__label" for="degree-desc">descrição:</label>
+              <label class="form__label" for="degreeDesc">descrição:</label>
 
-              <textarea name="" id="degree-desc" cols="30" rows="10"></textarea>
+              <textarea name="" id="degreeDesc" cols="30" rows="10"></textarea>
             </div>
 
             <menu>
-              <button class="form__button" type="button">adicionar</button>
+              <button data-action="addDegree" class="form__button" type="button">adicionar</button>
 
-              <button data-action="cancel" data-cancel="degrees" class="form__button" type="button">cancelar</button>
+              <button data-action="closeMenu" data-dialog="degrees" class="form__button" type="button">cancelar</button>
             </menu>
           </dialog>
         </fieldset>

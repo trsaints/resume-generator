@@ -44,13 +44,13 @@ export function showPopup(message) {
   setTimeout(reset, 3000);
 }
 
-export function showModal(modal) {
+export function openMenu(modal) {
   const target = getElement(modal);
   showElement(modal);
-  target.show();
+  target.showModal();
 }
 
-export function closeModal(modal) {
+export function closeMenu(modal) {
   const target = getElement(modal);
   hideElement(modal);
   target.close();
