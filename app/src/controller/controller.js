@@ -19,8 +19,14 @@ function setInteractions({ callbacks, components }) {
     generateResume: () => {},
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addExperience: () => callbacks.addExperience({ callbacks }),
-    addDegree: () => {},
+    addExperience: () => {
+      callbacks.addExperience({ callbacks });
+      callbacks.closeMenu("experiences");
+    },
+    addDegree: () => {
+      callbacks.addDegree({ callbacks });
+      callbacks.closeMenu("degrees");
+    },
   };
 
   document.addEventListener("click", ({ target }) => {

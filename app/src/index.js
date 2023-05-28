@@ -10,11 +10,12 @@ import {
   showPopup,
 } from "./views/dom_view.js";
 
-import { saveFormState, syncFormState, addExperience } from "./services/resume_service.js";
+import { addExperience, addDegree, saveFormState, syncFormState } from "./services/resume_service.js";
 
 const dependencies = {
   callbacks: {
     addExperience,
+    addDegree,
     closeMenu,
     getElement,
     getElements,

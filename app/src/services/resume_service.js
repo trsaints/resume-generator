@@ -31,6 +31,19 @@ export function addExperience({ callbacks }) {
   console.warn("New experience has been added");
 }
 
+export function addDegree({ callbacks }) {
+  const resume = JSON.parse(localStorage.getItem("resume"));
+  const { degrees } = resume;
+
+  if (degrees === undefined) resume.degrees = [];
+
+  resume.degrees.push(getDegree({ callbacks }));
+
+  localStorage.setItem("resume", JSON.stringify(resume));
+
+  console.warn("New degree has been added");
+}
+
 function getExperience({ callbacks }) {
   const form = callbacks.getElement("form");
 
@@ -40,12 +53,29 @@ function getExperience({ callbacks }) {
     company: jobCompany.value,
     title: jobTitle.value,
     period: jobPeriod.value,
-    desc: jobDesc.value
-  }
+    desc: jobDesc.value,
+  };
 
   console.table(experience);
 
   return experience;
+}
+
+function getDegree({ callbacks }) {
+  const form = callbacks.getElement("form");
+
+  const { degreeSchool, degreeName, degreePeriod, degreeDesc } = form.elements;
+
+  const degree = {
+    school: degreeSchool.value,
+    title: degreeName.value,
+    period: degreePeriod.value,
+    desc: degreeDesc.value,
+  };
+
+  console.table(degree);
+
+  return degree;
 }
 
 export function syncFormState({ callbacks }) {
