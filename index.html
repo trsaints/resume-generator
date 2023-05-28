@@ -57,27 +57,32 @@
         <fieldset class="form__fieldset">
           <legend class="form__legend">experiências</legend>
 
-          <div></div>
+          <div data-element="experiences-list" class="degrees-list"></div>
 
           <menu>
-            <button data-action="openMenu" data-dialog="experiences" class="form__button" type="button">
+            <button
+              data-action="openMenu"
+              data-dialog="experiences"
+              class="form__button"
+              type="button"
+            >
               adicionar experiência
             </button>
           </menu>
 
           <dialog data-element="experiences">
             <div>
+              <label class="form__label" for="jobTitle">cargo:</label>
+
+              <input type="text" id="jobTitle" />
+            </div>
+
+            <div>
               <label class="form__label" for="jobCompany"
                 >nome da empresa:</label
               >
 
               <input type="text" id="jobCompany" />
-            </div>
-
-            <div>
-              <label class="form__label" for="jobTitle">cargo:</label>
-
-              <input type="text" id="jobTitle" />
             </div>
 
             <div>
@@ -93,9 +98,22 @@
             </div>
 
             <menu>
-              <button data-action="addExperience" class="form__button" type="button">adicionar</button>
+              <button
+                data-action="addExperience"
+                class="form__button"
+                type="button"
+              >
+                adicionar
+              </button>
 
-              <button data-action="closeMenu" data-dialog="experiences" class="form__button" type="button">cancelar</button>
+              <button
+                data-action="closeMenu"
+                data-dialog="experiences"
+                class="form__button"
+                type="button"
+              >
+                cancelar
+              </button>
             </menu>
           </dialog>
         </fieldset>
@@ -103,10 +121,15 @@
         <fieldset class="form__fieldset">
           <legend class="form__legend">formações</legend>
 
-          <div></div>
+          <div data-element="degrees-list" class="degrees-list"></div>
 
           <menu>
-            <button data-action="openMenu" data-dialog="degrees" class="form__button" type="button">
+            <button
+              data-action="openMenu"
+              data-dialog="degrees"
+              class="form__button"
+              type="button"
+            >
               adicionar formação
             </button>
           </menu>
@@ -119,9 +142,7 @@
             </div>
 
             <div>
-              <label class="form__label" for="degreeSchool"
-                >instituição:</label
-              >
+              <label class="form__label" for="degreeSchool">instituição:</label>
 
               <input type="text" id="degreeSchool" />
             </div>
@@ -139,21 +160,45 @@
             </div>
 
             <menu>
-              <button data-action="addDegree" class="form__button" type="button">adicionar</button>
+              <button
+                data-action="addDegree"
+                class="form__button"
+                type="button"
+              >
+                adicionar
+              </button>
 
-              <button data-action="closeMenu" data-dialog="degrees" class="form__button" type="button">cancelar</button>
+              <button
+                data-action="closeMenu"
+                data-dialog="degrees"
+                class="form__button"
+                type="button"
+              >
+                cancelar
+              </button>
             </menu>
           </dialog>
         </fieldset>
 
-        <button data-action="generate" class="form__submit" type="submit">gerar currículo</button>
+        <button data-action="generate" class="form__submit" type="submit">
+          gerar currículo
+        </button>
       </form>
     </main>
 
     <footer class="footer">
       <h2 class="footer__title">Resume Generator ─ 2023</h2>
 
-      <p class="footer__desc">Feito por <a class="footer__link" target="_blank" rel="noopener" href="https://github.com/trsaints/">@trsaints</a></p>
+      <p class="footer__desc">
+        Feito por
+        <a
+          class="footer__link"
+          target="_blank"
+          rel="noopener"
+          href="https://github.com/trsaints/"
+          >@trsaints</a
+        >
+      </p>
     </footer>
   </body>
 </html>
