@@ -11,16 +11,16 @@ export default class Experience {
     return this.#title;
   }
 
-  get desc() {
-    return this.#desc;
-  }
-
   get company() {
     return this.#company;
   }
 
   get period() {
     return this.#period;
+  }
+
+  get desc() {
+    return this.#desc;
   }
 
   get id() {

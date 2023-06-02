@@ -65,18 +65,19 @@ export function addItem(callbacks, components, type) {
   const resume = JSON.parse(localStorage.getItem("resume"));
 
   if (resume.experiences === undefined) resume.experiences = [];
-  if (resume.degrees === undefined) resume.degrees = [];
+  else if (resume.degrees === undefined) resume.degrees = [];
 
-  const item = getItem(callbacks, components, type);
+  const itemToAdd = getItem(callbacks, components, type);
 
-  if (type === "degree") resume.degrees.push(item);
-  if (type === "experience") resume.experiences.push(item);
+  if (type === "degree") resume.degrees.push(itemToAdd);
+  else if (type === "experience") resume.experiences.push(itemToAdd);
 
   console.warn(`A new ${type} has been set`);
+  console.table(itemToAdd);
 
   localStorage.setItem("resume", JSON.stringify(resume));
 
-  return item;
+  return itemToAdd;
 }
 
 function getItem(callbacks, components, category) {

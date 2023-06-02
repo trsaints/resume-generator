@@ -18,11 +18,11 @@ export function showElement(element) {
 export function hideElement(element) {
   const target = getElement(element);
 
-  if (!target.classList.contains("hidden")) {
-    target.classList.add("hidden");
+  if (target.classList.contains("hidden")) return;
 
-    target.setAttribute("aria-hidden", true);
-  }
+  target.classList.add("hidden");
+
+  target.setAttribute("aria-hidden", true);
 }
 
 export function clearContent(element) {

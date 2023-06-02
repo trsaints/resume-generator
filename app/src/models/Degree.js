@@ -2,17 +2,13 @@ export default class Degree {
   static latestId = 0;
 
   #title = "";
-  #desc = "";
-  #period = "";
   #school = "";
+  #period = "";
+  #desc = "";
   #id = 0;
 
   get title() {
     return this.#title;
-  }
-
-  get desc() {
-    return this.#desc;
   }
 
   get school() {
@@ -23,6 +19,10 @@ export default class Degree {
     return this.#period;
   }
 
+  get desc() {
+    return this.#desc;
+  }
+  
   get id() {
     return this.#id;
   }

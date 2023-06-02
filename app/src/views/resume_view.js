@@ -5,12 +5,12 @@ export function displayConfirmation(callbacks, target) {
 
   const { dataset } = card;
 
-  if (dataset.id !== undefined) {
-    const modalName = `${dataset.element}s-confirmation`;
-    callbacks.openMenu(modalName);
-    const modal = callbacks.getElement(modalName);
-    modal.setAttribute("data-item", `${dataset.element}-${dataset.id}`);
-  }
+  if (dataset.id === undefined) return;
+
+  const modalName = `${dataset.element}s-confirmation`;
+  callbacks.openMenu(modalName);
+  const modal = callbacks.getElement(modalName);
+  modal.setAttribute("data-item", `${dataset.element}-${dataset.id}`);
 }
 
 export function renderItem(callbacks, components, type, item) {

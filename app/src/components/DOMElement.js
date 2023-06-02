@@ -1,11 +1,11 @@
 export default class DOMElement {
   #generate(element, selectors = []) {
-    const component = document.createElement(element);
+    const domElement = document.createElement(element);
 
     if (selectors.length > 0)
-      selectors.forEach((selector) => component.classList.add(selector));
+      selectors.forEach((selector) => domElement.classList.add(selector));
 
-    return component;
+    return domElement;
   }
 
   constructor(element, selectors) {
