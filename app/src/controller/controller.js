@@ -5,18 +5,13 @@ export function initialize(deps) {
 function init({ callbacks, components }) {
   localStorage.removeItem("resume");
 
-  const form = callbacks.getElement("form");
-
   callbacks.syncFormState({ callbacks });
-
-  form.addEventListener("submit", (e) => e.preventDefault());
 
   setInteractions({ callbacks, components });
 }
 
 function setInteractions({ callbacks, components }) {
   const actions = {
-    generateResume: () => {},
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
     addItem: ({ dataset }) => {
