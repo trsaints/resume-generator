@@ -19,16 +19,23 @@ function setInteractions({ callbacks, components }) {
     generateResume: () => {},
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addExperience: () => {
-      const exp = callbacks.addExperience({ callbacks });
-      callbacks.renderExperience({ callbacks, components, exp });
-      callbacks.closeMenu("experiences");
+    addItem: ({ dataset }) => {
+      const { item } = dataset;
+      const itemContent = callbacks.addItem(callbacks, components, item);
+      callbacks.closeMenu(`${item}-form`);
+      callbacks.renderItem(callbacks, components, item, itemContent);
     },
-    addDegree: () => {
-      const deg = callbacks.addDegree({ callbacks });
-      callbacks.renderDegree({ callbacks, components, deg });
-      callbacks.closeMenu("degrees");
+    displayConfirmation: (target) => {
+      callbacks.displayConfirmation(callbacks, target);
     },
+    removeItem: (target) => {
+      const modal = target.closest("[data-item]");
+      const { item } = modal.dataset;
+      const [type, id] = item.split("-");
+      callbacks.removeItem(type, id);
+      callbacks.closeMenu(`${type}s-confirmation`);
+      callbacks.unrenderItem(callbacks, type, id);
+    }
   };
 
   document.addEventListener("click", ({ target }) => {

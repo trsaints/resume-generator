@@ -18,55 +18,19 @@ function extractFormData(form) {
   return resume;
 }
 
-export function addExperience({ callbacks }) {
-  const resume = JSON.parse(localStorage.getItem("resume"));
-  const { experiences } = resume;
-
-  if (experiences === undefined) resume.experiences = [];
-
-  const exp = getExperience({ callbacks });
-
-  resume.experiences.push(exp);
-
-  localStorage.setItem("resume", JSON.stringify(resume));
-
-  console.warn("New experience has been added");
-
-  return exp;
-}
-
-export function addDegree({ callbacks }) {
-  const resume = JSON.parse(localStorage.getItem("resume"));
-  const { degrees } = resume;
-
-  if (degrees === undefined) resume.degrees = [];
-
-  const deg = getDegree({ callbacks });
-
-  resume.degrees.push(deg);
-
-  localStorage.setItem("resume", JSON.stringify(resume));
-
-  console.warn("New degree has been added");
-
-  return deg;
-}
-
 function getExperience({ callbacks }) {
   const form = callbacks.getElement("form");
 
   const { jobCompany, jobTitle, jobPeriod, jobDesc } = form.elements;
 
-  const experience = {
+  const exp = {
     title: jobTitle.value,
     company: jobCompany.value,
     period: jobPeriod.value,
     desc: jobDesc.value,
   };
 
-  console.table(experience);
-
-  return experience;
+  return exp;
 }
 
 function getDegree({ callbacks }) {
@@ -74,16 +38,14 @@ function getDegree({ callbacks }) {
 
   const { degreeSchool, degreeName, degreePeriod, degreeDesc } = form.elements;
 
-  const degree = {
+  const deg = {
     title: degreeName.value,
     school: degreeSchool.value,
     period: degreePeriod.value,
     desc: degreeDesc.value,
   };
 
-  console.table(degree);
-
-  return degree;
+  return deg;
 }
 
 export function syncFormState({ callbacks }) {
@@ -97,4 +59,79 @@ export function syncFormState({ callbacks }) {
   desc.addEventListener("focusout", () => saveFormState({ form }));
   email.addEventListener("focusout", () => saveFormState({ form }));
   website.addEventListener("focusout", () => saveFormState({ form }));
+}
+
+export function addItem(callbacks, components, type) {
+  const resume = JSON.parse(localStorage.getItem("resume"));
+
+  if (resume.experiences === undefined) resume.experiences = [];
+  if (resume.degrees === undefined) resume.degrees = [];
+
+  const item = getItem(callbacks, components, type);
+
+  if (type === "degree") resume.degrees.push(item);
+  if (type === "experience") resume.experiences.push(item);
+
+  console.warn(`A new ${type} has been set`);
+
+  localStorage.setItem("resume", JSON.stringify(resume));
+
+  return item;
+}
+
+function getItem(callbacks, components, category) {
+  const target = {
+    degree: () => new components.Degree(getDegree({ callbacks })),
+    experience: () => new components.Experience(getExperience({ callbacks }))
+  }
+
+  const item = target[category]();
+
+  const result = extractComponent(category, item);
+
+  return result;
+}
+
+function extractComponent(type, item) {
+  const component = {
+    degree: ({ title, school, period, desc, id }) => {
+      const obj = {
+        title: title,
+        school: school,
+        period: period,
+        desc: desc,
+        id: id,
+      };
+
+      return obj;
+    },
+
+    experience: ({ title, company, period, desc, id }) => {
+      const obj = {
+        title: title,
+        company: company,
+        period: period,
+        desc: desc,
+        id: id,
+      };
+
+      return obj;
+    },
+  };
+
+  return component[type](item);
+}
+
+export function removeItem(type, id) {
+  const resume = JSON.parse(localStorage.getItem("resume"));
+
+  const typePlural = `${type}s`;
+
+  const target = resume[typePlural].filter((item) => item.id === id);
+  const targetIndex = resume[typePlural].indexOf(target);
+  resume[typePlural].splice(targetIndex);
+
+  console.warn(`Deleted ${type} of ID ${id}`);
+
+  localStorage.setItem("resume", JSON.stringify(resume));
 }

@@ -57,12 +57,24 @@
         <fieldset class="form__fieldset">
           <legend class="form__legend">experiências</legend>
 
-          <div data-element="experiences-list" class="degrees-list"></div>
+          <div data-element="experiences-list" class="degrees-list">
+            <dialog data-element="experiences-confirmation">
+              <p>deseja mesmo excluir esta experiência?</p>
+
+              <menu>
+                <button data-action="removeItem">excluir</button>
+
+                <button data-action="closeMenu" data-dialog="experiences-confirmation">
+                  cancelar
+                </button>
+              </menu>
+            </dialog>
+          </div>
 
           <menu>
             <button
               data-action="openMenu"
-              data-dialog="experiences"
+              data-dialog="experience-form"
               class="form__button"
               type="button"
             >
@@ -70,7 +82,7 @@
             </button>
           </menu>
 
-          <dialog data-element="experiences">
+          <dialog data-element="experience-form">
             <div>
               <label class="form__label" for="jobTitle">cargo:</label>
 
@@ -99,7 +111,8 @@
 
             <menu>
               <button
-                data-action="addExperience"
+                data-action="addItem"
+                data-item="experience"
                 class="form__button"
                 type="button"
               >
@@ -108,7 +121,7 @@
 
               <button
                 data-action="closeMenu"
-                data-dialog="experiences"
+                data-dialog="experience-form"
                 class="form__button"
                 type="button"
               >
@@ -121,12 +134,24 @@
         <fieldset class="form__fieldset">
           <legend class="form__legend">formações</legend>
 
-          <div data-element="degrees-list" class="degrees-list"></div>
+          <div data-element="degrees-list" class="degrees-list">
+            <dialog data-element="degrees-confirmation">
+              <p>deseja mesmo excluir esta formação?</p>
+
+              <menu>
+                <button data-action="removeItem">excluir</button>
+
+                <button data-action="closeMenu" data-dialog="degrees-confirmation">
+                  cancelar
+                </button>
+              </menu>
+            </dialog>
+          </div>
 
           <menu>
             <button
               data-action="openMenu"
-              data-dialog="degrees"
+              data-dialog="degree-form"
               class="form__button"
               type="button"
             >
@@ -134,7 +159,7 @@
             </button>
           </menu>
 
-          <dialog data-element="degrees">
+          <dialog data-element="degree-form">
             <div>
               <label class="form__label" for="degreeName">curso:</label>
 
@@ -161,7 +186,8 @@
 
             <menu>
               <button
-                data-action="addDegree"
+                data-action="addItem"
+                data-item="degree"
                 class="form__button"
                 type="button"
               >
@@ -170,7 +196,7 @@
 
               <button
                 data-action="closeMenu"
-                data-dialog="degrees"
+                data-dialog="degrees-form"
                 class="form__button"
                 type="button"
               >
