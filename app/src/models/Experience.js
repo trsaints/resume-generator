@@ -4,6 +4,7 @@ export default class Experience {
   #title = "";
   #company = "";
   #period = "";
+  #location = "";
   #desc = "";
   #id = 0;
 
@@ -19,6 +20,10 @@ export default class Experience {
     return this.#period;
   }
 
+  get location() {
+    return this.#location;
+  }
+
   get desc() {
     return this.#desc;
   }
@@ -32,10 +37,11 @@ export default class Experience {
     Experience.latestId++;
   }
 
-  constructor({ title, company, period, desc }) {
+  constructor({ title, company, period, location, desc }) {
     this.#title = title;
     this.#company = company;
     this.#period = period;
+    this.#location = location;
     this.#desc = desc;
     this.#setId();
   }
