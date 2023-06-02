@@ -19,7 +19,7 @@
     <main class="main">
       <h1 class="main__title">novo currículo</h1>
 
-      <form data-element="form" class="form" novalidate>
+      <form data-element="form" action="./resume.html" class="form" novalidate>
         <fieldset class="form__fieldset">
           <legend class="form__legend">informações pessoais</legend>
 
@@ -39,6 +39,12 @@
             <label class="form__label" for="desc">descrição:</label>
 
             <textarea id="desc" cols="30" rows="10" name="desc"></textarea>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="address">endereço:</label>
+
+            <input type="email" id="address" name="address" />
           </div>
 
           <div class="form__field">
@@ -112,6 +118,12 @@
               <label class="form__label" for="jobPeriod">período:</label>
 
               <input type="text" id="jobPeriod" />
+            </div>
+
+            <div>
+              <label class="form__label" for="jobLocation">localização:</label>
+
+              <input type="text" id="jobLocation" />
             </div>
 
             <div>
@@ -228,9 +240,7 @@
           </dialog>
         </fieldset>
 
-        <button data-action="generate" class="form__submit" type="submit">
-          gerar currículo
-        </button>
+        <button class="form__submit" type="submit">gerar currículo</button>
       </form>
     </main>
 
