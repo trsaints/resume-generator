@@ -21,12 +21,13 @@ function extractFormData(form) {
 function getExperience({ callbacks }) {
   const form = callbacks.getElement("form");
 
-  const { jobCompany, jobTitle, jobPeriod, jobDesc } = form.elements;
+  const { jobCompany, jobTitle, jobPeriod, jobLocation, jobDesc } = form.elements;
 
   const exp = {
     title: jobTitle.value,
     company: jobCompany.value,
     period: jobPeriod.value,
+    location: jobLocation.value,
     desc: jobDesc.value,
   };
 
@@ -107,11 +108,12 @@ function extractComponent(type, item) {
       return obj;
     },
 
-    experience: ({ title, company, period, desc, id }) => {
+    experience: ({ title, company, period, location, desc, id }) => {
       const obj = {
         title: title,
         company: company,
         period: period,
+        location: location,
         desc: desc,
         id: id,
       };
