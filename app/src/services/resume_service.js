@@ -82,8 +82,8 @@ export function addItem(callbacks, components, type) {
 function getItem(callbacks, components, category) {
   const target = {
     degree: () => new components.Degree(getDegree({ callbacks })),
-    experience: () => new components.Experience(getExperience({ callbacks }))
-  }
+    experience: () => new components.Experience(getExperience({ callbacks })),
+  };
 
   const item = target[category]();
 

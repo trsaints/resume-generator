@@ -1,4 +1,5 @@
 import { initialize } from "./controller/controller.js";
+
 import {
   clearContent,
   closeMenu,
@@ -12,45 +13,45 @@ import {
 
 import {
   addItem,
+  removeItem,
   saveFormState,
   syncFormState,
-  removeItem,
 } from "./services/resume_service.js";
 
 import {
-  renderItem,
   displayConfirmation,
+  renderItem,
   unrenderItem,
 } from "./views/resume_view.js";
 
-import ExperienceCard from "./components/ExperienceCard.js";
 import DegreeCard from "./components/DegreeCard.js";
-import Experience from "./models/Experience.js";
+import ExperienceCard from "./components/ExperienceCard.js";
 import Degree from "./models/Degree.js";
+import Experience from "./models/Experience.js";
 
 const dependencies = {
   callbacks: {
+    addItem,
+    clearContent,
     closeMenu,
+    displayConfirmation,
     getElement,
     getElements,
-    clearContent,
     hideElement,
-    showElement,
-    addItem,
+    openMenu,
     renderItem,
     removeItem,
+    showElement,
     showPopup,
     saveFormState,
-    openMenu,
     syncFormState,
-    displayConfirmation,
     unrenderItem,
   },
   components: {
-    ExperienceCard,
     DegreeCard,
-    Experience,
+    ExperienceCard,
     Degree,
+    Experience,
   },
 };
 

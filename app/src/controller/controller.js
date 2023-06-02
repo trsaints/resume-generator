@@ -35,7 +35,7 @@ function setInteractions({ callbacks, components }) {
       callbacks.removeItem(type, id);
       callbacks.closeMenu(`${type}s-confirmation`);
       callbacks.unrenderItem(callbacks, type, id);
-    }
+    },
   };
 
   document.addEventListener("click", ({ target }) => {
