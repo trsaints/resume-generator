@@ -66,12 +66,12 @@ export function addItem(callbacks, components, type) {
   const resume = JSON.parse(localStorage.getItem("resume"));
 
   if (resume.experiences === undefined) resume.experiences = [];
-  else if (resume.degrees === undefined) resume.degrees = [];
+  if (resume.degrees === undefined) resume.degrees = [];
 
   const itemToAdd = getItem(callbacks, components, type);
 
+  if (type === "experience") resume.experiences.push(itemToAdd);
   if (type === "degree") resume.degrees.push(itemToAdd);
-  else if (type === "experience") resume.experiences.push(itemToAdd);
 
   console.warn(`A new ${type} has been set`);
   console.table(itemToAdd);
