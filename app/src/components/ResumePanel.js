@@ -1,5 +1,5 @@
 import DOMElement from "./DOMElement.js";
-
+import Icon from "./Icon.js";
 export default class ResumePanel {
   #generate(name, job, desc, address, email, website, experiences, degrees) {
     const resumePanel = document.createDocumentFragment(),
@@ -25,9 +25,13 @@ export default class ResumePanel {
       aboutJob = new DOMElement("p", ["about__job"]),
       aboutDesc = new DOMElement("p", ["about__desc"]);
 
+    const jobIcon = new Icon("screwdriver-wrench");
+
     aboutTitle.textContent = name;
     aboutJob.textContent = job;
     aboutDesc.textContent = desc;
+
+    aboutJob.appendChild(jobIcon);
 
     aboutPanel.appendChild(aboutTitle);
     aboutPanel.appendChild(aboutJob);
@@ -45,10 +49,19 @@ export default class ResumePanel {
       infoEmail = new DOMElement("a", ["info__email"]),
       infoWebPage = new DOMElement("a", ["info__web-page"]);
 
+    const userIcon = new Icon("user"),
+      locationIcon = new Icon("location-dot");
+
     infoTitle.textContent = "contato";
     infoAddress.textContent = address;
     infoEmail.textContent = email;
     infoWebPage.textContent = website;
+
+    infoWebPage.setAttribute("href", website);
+    infoEmail.setAttribute("href", `mailto:${email}`);
+
+    infoTitle.appendChild(userIcon);
+    infoAddress.appendChild(locationIcon);
 
     infoMedia.appendChild(infoEmail);
     infoMedia.appendChild(new DOMElement("br"));
@@ -73,11 +86,21 @@ export default class ResumePanel {
       experienceLocation = new DOMElement("li", ["experience__location"]),
       experienceTask = new DOMElement("p", ["experience__desc"]);
 
+    const summaryIcon = new Icon("angles-down"),
+      companyIcon = new Icon("building"),
+      periodIcon = new Icon("calendar-days"),
+      locationIcon = new Icon("location-dot");
+
     experienceTitle.textContent = title;
     experienceCompany.textContent = company;
     experienceDate.textContent = period;
     experienceLocation.textContent = location;
     experienceTask.textContent = desc;
+
+    experienceTitle.appendChild(summaryIcon);
+    experienceCompany.appendChild(companyIcon);
+    experienceDate.appendChild(periodIcon);
+    experienceLocation.appendChild(locationIcon);
 
     experienceInfo.appendChild(experienceCompany);
     experienceInfo.appendChild(experienceDate);
@@ -123,12 +146,15 @@ export default class ResumePanel {
       experiencesTitle = new DOMElement("h2", ["experiences__title"]),
       experiencesList = new DOMElement("ul", ["experiences__list"]);
 
+    const experienceIcon = new Icon("business-time");
+
     if (experiences.length > 0)
       experiences.forEach((exp) =>
         experiencesList.appendChild(this.#generateExperience(exp))
       );
 
     experiencesTitle.textContent = "experiência";
+    experiencesTitle.appendChild(experienceIcon);
 
     experiencesPanel.appendChild(experiencesTitle);
     experiencesPanel.appendChild(experiencesList);
@@ -141,11 +167,15 @@ export default class ResumePanel {
       degreesTitle = new DOMElement("h2", ["degrees__title"]),
       degreesList = new DOMElement("ul", ["degrees__list"]);
 
-    if (degrees.length > 0) degrees.forEach((deg) =>
-      degreesList.appendChild(this.#generateDegree(deg))
-    );
+    const graduationIcon = new Icon("graduation-cap");
+
+    if (degrees.length > 0)
+      degrees.forEach((deg) =>
+        degreesList.appendChild(this.#generateDegree(deg))
+      );
 
     degreesTitle.textContent = "formação";
+    degreesTitle.appendChild(graduationIcon);
 
     degreesPanel.appendChild(degreesTitle);
     degreesPanel.appendChild(degreesList);
