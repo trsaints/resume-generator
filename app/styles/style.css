@@ -30,6 +30,14 @@ body {
 
 ::marker { content: "" }
 
+button, label, summary {
+  cursor: pointer;
+}
+
+.fa-solid {
+  pointer-events: none;
+}
+
 .main,
 .footer {
   padding: 3rem 1.5rem;

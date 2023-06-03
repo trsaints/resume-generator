@@ -21,47 +21,63 @@
 
       <form data-element="form" action="./resume.html" class="form" novalidate>
         <fieldset class="form__fieldset">
-          <legend class="form__legend">informações pessoais</legend>
+          <legend class="form__legend">
+            informações pessoais <i class="fa-solid fa-magnifying-glass"></i>
+          </legend>
 
           <div class="form__field">
-            <label class="form__label" for="name">nome:</label>
+            <label class="form__label" for="name">
+              nome <i class="fa-solid fa-person"></i>
+            </label>
 
             <input type="text" id="name" name="name" />
           </div>
 
           <div class="form__field">
-            <label class="form__label" for="job">cargo:</label>
+            <label class="form__label" for="job">
+              cargo atual <i class="fa-solid fa-briefcase"></i>
+            </label>
 
             <input type="text" id="job" name="job" />
           </div>
 
           <div class="form__field">
-            <label class="form__label" for="desc">descrição:</label>
+            <label class="form__label" for="desc">
+              descrição <i class="fa-solid fa-circle-info"></i>
+            </label>
 
             <textarea id="desc" cols="30" rows="10" name="desc"></textarea>
           </div>
 
           <div class="form__field">
-            <label class="form__label" for="address">endereço:</label>
+            <label class="form__label" for="address">
+              endereço <i class="fa-solid fa-location-dot"></i>
+            </label>
 
             <input type="email" id="address" name="address" />
           </div>
 
           <div class="form__field">
-            <label class="form__label" for="email">email:</label>
+            <label class="form__label" for="email">
+              email <i class="fa-solid fa-envelope"></i>
+            </label>
 
             <input type="email" id="email" name="email" />
           </div>
 
           <div class="form__field">
-            <label class="form__label" for="website">site:</label>
+            <label class="form__label" for="website">
+              site <i class="fa-solid fa-globe"></i>
+            </label>
 
             <input type="url" id="website" name="website" />
           </div>
         </fieldset>
 
         <fieldset class="form__fieldset">
-          <legend class="form__legend">experiências</legend>
+          <legend class="form__legend">
+            experiências <i class="fa-solid fa-business-time"></i>
+          </legend>
 
           <div data-element="experiences-list" class="degrees-list">
             <dialog data-element="experiences-confirmation">
@@ -74,6 +90,7 @@
                   type="button"
                 >
                   excluir
+                  <i class="fa-solid fa-trash-can"></i>
                 </button>
 
                 <button
@@ -83,6 +100,7 @@
                   type="button"
                 >
                   cancelar
+                  <i class="fa-solid fa-xmark"></i>
                 </button>
               </menu>
             </dialog>
@@ -96,38 +114,47 @@
               type="button"
             >
               adicionar experiência
+              <i class="fa-solid fa-plus"></i>
             </button>
           </menu>
 
           <dialog data-element="experience-form">
             <div>
-              <label class="form__label" for="jobTitle">cargo:</label>
+              <label class="form__label" for="jobTitle">
+                cargo <i class="fa-solid fa-briefcase"></i>
+              </label>
 
               <input type="text" id="jobTitle" />
             </div>
 
             <div>
-              <label class="form__label" for="jobCompany"
-                >nome da empresa:</label
-              >
+              <label class="form__label" for="jobCompany">
+                nome da empresa <i class="fa-solid fa-building"></i>
+              </label>
 
               <input type="text" id="jobCompany" />
             </div>
 
             <div>
-              <label class="form__label" for="jobPeriod">período:</label>
+              <label class="form__label" for="jobPeriod">
+                período <i class="fa-solid fa-calendar-days"></i>
+              </label>
 
               <input type="text" id="jobPeriod" />
             </div>
 
             <div>
-              <label class="form__label" for="jobLocation">localização:</label>
+              <label class="form__label" for="jobLocation">
+                localização <i class="fa-solid fa-location-dot"></i>
+              </label>
 
               <input type="text" id="jobLocation" />
             </div>
 
             <div>
-              <label class="form__label" for="jobDesc">descrição:</label>
+              <label class="form__label" for="jobDesc">
+                descrição <i class="fa-solid fa-message"></i>
+              </label>
 
               <textarea name="" id="jobDesc" cols="30" rows="10"></textarea>
             </div>
@@ -140,6 +167,7 @@
                 type="button"
               >
                 adicionar
+                <i class="fa-solid fa-plus"></i>
               </button>
 
               <button
@@ -149,13 +177,16 @@
                 type="button"
               >
                 cancelar
+                <i class="fa-solid fa-xmark"></i>
               </button>
             </menu>
           </dialog>
         </fieldset>
 
         <fieldset class="form__fieldset">
-          <legend class="form__legend">formações</legend>
+          <legend class="form__legend">
+            formações <i class="fa-solid fa-graduation-cap"></i>
+          </legend>
 
           <div data-element="degrees-list" class="degrees-list">
             <dialog data-element="degrees-confirmation">
@@ -168,6 +199,7 @@
                   type="button"
                 >
                   excluir
+                  <i class="fa-solid fa-trash-can"></i>
                 </button>
 
                 <button
@@ -177,6 +209,7 @@
                   type="button"
                 >
                   cancelar
+                  <i class="fa-solid fa-xmark"></i>
                 </button>
               </menu>
             </dialog>
@@ -190,30 +223,40 @@
               type="button"
             >
               adicionar formação
+              <i class="fa-solid fa-plus"></i>
             </button>
           </menu>
 
           <dialog data-element="degree-form">
             <div>
-              <label class="form__label" for="degreeName">curso:</label>
+              <label class="form__label" for="degreeName">
+                curso <i class="fa-solid fa-file-contract"></i>
+              </label>
 
               <input type="text" id="degreeName" />
             </div>
 
             <div>
-              <label class="form__label" for="degreeSchool">instituição:</label>
+              <label class="form__label" for="degreeSchool">
+                nome da instituição <i class="fa-solid fa-school"></i>
+              </label>
 
               <input type="text" id="degreeSchool" />
             </div>
 
             <div>
-              <label class="form__label" for="degreePeriod">período:</label>
+              <label class="form__label" for="degreePeriod">
+                período
+                <i class="fa-solid fa-calendar-days"></i>
+              </label>
 
               <input type="text" id="degreePeriod" />
             </div>
 
             <div>
-              <label class="form__label" for="degreeDesc">descrição:</label>
+              <label class="form__label" for="degreeDesc">
+                descrição <i class="fa-solid fa-message"></i>
+              </label>
 
               <textarea name="" id="degreeDesc" cols="30" rows="10"></textarea>
             </div>
@@ -226,6 +269,7 @@
                 type="button"
               >
                 adicionar
+                <i class="fa-solid fa-plus"></i>
               </button>
 
               <button
@@ -235,12 +279,15 @@
                 type="button"
               >
                 cancelar
+                <i class="fa-solid fa-xmark"></i>
               </button>
             </menu>
           </dialog>
         </fieldset>
 
-        <button class="form__submit" type="submit">gerar currículo</button>
+        <button class="form__submit" type="submit">
+          gerar currículo <i class="fa-solid fa-file-circle-plus"></i>
+        </button>
       </form>
     </main>
 
