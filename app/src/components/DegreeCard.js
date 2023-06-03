@@ -48,6 +48,7 @@ export default class DegreeCard {
     const deleteText = document.createTextNode("excluir formação");
 
     deleteButton.setAttribute("data-action", "displayConfirmation");
+    deleteButton.setAttribute("type", "button");
     deleteButton.appendChild(deleteText);
     deleteButton.appendChild(deleteIcon);
 

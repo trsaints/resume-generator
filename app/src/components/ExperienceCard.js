@@ -48,6 +48,7 @@ export default class ExperienceCard {
     const deleteText = document.createTextNode("excluir experiência");
 
     deleteButton.setAttribute("data-action", "displayConfirmation");
+    deleteButton.setAttribute("type", "button");
     deleteButton.appendChild(deleteText);
     deleteButton.appendChild(deleteIcon);
 
