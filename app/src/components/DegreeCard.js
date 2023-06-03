@@ -23,12 +23,20 @@ export default class DegreeCard {
       degreePeriod = new DOMElement("li", ["degree__period"]),
       degreeDesc = new DOMElement("p", ["degree__desc"]);
 
+    const detailIcon = new Icon("angles-down"),
+      schoolIcon = new Icon("school"),
+      periodIcon = new Icon("calendar-days");
+
     const frag = document.createDocumentFragment();
 
     degreeTitle.textContent = title;
     degreeSchool.textContent = school;
     degreePeriod.textContent = period;
     degreeDesc.textContent = desc;
+
+    degreeTitle.appendChild(detailIcon);
+    degreeSchool.appendChild(schoolIcon);
+    degreePeriod.appendChild(periodIcon);
 
     degreeDetails.appendChild(degreeSchool);
     degreeDetails.appendChild(degreePeriod);
