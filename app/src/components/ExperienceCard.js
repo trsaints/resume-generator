@@ -2,9 +2,9 @@ import DOMElement from "./DOMElement.js";
 import Icon from "./Icon.js";
 
 export default class ExperienceCard {
-  #generate(title, company, period, desc, id) {
+  #generate(title, company, period, location, desc, id) {
     const experienceCard = new DOMElement("details", ["experience"]),
-      experienceContent = this.#generateContent(title, company, period, desc),
+      experienceContent = this.#generateContent(title, company, period, location, desc),
       experienceOptions = this.#generateOptions();
 
     experienceCard.appendChild(experienceContent);
@@ -16,10 +16,11 @@ export default class ExperienceCard {
     return experienceCard;
   }
 
-  #generateContent(title, company, period, desc) {
+  #generateContent(title, company, period, location, desc) {
     const experienceTitle = new DOMElement("summary", ["experience__title"]),
       experienceDetails = new DOMElement("ul", ["experience__details"]),
       experienceCompany = new DOMElement("li", ["experience__company"]),
+      experienceLocation = new DOMElement("li", ["experience__location"]),
       experiencePeriod = new DOMElement("li", ["experience__period"]),
       experienceDesc = new DOMElement("p", ["experience__desc"]);
 
@@ -28,10 +29,12 @@ export default class ExperienceCard {
     experienceTitle.textContent = title;
     experienceCompany.textContent = company;
     experiencePeriod.textContent = period;
+    experienceLocation.textContent = location;
     experienceDesc.textContent = desc;
 
     experienceDetails.appendChild(experienceCompany);
     experienceDetails.appendChild(experiencePeriod);
+    experienceDetails.appendChild(experienceLocation);
 
     frag.appendChild(experienceTitle);
     frag.appendChild(experienceDetails);
@@ -57,7 +60,7 @@ export default class ExperienceCard {
     return experienceOptions;
   }
 
-  constructor({ title, company, period, desc, id }) {
-    return this.#generate(title, company, period, desc, id);
+  constructor({ title, company, period, location, desc, id }) {
+    return this.#generate(title, company, period, location, desc, id);
   }
 }
