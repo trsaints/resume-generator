@@ -120,16 +120,24 @@ export default class ResumePanel {
       degreeDetails = new DOMElement("details", ["degree__details"]),
       degreeTitle = new DOMElement("summary", ["degree__title"]),
       degreeInfo = new DOMElement("ul", ["degree__info"]),
-      degreeCompany = new DOMElement("li", ["degree__school"]),
+      degreeSchool = new DOMElement("li", ["degree__school"]),
       degreeDate = new DOMElement("li", ["degree__date"]),
       degreeTask = new DOMElement("p", ["degree__desc"]);
 
+    const summaryIcon = new Icon("angles-down"),
+      schoolIcon = new Icon("school"),
+      periodIcon = new Icon("calendar-days");
+
     degreeTitle.textContent = title;
-    degreeCompany.textContent = school;
+    degreeSchool.textContent = school;
     degreeDate.textContent = period;
     degreeTask.textContent = desc;
 
-    degreeInfo.appendChild(degreeCompany);
+    degreeTitle.appendChild(summaryIcon);
+    degreeSchool.appendChild(schoolIcon);
+    degreeDate.appendChild(periodIcon);
+
+    degreeInfo.appendChild(degreeSchool);
     degreeInfo.appendChild(degreeDate);
 
     degreeDetails.appendChild(degreeTitle);
