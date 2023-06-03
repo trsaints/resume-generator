@@ -4,7 +4,13 @@ import Icon from "./Icon.js";
 export default class ExperienceCard {
   #generate(title, company, period, location, desc, id) {
     const experienceCard = new DOMElement("details", ["experience"]),
-      experienceContent = this.#generateContent(title, company, period, location, desc),
+      experienceContent = this.#generateContent(
+        title,
+        company,
+        period,
+        location,
+        desc
+      ),
       experienceOptions = this.#generateOptions();
 
     experienceCard.appendChild(experienceContent);
@@ -24,6 +30,11 @@ export default class ExperienceCard {
       experiencePeriod = new DOMElement("li", ["experience__period"]),
       experienceDesc = new DOMElement("p", ["experience__desc"]);
 
+    const detailIcon = new Icon("angles-down"),
+      companyIcon = new Icon("building"),
+      locationIcon = new Icon("location-dot"),
+      periodIcon = new Icon("calendar-days");
+
     const frag = document.createDocumentFragment();
 
     experienceTitle.textContent = title;
@@ -31,6 +42,11 @@ export default class ExperienceCard {
     experiencePeriod.textContent = period;
     experienceLocation.textContent = location;
     experienceDesc.textContent = desc;
+
+    experienceTitle.appendChild(detailIcon);
+    experienceCompany.appendChild(companyIcon);
+    experiencePeriod.appendChild(periodIcon);
+    experienceLocation.appendChild(locationIcon);
 
     experienceDetails.appendChild(experienceCompany);
     experienceDetails.appendChild(experiencePeriod);
