@@ -22,7 +22,7 @@
       <form data-element="form" action="./resume.html" class="form" novalidate>
         <fieldset class="form__fieldset">
           <legend class="form__legend">
-            informações pessoais <i class="fa-solid fa-magnifying-glass"></i>
+            dados pessoais <i class="fa-solid fa-magnifying-glass"></i>
           </legend>
 
           <div class="form__field">
@@ -30,7 +30,7 @@
               nome <i class="fa-solid fa-person"></i>
             </label>
 
-            <input type="text" id="name" name="name" />
+            <input class="form__input" type="text" id="name" name="name" />
           </div>
 
           <div class="form__field">
@@ -38,15 +38,15 @@
               cargo atual <i class="fa-solid fa-briefcase"></i>
             </label>
 
-            <input type="text" id="job" name="job" />
+            <input class="form__input" type="text" id="job" name="job" />
           </div>
 
-          <div class="form__field">
-            <label class="form__label" for="desc">
+          <div class="form__field--textarea">
+            <label class="form__label--column" for="desc">
               descrição <i class="fa-solid fa-circle-info"></i>
             </label>
 
-            <textarea id="desc" cols="30" rows="10" name="desc"></textarea>
+            <textarea class="form__textarea" id="desc" cols="30" rows="10" name="desc"></textarea>
           </div>
 
           <div class="form__field">
@@ -54,7 +54,7 @@
               endereço <i class="fa-solid fa-location-dot"></i>
             </label>
 
-            <input type="email" id="address" name="address" />
+            <input class="form__input" type="email" id="address" name="address" />
           </div>
 
           <div class="form__field">
@@ -62,7 +62,7 @@
               email <i class="fa-solid fa-envelope"></i>
             </label>
 
-            <input type="email" id="email" name="email" />
+            <input class="form__input" type="email" id="email" name="email" />
           </div>
 
           <div class="form__field">
@@ -70,7 +70,7 @@
               site <i class="fa-solid fa-globe"></i>
             </label>
 
-            <input type="url" id="website" name="website" />
+            <input class="form__input" type="url" id="website" name="website" />
           </div>
         </fieldset>
 
@@ -233,7 +233,7 @@
                 curso <i class="fa-solid fa-file-contract"></i>
               </label>
 
-              <input type="text" id="degreeName" />
+              <input class="form__input" type="text" id="degreeName" />
             </div>
 
             <div>
@@ -241,7 +241,7 @@
                 nome da instituição <i class="fa-solid fa-school"></i>
               </label>
 
-              <input type="text" id="degreeSchool" />
+              <input class="form__input" type="text" id="degreeSchool" />
             </div>
 
             <div>
@@ -250,7 +250,7 @@
                 <i class="fa-solid fa-calendar-days"></i>
               </label>
 
-              <input type="text" id="degreePeriod" />
+              <input class="form__input" type="text" id="degreePeriod" />
             </div>
 
             <div>
@@ -258,7 +258,7 @@
                 descrição <i class="fa-solid fa-message"></i>
               </label>
 
-              <textarea name="" id="degreeDesc" cols="30" rows="10"></textarea>
+              <textarea class="form__textarea" name="" id="degreeDesc" cols="30" rows="10"></textarea>
             </div>
 
             <menu>
@@ -335,7 +335,7 @@
                 habilidade <i class="fa-solid fa-tag"></i>
               </label>
 
-              <input type="text" id="skillName" />
+              <input class="form__input" type="text" id="skillName" />
             </div>
 
             <div>
@@ -343,7 +343,7 @@
                 descrição <i class="fa-solid fa-message"></i>
               </label>
 
-              <textarea name="" id="skillDesc" cols="30" rows="10"></textarea>
+              <textarea class="form__textarea" name="" id="skillDesc" cols="30" rows="10"></textarea>
             </div>
 
             <menu>

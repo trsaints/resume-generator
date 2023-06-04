@@ -28,10 +28,19 @@ body {
   background-color: var(--c-white);
 }
 
-::marker { content: "" }
+::marker {
+  content: "";
+}
 
-button, label, summary {
+button,
+label,
+summary {
   cursor: pointer;
+}
+
+input,
+textarea {
+  max-width: 100%;
 }
 
 .fa-solid {
@@ -59,9 +68,10 @@ button, label, summary {
 .form__fieldset {
   display: grid;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--c-gray-ls);
   border-radius: 0.5rem;
+  width: calc(100vw - 3rem);
 }
 
 .form__legend {
@@ -72,19 +82,42 @@ button, label, summary {
   font-size: 1.25rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  white-space: nowrap;
 }
 
-.form__field {
+.form__field,
+.form__field--textarea {
   border-radius: 0.25rem;
   background-color: var(--c-white);
+  display: flex;
+  max-width: calc(100vw - 4.5rem);
 }
 
-.form__label {
+.form__field--textarea {
+  flex-direction: column;
+}
+
+.form__label,
+.form__label--column {
   display: inline-block;
   padding: 0.5rem 1rem;
   background-color: var(--c-main);
+  white-space: nowrap;
+}
+
+.form__label {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+}
+
+.form__label--column {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.form__input {
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
 }
 
 .form__button,
@@ -96,7 +129,8 @@ button, label, summary {
   font-weight: bold;
 }
 
-.form__button, .delete-button {
+.form__button,
+.delete-button {
   background-color: var(--c-black);
   color: var(--c-white);
 }
@@ -121,14 +155,18 @@ button, label, summary {
   text-decoration: underline;
 }
 
-.experiences-list, .degrees-list, .skills-list {
+.experiences-list,
+.degrees-list,
+.skills-list {
   display: grid;
   gap: 1rem;
 }
 
-.experience, .degree, .skill {
+.experience,
+.degree,
+.skill {
   background-color: var(--c-white);
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   padding: 1rem;
 }
 
@@ -179,6 +217,20 @@ button, label, summary {
   text-transform: uppercase;
 }
 
-.experience__options, .degree__options, .skill__options {
+.experience__options,
+.degree__options,
+.skill__options {
   margin-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    padding: 4rem 8rem;
+  }
 }
