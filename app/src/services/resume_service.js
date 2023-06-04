@@ -21,7 +21,8 @@ function extractFormData(form) {
 function getExperience({ callbacks }) {
   const form = callbacks.getElement("form");
 
-  const { jobCompany, jobTitle, jobPeriod, jobLocation, jobDesc } = form.elements;
+  const { jobCompany, jobTitle, jobPeriod, jobLocation, jobDesc } =
+    form.elements;
 
   const exp = {
     title: jobTitle.value,
@@ -49,6 +50,19 @@ function getDegree({ callbacks }) {
   return deg;
 }
 
+function getSkill({ callbacks }) {
+  const form = callbacks.getElement("form");
+
+  const { skillName, skillDesc } = form.elements;
+
+  const skill = {
+    title: skillName.value,
+    desc: skillDesc.value,
+  };
+
+  return skill;
+}
+
 export function syncFormState({ callbacks }) {
   const form = callbacks.getElement("form");
   const { name, job, desc, email, website } = form;
@@ -65,13 +79,11 @@ export function syncFormState({ callbacks }) {
 export function addItem(callbacks, components, type) {
   const resume = JSON.parse(localStorage.getItem("resume"));
 
-  if (resume.experiences === undefined) resume.experiences = [];
-  if (resume.degrees === undefined) resume.degrees = [];
+  if (resume[`${type}s`] === undefined) resume[`${type}s`] = [];
 
   const itemToAdd = getItem(callbacks, components, type);
 
-  if (type === "experience") resume.experiences.push(itemToAdd);
-  if (type === "degree") resume.degrees.push(itemToAdd);
+  resume[`${type}s`].push(itemToAdd);
 
   console.warn(`A new ${type} has been set`);
   console.table(itemToAdd);
@@ -85,6 +97,7 @@ function getItem(callbacks, components, category) {
   const target = {
     degree: () => new components.Degree(getDegree({ callbacks })),
     experience: () => new components.Experience(getExperience({ callbacks })),
+    skill: () => new components.Skill(getSkill({ callbacks })),
   };
 
   const item = target[category]();
@@ -114,6 +127,16 @@ function extractComponent(type, item) {
         company: company,
         period: period,
         location: location,
+        desc: desc,
+        id: id,
+      };
+
+      return obj;
+    },
+
+    skill: ({ title, desc, id }) => {
+      const obj = {
+        title: title,
         desc: desc,
         id: id,
       };

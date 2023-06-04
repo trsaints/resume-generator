@@ -121,12 +121,12 @@ button, label, summary {
   text-decoration: underline;
 }
 
-.experiences-list, .degrees-list {
+.experiences-list, .degrees-list, .skills-list {
   display: grid;
   gap: 1rem;
 }
 
-.experience, .degree {
+.experience, .degree, .skill {
   background-color: var(--c-white);
   border-radius: .25rem;
   padding: 1rem;
@@ -179,6 +179,6 @@ button, label, summary {
   text-transform: uppercase;
 }
 
-.experience__options, .degree__options {
+.experience__options, .degree__options, .skill__options {
   margin-top: 1rem;
 }

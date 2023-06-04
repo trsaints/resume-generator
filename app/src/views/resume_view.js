@@ -1,7 +1,8 @@
 export function displayConfirmation(callbacks, target) {
   const card =
     target.closest("[data-element='experience']") ||
-    target.closest("[data-element='degree']");
+    target.closest("[data-element='degree']") ||
+    target.closest("[data-element='skill']");
 
   const { dataset } = card;
 
@@ -17,11 +18,13 @@ export function renderItem(callbacks, components, type, item) {
   const result = {
     experience: () => new components.ExperienceCard(item),
     degree: () => new components.DegreeCard(item),
+    skill: () => new components.SkillCard(item),
   };
 
   const panel = {
     experience: () => callbacks.getElement("experiences-list"),
     degree: () => callbacks.getElement("degrees-list"),
+    skill: () => callbacks.getElement("skills-list"),
   };
 
   const target = panel[type]();
@@ -43,7 +46,6 @@ export function renderResume({ callbacks, components }) {
   const resumePanel = new components.ResumePanel(resume);
 
   console.warn("Resume generated successfully");
-  console.log(resumePanel);
 
   target.appendChild(resumePanel);
 }

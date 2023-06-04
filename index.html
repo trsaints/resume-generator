@@ -285,6 +285,91 @@
           </dialog>
         </fieldset>
 
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">
+            habilidades <i class="fa-solid fa-tags"></i>
+          </legend>
+
+          <div data-element="skills-list" class="skills-list">
+            <dialog data-element="skills-confirmation">
+              <p>deseja mesmo excluir esta habilidade?</p>
+
+              <menu>
+                <button
+                  data-action="removeItem"
+                  class="form__button"
+                  type="button"
+                >
+                  excluir
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+
+                <button
+                  data-action="closeMenu"
+                  data-dialog="skills-confirmation"
+                  class="form__button"
+                  type="button"
+                >
+                  cancelar
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </menu>
+            </dialog>
+          </div>
+
+          <menu>
+            <button
+              data-action="openMenu"
+              data-dialog="skill-form"
+              class="form__button"
+              type="button"
+            >
+              adicionar habilidade
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </menu>
+
+          <dialog data-element="skill-form">
+            <div>
+              <label class="form__label" for="skillName">
+                habilidade <i class="fa-solid fa-tag"></i>
+              </label>
+
+              <input type="text" id="skillName" />
+            </div>
+
+            <div>
+              <label class="form__label" for="skillDesc">
+                descrição <i class="fa-solid fa-message"></i>
+              </label>
+
+              <textarea name="" id="skillDesc" cols="30" rows="10"></textarea>
+            </div>
+
+            <menu>
+              <button
+                data-action="addItem"
+                data-item="skill"
+                class="form__button"
+                type="button"
+              >
+                adicionar
+                <i class="fa-solid fa-plus"></i>
+              </button>
+
+              <button
+                data-action="closeMenu"
+                data-dialog="skill-form"
+                class="form__button"
+                type="button"
+              >
+                cancelar
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </menu>
+          </dialog>
+        </fieldset>
+
         <button class="form__submit" type="submit">
           gerar currículo <i class="fa-solid fa-file-circle-plus"></i>
         </button>
