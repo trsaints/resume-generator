@@ -1,7 +1,7 @@
 import DOMElement from "./DOMElement.js";
 import Icon from "./Icon.js";
 export default class ResumePanel {
-  #generate(name, job, desc, address, email, website, experiences, degrees) {
+  #generate(name, job, desc, address, email, website, experiences, degrees, skills) {
     const resumePanel = document.createDocumentFragment(),
       resumeHeader = this.#generateHeader(
         name,
@@ -11,7 +11,7 @@ export default class ResumePanel {
         email,
         website
       ),
-      resumeMainContent = this.#generateMainContent(experiences, degrees);
+      resumeMainContent = this.#generateMainContent(experiences, degrees, skills);
 
     resumePanel.appendChild(resumeHeader);
     resumePanel.appendChild(resumeMainContent);
@@ -149,6 +149,27 @@ export default class ResumePanel {
     return degreePanel;
   }
 
+  #generateSkill({ title, desc }) {
+    const skillPanel = new DOMElement("li", ["skill"]),
+      skillDetails = new DOMElement("details", ["skill__details"]),
+      skillTitle = new DOMElement("summary", ["skill__title"]),
+      skillTask = new DOMElement("p", ["skill__desc"]);
+
+    const summaryIcon = new Icon("angles-down");
+
+    skillTitle.textContent = title;
+    skillTask.textContent = desc;
+
+    skillTitle.appendChild(summaryIcon);
+
+    skillDetails.appendChild(skillTitle);
+    skillDetails.appendChild(skillTask);
+
+    skillPanel.appendChild(skillDetails);
+
+    return skillPanel;
+  }
+
   #generateExperiences(experiences = []) {
     const experiencesPanel = new DOMElement("section", ["experiences"]),
       experiencesTitle = new DOMElement("h2", ["experiences__title"]),
@@ -191,6 +212,27 @@ export default class ResumePanel {
     return degreesPanel;
   }
 
+  #generateSkills(skills = []) {
+    const skillsPanel = new DOMElement("section", ["skills"]),
+      skillsTitle = new DOMElement("h2", ["skills__title"]),
+      skillsList = new DOMElement("ul", ["skills__list"]);
+
+    const tagsIcon = new Icon("tags");
+
+    if (skills.length > 0)
+      skills.forEach((skill) =>
+        skillsList.appendChild(this.#generateSkill(skill))
+      );
+
+    skillsTitle.textContent = "competências";
+    skillsTitle.appendChild(tagsIcon);
+
+    skillsPanel.appendChild(skillsTitle);
+    skillsPanel.appendChild(skillsList);
+
+    return skillsPanel;
+  }
+
   #generateHeader(name, job, desc, address, email, website) {
     const header = new DOMElement("header", ["header"]);
     const headerTitle = new DOMElement("h1", ["header__title", "sr-only"]);
@@ -206,13 +248,15 @@ export default class ResumePanel {
     return header;
   }
 
-  #generateMainContent(experiences, degrees) {
+  #generateMainContent(experiences, degrees, skills) {
     const mainPanel = new DOMElement("main", ["main"]),
       experiencesPanel = this.#generateExperiences(experiences),
-      degreesPanel = this.#generateDegrees(degrees);
+      degreesPanel = this.#generateDegrees(degrees),
+      skillsPanel = this.#generateSkills(skills);
 
     mainPanel.appendChild(experiencesPanel);
     mainPanel.appendChild(degreesPanel);
+    mainPanel.appendChild(skillsPanel);
 
     return mainPanel;
   }
@@ -226,6 +270,7 @@ export default class ResumePanel {
     website,
     experiences,
     degrees,
+    skills
   }) {
     return this.#generate(
       name,
@@ -235,7 +280,8 @@ export default class ResumePanel {
       email,
       website,
       experiences,
-      degrees
+      degrees,
+      skills
     );
   }
 }
