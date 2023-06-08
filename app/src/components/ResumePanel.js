@@ -1,7 +1,17 @@
 import DOMElement from "./DOMElement.js";
 import Icon from "./Icon.js";
 export default class ResumePanel {
-  #generate(name, job, desc, address, email, website, experiences, degrees, skills) {
+  #generate(
+    name,
+    job,
+    desc,
+    address,
+    email,
+    website,
+    experiences,
+    degrees,
+    skills
+  ) {
     const resumePanel = document.createDocumentFragment(),
       resumeHeader = this.#generateHeader(
         name,
@@ -11,7 +21,11 @@ export default class ResumePanel {
         email,
         website
       ),
-      resumeMainContent = this.#generateMainContent(experiences, degrees, skills);
+      resumeMainContent = this.#generateMainContent(
+        experiences,
+        degrees,
+        skills
+      );
 
     resumePanel.appendChild(resumeHeader);
     resumePanel.appendChild(resumeMainContent);
@@ -110,6 +124,8 @@ export default class ResumePanel {
     experienceDetails.appendChild(experienceInfo);
     experienceDetails.appendChild(experienceTask);
 
+    experienceDetails.setAttribute("data-element", "detail");
+
     experiencePanel.appendChild(experienceDetails);
 
     return experiencePanel;
@@ -143,6 +159,8 @@ export default class ResumePanel {
     degreeDetails.appendChild(degreeTitle);
     degreeDetails.appendChild(degreeInfo);
     degreeDetails.appendChild(degreeTask);
+
+    degreeDetails.setAttribute("data-element", "detail");
 
     degreePanel.appendChild(degreeDetails);
 
@@ -270,7 +288,7 @@ export default class ResumePanel {
     website,
     experiences,
     degrees,
-    skills
+    skills,
   }) {
     return this.#generate(
       name,

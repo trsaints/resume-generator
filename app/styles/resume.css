@@ -23,18 +23,23 @@ body {
   color: var(--c-black-l);
   font-size: 1.125rem;
   background-color: var(--c-white);
-  padding: 3rem 1.5rem;
+}
+
+.resume {
+  margin: 3rem 1.5rem;
 }
 
 .header {
   display: grid;
   margin-bottom: 3rem;
-  gap: 2rem;
+  row-gap: 2rem;
+  column-gap: 4rem;
 }
 
 .main {
   display: grid;
-  gap: 2rem;
+  row-gap: 2rem;
+  column-gap: 4rem;
 }
 
 summary {
@@ -45,50 +50,6 @@ a {
   text-decoration: underline;
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    padding: 2rem 3rem;
-  }
-
-  .main,
-  .header {
-    grid-template-columns: 3fr 2fr;
-  }
-
-  .main {
-    grid-template-areas: "experiences skills" "degrees skills";
-  }
-
-  .header {
-    grid-template-areas: "naming addressing";
-  }
-
-  .about {
-    grid-area: naming;
-  }
-
-  .info {
-    grid: addressing;
-  }
-
-  .experiences {
-    grid-area: experiences;
-  }
-
-  .degrees {
-    grid-area: degrees;
-  }
-
-  .skills {
-    grid-area: skills;
-  }
-}
-
-@media screen and (min-width: 1128px) {
-  body {
-    padding: 3rem 4rem;
-  }
-}
 
 i {
   pointer-events: none;
@@ -101,10 +62,14 @@ i {
   margin-bottom: 1rem;
 }
 
+[class*="__title"] {
+  text-transform: capitalize;
+}
+
 .about__job {
   background-color: var(--c-gray-ls);
   max-width: max-content;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem;
   font-size: 16px;
   border-radius: 1rem;
   margin-bottom: 1rem;
@@ -170,3 +135,19 @@ i {
   border-radius: 1rem;
   text-transform: uppercase;
 }
+
+.resume-options {
+  display: grid;
+  justify-content: center;
+}
+
+.resume-options__btn {
+  background-color: var(--c-main);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+

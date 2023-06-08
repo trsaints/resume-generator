@@ -1,0 +1,67 @@
+@media screen and (min-width: 768px) {
+  .resume {
+    margin: 2rem 3rem;
+  }
+}
+
+@media screen and (min-width: 768px), print {
+  .main,
+  .header {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .main {
+    grid-template-areas: "experiences skills" "degrees skills";
+  }
+
+  .header {
+    grid-template-areas: "naming addressing";
+  }
+
+  .about {
+    grid-area: naming;
+  }
+
+  .info {
+    grid: addressing;
+  }
+
+  .experiences {
+    grid-area: experiences;
+  }
+
+  .degrees {
+    grid-area: degrees;
+  }
+
+  .skills {
+    grid-area: skills;
+  }
+}
+
+@media screen and (min-width: 1128px) {
+  .resume {
+    margin: 3rem 4rem;
+  }
+}
+
+@media print {
+  :root {
+    font-size: 12px;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  .resume {
+    margin: 0;
+  }
+
+  .resume-options,
+  .experience__desc,
+  .degree__desc,
+  .skill__desc {
+    display: none;
+  }
+}

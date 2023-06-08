@@ -13,8 +13,21 @@
     />
     <link rel="stylesheet" href="./app/styles/reset.css" />
     <link rel="stylesheet" href="./app/styles/resume.css" />
+    <link rel="stylesheet" href="./app/styles/resume_media.css" />
     <script defer src="./app/src/resume.js" type="module"></script>
     <title>Resume</title>
   </head>
-  <body data-element="body"></body>
+  <body>
+    <menu class="resume-options">
+      <button
+        class="resume-options__btn"
+        data-action="printResume"
+        type="button"
+      >
+        baixar currículo <i class="fa-solid fa-download"></i>
+      </button>
+    </menu>
+
+    <div data-element="resume" class="resume"></div>
+  </body>
 </html>
