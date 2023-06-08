@@ -1,5 +1,5 @@
 export function initialize(deps) {
-  init(deps);
+  window.addEventListener("load", () => init(deps));
 }
 
 function init({ callbacks, components }) {

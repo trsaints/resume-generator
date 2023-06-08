@@ -1,4 +1,4 @@
-import { initialize } from "./controller/controller.js";
+import { initialize } from "./controllers/form_controller.js";
 
 import {
   clearContent,
