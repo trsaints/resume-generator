@@ -55,8 +55,8 @@ const dependencies = {
     SkillCard,
     Degree,
     Experience,
-    Skill
+    Skill,
   },
 };
 
-window.addEventListener("load", () => initialize(dependencies));
+initialize(dependencies);
