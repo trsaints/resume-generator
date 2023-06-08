@@ -1,12 +1,25 @@
-export function saveFormState({ form }) {
-  const data = extractFormData(form);
+function syncFormState({ callbacks }) {
+  const form = callbacks.getElement("form");
+  const { name, job, desc, email, website } = form;
+
+  saveBaseFormState({ form });
+
+  name.addEventListener("focusout", () => saveBaseFormState({ form }));
+  job.addEventListener("focusout", () => saveBaseFormState({ form }));
+  desc.addEventListener("focusout", () => saveBaseFormState({ form }));
+  email.addEventListener("focusout", () => saveBaseFormState({ form }));
+  website.addEventListener("focusout", () => saveBaseFormState({ form }));
+}
+
+function saveBaseFormState({ form }) {
+  const data = extractBaseFormData(form);
 
   console.table(data);
 
   localStorage.setItem("resume", JSON.stringify(data));
 }
 
-function extractFormData(form) {
+function extractBaseFormData(form) {
   const formData = new FormData(form);
 
   const resume = JSON.parse(localStorage.getItem("resume")) || {};
@@ -16,6 +29,37 @@ function extractFormData(form) {
   }
 
   return resume;
+}
+
+function addItem(callbacks, components, type) {
+  const resume = JSON.parse(localStorage.getItem("resume"));
+
+  if (resume[`${type}s`] === undefined) resume[`${type}s`] = [];
+
+  const itemToAdd = getItem(callbacks, components, type);
+
+  resume[`${type}s`].push(itemToAdd);
+
+  console.warn(`A new ${type} has been set`);
+  console.table(itemToAdd);
+
+  localStorage.setItem("resume", JSON.stringify(resume));
+
+  return itemToAdd;
+}
+
+function getItem(callbacks, components, category) {
+  const target = {
+    degree: () => new components.Degree(getDegree({ callbacks })),
+    experience: () => new components.Experience(getExperience({ callbacks })),
+    skill: () => new components.Skill(getSkill({ callbacks })),
+  };
+
+  const item = target[category]();
+
+  const result = extractComponent(category, item);
+
+  return result;
 }
 
 function getExperience({ callbacks }) {
@@ -63,50 +107,6 @@ function getSkill({ callbacks }) {
   return skill;
 }
 
-export function syncFormState({ callbacks }) {
-  const form = callbacks.getElement("form");
-  const { name, job, desc, email, website } = form;
-
-  saveFormState({ form });
-
-  name.addEventListener("focusout", () => saveFormState({ form }));
-  job.addEventListener("focusout", () => saveFormState({ form }));
-  desc.addEventListener("focusout", () => saveFormState({ form }));
-  email.addEventListener("focusout", () => saveFormState({ form }));
-  website.addEventListener("focusout", () => saveFormState({ form }));
-}
-
-export function addItem(callbacks, components, type) {
-  const resume = JSON.parse(localStorage.getItem("resume"));
-
-  if (resume[`${type}s`] === undefined) resume[`${type}s`] = [];
-
-  const itemToAdd = getItem(callbacks, components, type);
-
-  resume[`${type}s`].push(itemToAdd);
-
-  console.warn(`A new ${type} has been set`);
-  console.table(itemToAdd);
-
-  localStorage.setItem("resume", JSON.stringify(resume));
-
-  return itemToAdd;
-}
-
-function getItem(callbacks, components, category) {
-  const target = {
-    degree: () => new components.Degree(getDegree({ callbacks })),
-    experience: () => new components.Experience(getExperience({ callbacks })),
-    skill: () => new components.Skill(getSkill({ callbacks })),
-  };
-
-  const item = target[category]();
-
-  const result = extractComponent(category, item);
-
-  return result;
-}
-
 function extractComponent(type, item) {
   const component = {
     degree: ({ title, school, period, desc, id }) => {
@@ -148,7 +148,7 @@ function extractComponent(type, item) {
   return component[type](item);
 }
 
-export function removeItem(type, id) {
+function removeItem(type, id) {
   const resume = JSON.parse(localStorage.getItem("resume"));
 
   const typePlural = `${type}s`;
@@ -161,3 +161,5 @@ export function removeItem(type, id) {
 
   localStorage.setItem("resume", JSON.stringify(resume));
 }
+
+export { syncFormState, saveBaseFormState, addItem, removeItem };

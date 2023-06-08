@@ -1,11 +1,12 @@
-export function getElement(element) {
+function getElement(element) {
   return document.querySelector(`[data-element="${element}"]`);
 }
-export function getElements(element) {
+
+function getElements(element) {
   return document.querySelectorAll(`[data-element="${element}"]`);
 }
 
-export function showElement(element) {
+function showElement(element) {
   const target = getElement(element);
 
   if (target.classList.contains("hidden")) {
@@ -15,7 +16,7 @@ export function showElement(element) {
   }
 }
 
-export function hideElement(element) {
+function hideElement(element) {
   const target = getElement(element);
 
   if (target.classList.contains("hidden")) return;
@@ -25,13 +26,13 @@ export function hideElement(element) {
   target.setAttribute("aria-hidden", true);
 }
 
-export function clearContent(element) {
+function clearContent(element) {
   const target = getElement(element);
 
   while (target.firstChild) target.removeChild(target.firstChild);
 }
 
-export function showPopup(message) {
+function showPopup(message) {
   const warnMessage = getElement("warn-message");
 
   const reset = () => hideElement("popup");
@@ -44,14 +45,25 @@ export function showPopup(message) {
   setTimeout(reset, 3000);
 }
 
-export function openMenu(modal) {
+function openMenu(modal) {
   const target = getElement(modal);
   showElement(modal);
   target.showModal();
 }
 
-export function closeMenu(modal) {
+function closeMenu(modal) {
   const target = getElement(modal);
   hideElement(modal);
   target.close();
 }
+
+export {
+  getElement,
+  getElements,
+  showElement,
+  hideElement,
+  clearContent,
+  showPopup,
+  openMenu,
+  closeMenu,
+};

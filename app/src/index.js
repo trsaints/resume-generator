@@ -14,15 +14,15 @@ import {
 import {
   addItem,
   removeItem,
-  saveFormState,
+  saveBaseFormState,
   syncFormState,
-} from "./services/resume_service.js";
+} from "./services/form_service.js";
 
 import {
   displayConfirmation,
   renderItem,
   unrenderItem,
-} from "./views/resume_view.js";
+} from "./views/form_view.js";
 
 import DegreeCard from "./components/DegreeCard.js";
 import ExperienceCard from "./components/ExperienceCard.js";
@@ -45,7 +45,7 @@ const dependencies = {
     removeItem,
     showElement,
     showPopup,
-    saveFormState,
+    saveBaseFormState,
     syncFormState,
     unrenderItem,
   },
