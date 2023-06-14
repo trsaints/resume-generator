@@ -36,7 +36,14 @@
               id="name"
               name="name"
               required
+              pattern="[a-zA-Z\u00C0-\u017F\s]{2,64}"
+              minlength="2"
+              maxlength="64"
             />
+
+            <output data-element="name-length" class="form__output" for="name"
+              >0/64</output
+            >
           </div>
 
           <div class="form__field">
@@ -49,8 +56,14 @@
               type="text"
               id="job"
               name="job"
-              required
+              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,64}"
+              minlength="2"
+              maxlength="64"
             />
+
+            <output data-element="job-length" class="form__output" for="job"
+              >0/64</output
+            >
           </div>
 
           <div class="form__field">
@@ -60,11 +73,21 @@
 
             <input
               class="form__input"
-              type="email"
+              type="text"
               id="address"
               name="address"
               required
+              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{3,64}"
+              minlength="3"
+              maxlength="64"
             />
+
+            <output
+              data-element="address-length"
+              class="form__output"
+              for="address"
+              >0/64</output
+            >
           </div>
 
           <div class="form__field">
@@ -78,7 +101,13 @@
               id="email"
               name="email"
               required
+              pattern="^[A-Za-z0-9.]+@[A-Za-z0-9.]+$"
+              maxlength="64"
             />
+
+            <output data-element="email-length" class="form__output" for="email"
+              >0/64</output
+            >
           </div>
 
           <div class="form__field">
@@ -92,7 +121,15 @@
               id="website"
               name="website"
               required
+              maxlength="128"
             />
+
+            <output
+              data-element="website-length"
+              class="form__output"
+              for="website"
+              >0/128</output
+            >
           </div>
 
           <div class="form__field--textarea">
@@ -105,7 +142,15 @@
               id="desc"
               rows="7"
               name="desc"
+              required
+              minlength="2"
+              maxlength="128"
+              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,128}"
             ></textarea>
+
+            <output data-element="desc-length" class="form__output" for="desc"
+              >0/128</output
+            >
           </div>
         </fieldset>
 
@@ -159,7 +204,20 @@
                 cargo <i class="fa-solid fa-briefcase"></i>
               </label>
 
-              <input class="form__input" type="text" id="jobTitle" />
+              <input
+                class="form__input"
+                type="text"
+                id="jobTitle"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="jobTitle-length"
+                class="form__output"
+                for="jobTitle"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field">
@@ -167,7 +225,20 @@
                 nome da empresa <i class="fa-solid fa-building"></i>
               </label>
 
-              <input class="form__input" type="text" id="jobCompany" />
+              <input
+                class="form__input"
+                type="text"
+                id="jobCompany"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="jobCompany-length"
+                class="form__output"
+                for="jobCompany"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field">
@@ -175,7 +246,20 @@
                 período <i class="fa-solid fa-calendar-days"></i>
               </label>
 
-              <input class="form__input" type="text" id="jobPeriod" />
+              <input
+                class="form__input"
+                type="text"
+                id="jobPeriod"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="jobPeriod-length"
+                class="form__output"
+                for="jobPeriod"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field">
@@ -183,7 +267,20 @@
                 localização <i class="fa-solid fa-location-dot"></i>
               </label>
 
-              <input class="form__input" type="text" id="jobLocation" />
+              <input
+                class="form__input"
+                type="text"
+                id="jobLocation"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="jobLocation-length"
+                class="form__output"
+                for="jobLocation"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field--textarea">
@@ -197,7 +294,16 @@
                 id="jobDesc"
                 cols="30"
                 rows="7"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="128"
               ></textarea>
+
+              <output
+                data-element="jobDesc-length"
+                class="form__output"
+                for="jobDesc"
+                >0/128</output
+              >
             </div>
 
             <menu>
@@ -274,7 +380,20 @@
                 curso <i class="fa-solid fa-file-contract"></i>
               </label>
 
-              <input class="form__input" type="text" id="degreeName" />
+              <input
+                class="form__input"
+                type="text"
+                id="degreeName"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="degreeName-length"
+                class="form__output"
+                for="degreeName"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field">
@@ -282,7 +401,20 @@
                 nome da instituição <i class="fa-solid fa-school"></i>
               </label>
 
-              <input class="form__input" type="text" id="degreeSchool" />
+              <input
+                class="form__input"
+                type="text"
+                id="degreeSchool"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="degreeSchool-length"
+                class="form__output"
+                for="degreeSchool"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field">
@@ -291,7 +423,20 @@
                 <i class="fa-solid fa-calendar-days"></i>
               </label>
 
-              <input class="form__input" type="text" id="degreePeriod" />
+              <input
+                class="form__input"
+                type="text"
+                id="degreePeriod"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="degreePeriod-length"
+                class="form__output"
+                for="degreePeriod"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field--textarea">
@@ -305,7 +450,16 @@
                 id="degreeDesc"
                 cols="30"
                 rows="7"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="128"
               ></textarea>
+
+              <output
+                data-element="degreeDesc-length"
+                class="form__output"
+                for="degreeDesc"
+                >0/128</output
+              >
             </div>
 
             <menu>
@@ -382,7 +536,20 @@
                 habilidade <i class="fa-solid fa-tag"></i>
               </label>
 
-              <input class="form__input" type="text" id="skillName" required />
+              <input
+                class="form__input"
+                type="text"
+                id="skillName"
+                pattern="[a-zA-Z\u00C0-\u017F\s\.\-]*"
+                maxlength="64"
+              />
+
+              <output
+                data-element="skillName-length"
+                class="form__output"
+                for="skillName"
+                >0/64</output
+              >
             </div>
 
             <div class="form__field--textarea">
@@ -396,7 +563,16 @@
                 id="skillDesc"
                 cols="30"
                 rows="7"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="128"
               ></textarea>
+
+              <output
+                data-element="skillDesc-length"
+                class="form__output"
+                for="skillDesc"
+                >0/128</output
+              >
             </div>
 
             <menu>

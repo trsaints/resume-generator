@@ -22,6 +22,7 @@ import {
   displayConfirmation,
   renderItem,
   unrenderItem,
+  updateCharacterCount,
 } from "./views/form_view.js";
 
 import DegreeCard from "./components/DegreeCard.js";
@@ -41,6 +42,7 @@ const dependencies = {
     getElements,
     hideElement,
     openMenu,
+    updateCharacterCount,
     renderItem,
     removeItem,
     showElement,

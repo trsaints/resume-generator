@@ -40,4 +40,17 @@ function unrenderItem(callbacks, type, id) {
   });
 }
 
-export { displayConfirmation, renderItem, unrenderItem };
+function updateCharacterCount(callbacks, target) {
+  const id = target.getAttribute("id"),
+    { value, maxLength } = target;
+
+  if (!id) return;
+
+  const outputTarget = callbacks.getElement(`${id}-length`);
+
+  if (!outputTarget) return;
+
+  outputTarget.textContent = `${value.length}/${maxLength}`;
+}
+
+export { displayConfirmation, renderItem, unrenderItem, updateCharacterCount };

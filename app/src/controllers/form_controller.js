@@ -7,10 +7,11 @@ function init({ callbacks, components }) {
 
   callbacks.syncFormState({ callbacks });
 
-  setInteractions({ callbacks, components });
+  setClickInteractions(callbacks, components);
+  setInputMonitoring(callbacks);
 }
 
-function setInteractions({ callbacks, components }) {
+function setClickInteractions(callbacks, components) {
   const actions = {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
@@ -37,5 +38,13 @@ function setInteractions({ callbacks, components }) {
     const { action } = target.dataset;
 
     if (actions[action]) actions[action](target);
+  });
+}
+
+function setInputMonitoring(callbacks) {
+  const form = callbacks.getElement("form");
+
+  form.addEventListener("input", ({ target }) => {
+    callbacks.updateCharacterCount(callbacks, target);
   });
 }
