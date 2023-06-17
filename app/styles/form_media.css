@@ -1,0 +1,66 @@
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 4rem;
+  }
+
+  .form {
+    max-width: calc(100vw - 8rem);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    padding: 4rem 8rem;
+  }
+
+  .form {
+    grid-template-areas: "personal personal" "experiences degrees" "skills skills" "submit submit";
+    max-width: calc(100vw - 16rem);
+  }
+
+  .form__fieldset:first-child {
+    grid-area: personal;
+    grid-template-areas: "name desc" "job desc" "email desc" "site desc" "location desc";
+    column-gap: 1rem;
+  }
+
+  .form__fieldset:first-child > :nth-child(2) {
+    grid-area: name;
+  }
+
+  .form__fieldset:first-child > :nth-child(3) {
+    grid-area: job;
+  }
+
+  .form__fieldset:first-child > :nth-child(4) {
+    grid-area: email;
+  }
+
+  .form__fieldset:first-child > :nth-child(5) {
+    grid-area: site;
+  }
+
+  .form__fieldset:first-child > :nth-child(6) {
+    grid-area: location;
+  }
+
+  .form__fieldset:first-child > :nth-child(7) {
+    grid-area: desc;
+  }
+
+  .form__fieldset:nth-child(2) {
+    grid-area: experiences;
+  }
+
+  .form__fieldset:nth-child(3) {
+    grid-area: degrees;
+  }
+
+  .form__fieldset:nth-child(4) {
+    grid-area: skills;
+  }
+
+  .form__submit {
+    grid-area: submit;
+  }
+}

@@ -1,0 +1,168 @@
+.form {
+  display: grid;
+  gap: 2rem;
+  width: calc(100vw - 3rem);
+}
+
+.form__fieldset {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--c-gray-ls);
+  border-radius: 0.5rem;
+}
+
+.form__legend {
+  background-color: var(--c-gray-ls);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.25rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  white-space: nowrap;
+}
+
+.form__field,
+.form__field--textarea {
+  border-radius: 0.25rem;
+  background-color: var(--c-white);
+  display: flex;
+  max-width: calc(100vw - 4.5rem);
+}
+
+.form__field--textarea {
+  flex-direction: column;
+}
+
+.form__label,
+.form__label--column {
+  display: flex;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--c-main);
+  white-space: nowrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.form__label {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.form__label--column {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.form__input,
+.form__textarea {
+  padding: 0 0.5rem;
+}
+
+.form__input {
+  width: calc(100% - 7rem);
+}
+
+.form__output {
+  background-color: var(--c-gray-l);
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.form__input + .form__output {
+  flex-basis: 4rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  flex-shrink: 0;
+}
+
+.form__textarea + .form__output {
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  padding-block: 0.25rem;
+}
+
+.form__button,
+.form__submit,
+.delete-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.125rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form__button,
+.delete-button {
+  background-color: var(--c-black);
+  color: var(--c-white);
+}
+
+.form__submit {
+  background-color: var(--c-main);
+}
+
+.experiences-list,
+.degrees-list,
+.skills-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.experiences__title,
+.degrees__title,
+.skills__title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid;
+}
+
+.experience,
+.degree,
+.skill {
+  background-color: var(--c-white);
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.experience__title,
+.degree__title,
+.skill__title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.experience__details,
+.degree__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.experience__period,
+.experience__company,
+.experience__location,
+.degree__school,
+.degree__period {
+  background-color: var(--c-gray-ls);
+  max-width: max-content;
+  padding: 0.25rem 0.5rem;
+  font-size: 14px;
+  border-radius: 1rem;
+  text-transform: uppercase;
+}
+
+.experience__options,
+.degree__options,
+.skill__options {
+  margin-top: 1rem;
+}
