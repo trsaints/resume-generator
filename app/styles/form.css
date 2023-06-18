@@ -1,7 +1,7 @@
 .form {
   display: grid;
   gap: 2rem;
-  width: calc(100vw - 3rem);
+  width: calc(100vw - 2rem);
 }
 
 .form__fieldset {
@@ -10,6 +10,7 @@
   padding: 0.75rem;
   background-color: var(--c-gray-ls);
   border-radius: 0.5rem;
+  box-shadow: 0 0 8px 0 var(--c-gray-d);
 }
 
 .form__legend {
@@ -23,12 +24,26 @@
   white-space: nowrap;
 }
 
+.form__options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form__dialog > .form__options {
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__button {
+  width: 20rem;
+}
+
 .form__field,
 .form__field--textarea {
   border-radius: 0.25rem;
   background-color: var(--c-white);
   display: flex;
-  max-width: calc(100vw - 4.5rem);
 }
 
 .form__field--textarea {
@@ -62,6 +77,11 @@
 
 .form__input {
   width: calc(100% - 7rem);
+}
+
+.form__textarea {
+  word-break: break-word;
+  resize: vertical;
 }
 
 .form__output {
@@ -106,9 +126,9 @@
   background-color: var(--c-main);
 }
 
-.experiences-list,
-.degrees-list,
-.skills-list {
+.experiences,
+.degrees,
+.skills {
   display: grid;
   gap: 1rem;
 }
@@ -129,6 +149,7 @@
   background-color: var(--c-white);
   border-radius: 0.25rem;
   padding: 1rem;
+  overflow-x: hidden;
 }
 
 .experience__title,
@@ -138,6 +159,9 @@
   margin-bottom: 1rem;
   font-size: 20px;
   text-transform: capitalize;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .experience__details,
@@ -159,6 +183,15 @@
   font-size: 14px;
   border-radius: 1rem;
   text-transform: uppercase;
+}
+
+.experience__desc,
+.degree__desc,
+.skill__desc {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--c-white-d);
+  word-break: break-word;
 }
 
 .experience__options,

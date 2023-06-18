@@ -23,7 +23,7 @@ body {
   font-family: "RedHat Display", sans-serif;
   color: var(--c-black-l);
   font-size: 1.125rem;
-  background-color: var(--c-white);
+  background-color: var(--c-white-d);
 }
 
 ::marker {
@@ -47,6 +47,7 @@ dialog[open] {
   border-radius: 0.5rem;
   display: grid;
   gap: 0.5rem;
+  padding: 0.75rem;
 }
 
 ::backdrop {
@@ -59,7 +60,7 @@ dialog[open] {
 
 .main,
 .footer {
-  padding: 3rem 1.5rem;
+  padding: 3rem 1rem;
 }
 
 .main__title {
