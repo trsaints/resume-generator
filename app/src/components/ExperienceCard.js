@@ -30,20 +30,20 @@ export default class ExperienceCard {
       experiencePeriod = new DOMElement("li", ["experience__period"]),
       experienceDesc = new DOMElement("p", ["experience__desc"]);
 
-    const detailIcon = new Icon("angles-down"),
+    const detailIcon = new Icon("angles-right"),
       companyIcon = new Icon("building"),
       locationIcon = new Icon("location-dot"),
       periodIcon = new Icon("calendar-days");
 
     const frag = document.createDocumentFragment();
 
-    experienceTitle.textContent = title;
     experienceCompany.textContent = company;
     experiencePeriod.textContent = period;
     experienceLocation.textContent = location;
     experienceDesc.textContent = desc;
 
     experienceTitle.appendChild(detailIcon);
+    experienceTitle.appendChild(document.createTextNode(title));
     experienceCompany.appendChild(companyIcon);
     experiencePeriod.appendChild(periodIcon);
     experienceLocation.appendChild(locationIcon);
@@ -64,11 +64,12 @@ export default class ExperienceCard {
       deleteButton = new DOMElement("button", ["delete-button"]);
 
     const deleteIcon = new Icon("trash-can");
-    const deleteText = document.createTextNode("excluir experiência");
+    const deleteSpan = new DOMElement("span", ["sr-only"]);
+    deleteSpan.textContent = "excluir";
 
     deleteButton.setAttribute("data-action", "displayConfirmation");
     deleteButton.setAttribute("type", "button");
-    deleteButton.appendChild(deleteText);
+    deleteButton.appendChild(deleteSpan);
     deleteButton.appendChild(deleteIcon);
 
     experienceOptions.appendChild(deleteButton);

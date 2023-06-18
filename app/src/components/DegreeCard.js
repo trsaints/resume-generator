@@ -23,18 +23,18 @@ export default class DegreeCard {
       degreePeriod = new DOMElement("li", ["degree__period"]),
       degreeDesc = new DOMElement("p", ["degree__desc"]);
 
-    const detailIcon = new Icon("angles-down"),
+    const detailIcon = new Icon("angles-right"),
       schoolIcon = new Icon("school"),
       periodIcon = new Icon("calendar-days");
 
     const frag = document.createDocumentFragment();
 
-    degreeTitle.textContent = title;
     degreeSchool.textContent = school;
     degreePeriod.textContent = period;
     degreeDesc.textContent = desc;
 
     degreeTitle.appendChild(detailIcon);
+    degreeTitle.appendChild(document.createTextNode(title));
     degreeSchool.appendChild(schoolIcon);
     degreePeriod.appendChild(periodIcon);
 
@@ -53,11 +53,12 @@ export default class DegreeCard {
       deleteButton = new DOMElement("button", ["delete-button"]);
 
     const deleteIcon = new Icon("trash-can");
-    const deleteText = document.createTextNode("excluir formação");
+    const deleteSpan = new DOMElement("span", ["sr-only"]);
+    deleteSpan.textContent = "excluir";
 
     deleteButton.setAttribute("data-action", "displayConfirmation");
     deleteButton.setAttribute("type", "button");
-    deleteButton.appendChild(deleteText);
+    deleteButton.appendChild(deleteSpan);
     deleteButton.appendChild(deleteIcon);
 
     degreeOptions.appendChild(deleteButton);

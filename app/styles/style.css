@@ -50,12 +50,17 @@ dialog[open] {
   padding: 0.75rem;
 }
 
+details[open] summary {
+  white-space: break-spaces;
+}
+
 ::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .fa-solid {
   pointer-events: none;
+  margin-inline: 0.25rem;
 }
 
 .main,

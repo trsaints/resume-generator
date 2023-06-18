@@ -21,14 +21,14 @@ export default class SkillCard {
       skillDetails = new DOMElement("ul", ["skill__details"]),
       skillDesc = new DOMElement("p", ["skill__desc"]);
 
-    const detailIcon = new Icon("angles-down");
+    const detailIcon = new Icon("angles-right");
 
     const frag = document.createDocumentFragment();
 
-    skillTitle.textContent = title;
     skillDesc.textContent = desc;
 
     skillTitle.appendChild(detailIcon);
+    skillTitle.appendChild(document.createTextNode(title));
 
     frag.appendChild(skillTitle);
     frag.appendChild(skillDetails);
@@ -42,13 +42,14 @@ export default class SkillCard {
       deleteButton = new DOMElement("button", ["delete-button"]);
 
     const deleteIcon = new Icon("trash-can");
-    const deleteText = document.createTextNode("excluir habilidade");
+    const deleteSpan = new DOMElement("span", ["sr-only"]);
+    deleteSpan.textContent = "excluir";
 
     deleteButton.setAttribute("data-action", "displayConfirmation");
     deleteButton.setAttribute("type", "button");
-    deleteButton.appendChild(deleteText);
+    deleteButton.appendChild(deleteSpan);
     deleteButton.appendChild(deleteIcon);
-
+    
     skillOptions.appendChild(deleteButton);
 
     return skillOptions;

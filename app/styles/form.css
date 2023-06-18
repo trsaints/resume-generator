@@ -36,7 +36,7 @@
 }
 
 .form__button {
-  width: 20rem;
+  flex: 1;
 }
 
 .form__field,
@@ -46,8 +46,19 @@
   display: flex;
 }
 
+.form__field {
+  align-self: flex-start;
+}
+
 .form__field--textarea {
   flex-direction: column;
+}
+
+.form__label,
+.form__label--column,
+.form__button,
+.form__submit {
+  text-transform: uppercase;
 }
 
 .form__label,
@@ -81,7 +92,6 @@
 
 .form__textarea {
   word-break: break-word;
-  resize: vertical;
 }
 
 .form__output {
@@ -120,6 +130,15 @@
 .delete-button {
   background-color: var(--c-black);
   color: var(--c-white);
+}
+
+.form__warning {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.25rem;
+  background-color: var(--c-white);
 }
 
 .form__submit {
