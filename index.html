@@ -39,13 +39,13 @@
               id="name"
               name="name"
               required
-              pattern="[a-zA-Z\u00C0-\u017F\s]{2,64}"
+              pattern="[a-zA-Z\u00C0-\u017F\s]{2,36}"
               minlength="2"
-              maxlength="64"
+              maxlength="36"
             />
 
             <output data-element="name-length" class="form__output" for="name"
-              >0/64</output
+              >0/36</output
             >
           </div>
 
@@ -59,13 +59,13 @@
               type="text"
               id="job"
               name="job"
-              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,64}"
+              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,36}"
               minlength="2"
-              maxlength="64"
+              maxlength="36"
             />
 
             <output data-element="job-length" class="form__output" for="job"
-              >0/64</output
+              >0/36</output
             >
           </div>
 
@@ -80,16 +80,16 @@
               id="address"
               name="address"
               required
-              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{3,64}"
+              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{3,36}"
               minlength="3"
-              maxlength="64"
+              maxlength="36"
             />
 
             <output
               data-element="address-length"
               class="form__output"
               for="address"
-              >0/64</output
+              >0/36</output
             >
           </div>
 
@@ -105,11 +105,11 @@
               name="email"
               required
               pattern="^[A-Za-z0-9.]+@[A-Za-z0-9.]+$"
-              maxlength="64"
+              maxlength="36"
             />
 
             <output data-element="email-length" class="form__output" for="email"
-              >0/64</output
+              >0/36</output
             >
           </div>
 
@@ -147,12 +147,12 @@
               name="desc"
               required
               minlength="2"
-              maxlength="128"
-              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,128}"
+              maxlength="256"
+              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,256}"
             ></textarea>
 
             <output data-element="desc-length" class="form__output" for="desc"
-              >0/128</output
+              >0/256</output
             >
           </div>
         </fieldset>
@@ -162,8 +162,150 @@
             experiências <i class="fa-solid fa-business-time"></i>
           </legend>
 
-          <div data-element="experiences-list" class="degrees-list">
-            <dialog data-element="experiences-confirmation">
+          <menu class="form__options">
+            <button
+              data-action="openMenu"
+              data-dialog="experience-form"
+              class="form__button"
+              type="button"
+            >
+              adicionar experiência
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </menu>
+
+          <dialog class="form__dialog" data-element="experience-form">
+            <div class="form__field">
+              <label class="form__label" for="jobTitle">
+                cargo <i class="fa-solid fa-briefcase"></i>
+              </label>
+
+              <input
+                class="form__input"
+                type="text"
+                id="jobTitle"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="36"
+              />
+
+              <output
+                data-element="jobTitle-length"
+                class="form__output"
+                for="jobTitle"
+                >0/36</output
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="jobCompany">
+                empresa <i class="fa-solid fa-building"></i>
+              </label>
+
+              <input
+                class="form__input"
+                type="text"
+                id="jobCompany"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="24"
+              />
+
+              <output
+                data-element="jobCompany-length"
+                class="form__output"
+                for="jobCompany"
+                >0/24</output
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="jobPeriod">
+                período <i class="fa-solid fa-calendar-days"></i>
+              </label>
+
+              <input
+                class="form__input"
+                type="text"
+                id="jobPeriod"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="24"
+              />
+
+              <output
+                data-element="jobPeriod-length"
+                class="form__output"
+                for="jobPeriod"
+                >0/24</output
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="jobLocation">
+                localização <i class="fa-solid fa-location-dot"></i>
+              </label>
+
+              <input
+                class="form__input"
+                type="text"
+                id="jobLocation"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="36"
+              />
+
+              <output
+                data-element="jobLocation-length"
+                class="form__output"
+                for="jobLocation"
+                >0/36</output
+              >
+            </div>
+
+            <div class="form__field--textarea">
+              <label class="form__label--column" for="jobDesc">
+                descrição <i class="fa-solid fa-message"></i>
+              </label>
+
+              <textarea
+                class="form__textarea"
+                name=""
+                id="jobDesc"
+                rows="7"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                maxlength="256"
+              ></textarea>
+
+              <output
+                data-element="jobDesc-length"
+                class="form__output"
+                for="jobDesc"
+                >0/256</output
+              >
+            </div>
+
+            <menu class="form__options">
+              <button
+                data-action="addItem"
+                data-item="experience"
+                class="form__button"
+                type="button"
+              >
+                adicionar
+                <i class="fa-solid fa-plus"></i>
+              </button>
+
+              <button
+                data-action="closeMenu"
+                data-dialog="experience-form"
+                class="form__button"
+                type="button"
+              >
+                cancelar
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </menu>
+          </dialog>
+
+          <div data-element="experiences-list" class="experiences">
+            <dialog class="form__dialog" data-element="experiences-confirmation">
               <p>deseja mesmo excluir esta experiência?</p>
 
               <menu>
@@ -188,131 +330,116 @@
               </menu>
             </dialog>
           </div>
+        </fieldset>
 
-          <menu>
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">
+            formações <i class="fa-solid fa-graduation-cap"></i>
+          </legend>
+
+          <menu class="form__options">
             <button
               data-action="openMenu"
-              data-dialog="experience-form"
+              data-dialog="degree-form"
               class="form__button"
               type="button"
             >
-              adicionar experiência
+              adicionar formação
               <i class="fa-solid fa-plus"></i>
             </button>
           </menu>
 
-          <dialog data-element="experience-form">
+          <dialog class="form__dialog" data-element="degree-form">
             <div class="form__field">
-              <label class="form__label" for="jobTitle">
-                cargo <i class="fa-solid fa-briefcase"></i>
+              <label class="form__label" for="degreeName">
+                curso <i class="fa-solid fa-file-contract"></i>
               </label>
 
               <input
                 class="form__input"
                 type="text"
-                id="jobTitle"
+                id="degreeName"
                 pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
+                maxlength="36"
               />
 
               <output
-                data-element="jobTitle-length"
+                data-element="degreeName-length"
                 class="form__output"
-                for="jobTitle"
-                >0/64</output
+                for="degreeName"
+                >0/36</output
               >
             </div>
 
             <div class="form__field">
-              <label class="form__label" for="jobCompany">
-                nome da empresa <i class="fa-solid fa-building"></i>
+              <label class="form__label" for="degreeSchool">
+                instituição <i class="fa-solid fa-school"></i>
               </label>
 
               <input
                 class="form__input"
                 type="text"
-                id="jobCompany"
+                id="degreeSchool"
                 pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
+                maxlength="24"
               />
 
               <output
-                data-element="jobCompany-length"
+                data-element="degreeSchool-length"
                 class="form__output"
-                for="jobCompany"
-                >0/64</output
+                for="degreeSchool"
+                >0/24</output
               >
             </div>
 
             <div class="form__field">
-              <label class="form__label" for="jobPeriod">
-                período <i class="fa-solid fa-calendar-days"></i>
+              <label class="form__label" for="degreePeriod">
+                período
+                <i class="fa-solid fa-calendar-days"></i>
               </label>
 
               <input
                 class="form__input"
                 type="text"
-                id="jobPeriod"
+                id="degreePeriod"
                 pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
+                maxlength="24"
               />
 
               <output
-                data-element="jobPeriod-length"
+                data-element="degreePeriod-length"
                 class="form__output"
-                for="jobPeriod"
-                >0/64</output
-              >
-            </div>
-
-            <div class="form__field">
-              <label class="form__label" for="jobLocation">
-                localização <i class="fa-solid fa-location-dot"></i>
-              </label>
-
-              <input
-                class="form__input"
-                type="text"
-                id="jobLocation"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
-              />
-
-              <output
-                data-element="jobLocation-length"
-                class="form__output"
-                for="jobLocation"
-                >0/64</output
+                for="degreePeriod"
+                >0/24</output
               >
             </div>
 
             <div class="form__field--textarea">
-              <label class="form__label--column" for="jobDesc">
+              <label class="form__label--column" for="degreeDesc">
                 descrição <i class="fa-solid fa-message"></i>
               </label>
 
               <textarea
                 class="form__textarea"
                 name=""
-                id="jobDesc"
-                cols="30"
+                id="degreeDesc"
                 rows="7"
                 pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="128"
+                maxlength="256"
               ></textarea>
 
               <output
-                data-element="jobDesc-length"
+                data-element="degreeDesc-length"
                 class="form__output"
-                for="jobDesc"
-                >0/128</output
+                for="degreeDesc"
+                >0/256</output
               >
             </div>
 
-            <menu>
+            <menu class="form__options">
               <button
                 data-action="addItem"
-                data-item="experience"
+                data-item="degree"
                 class="form__button"
                 type="button"
               >
@@ -322,7 +449,7 @@
 
               <button
                 data-action="closeMenu"
-                data-dialog="experience-form"
+                data-dialog="degree-form"
                 class="form__button"
                 type="button"
               >
@@ -331,15 +458,9 @@
               </button>
             </menu>
           </dialog>
-        </fieldset>
 
-        <fieldset class="form__fieldset">
-          <legend class="form__legend">
-            formações <i class="fa-solid fa-graduation-cap"></i>
-          </legend>
-
-          <div data-element="degrees-list" class="degrees-list">
-            <dialog data-element="degrees-confirmation">
+          <div data-element="degrees-list" class="degrees">
+            <dialog class="form__dialog" data-element="degrees-confirmation">
               <p>deseja mesmo excluir esta formação?</p>
 
               <menu>
@@ -364,111 +485,73 @@
               </menu>
             </dialog>
           </div>
+        </fieldset>
 
-          <menu>
+        <fieldset class="form__fieldset">
+          <legend class="form__legend">
+            habilidades <i class="fa-solid fa-tags"></i>
+          </legend>
+
+          <menu class="form__options">
             <button
               data-action="openMenu"
-              data-dialog="degree-form"
+              data-dialog="skill-form"
               class="form__button"
               type="button"
             >
-              adicionar formação
+              adicionar habilidade
               <i class="fa-solid fa-plus"></i>
             </button>
           </menu>
 
-          <dialog data-element="degree-form">
+          <dialog class="form__dialog" data-element="skill-form">
             <div class="form__field">
-              <label class="form__label" for="degreeName">
-                curso <i class="fa-solid fa-file-contract"></i>
+              <label class="form__label" for="skillName">
+                habilidade <i class="fa-solid fa-tag"></i>
               </label>
 
               <input
                 class="form__input"
                 type="text"
-                id="degreeName"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
+                id="skillName"
+                pattern="[a-zA-Z\u00C0-\u017F\s\.\-]*"
+                maxlength="36"
               />
 
               <output
-                data-element="degreeName-length"
+                data-element="skillName-length"
                 class="form__output"
-                for="degreeName"
-                >0/64</output
-              >
-            </div>
-
-            <div class="form__field">
-              <label class="form__label" for="degreeSchool">
-                nome da instituição <i class="fa-solid fa-school"></i>
-              </label>
-
-              <input
-                class="form__input"
-                type="text"
-                id="degreeSchool"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
-              />
-
-              <output
-                data-element="degreeSchool-length"
-                class="form__output"
-                for="degreeSchool"
-                >0/64</output
-              >
-            </div>
-
-            <div class="form__field">
-              <label class="form__label" for="degreePeriod">
-                período
-                <i class="fa-solid fa-calendar-days"></i>
-              </label>
-
-              <input
-                class="form__input"
-                type="text"
-                id="degreePeriod"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="64"
-              />
-
-              <output
-                data-element="degreePeriod-length"
-                class="form__output"
-                for="degreePeriod"
-                >0/64</output
+                for="skillName"
+                >0/36</output
               >
             </div>
 
             <div class="form__field--textarea">
-              <label class="form__label--column" for="degreeDesc">
+              <label class="form__label--column" for="skillDesc">
                 descrição <i class="fa-solid fa-message"></i>
               </label>
 
               <textarea
                 class="form__textarea"
                 name=""
-                id="degreeDesc"
-                cols="30"
+                id="skillDesc"
                 rows="7"
                 pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="128"
+                maxlength="256"
               ></textarea>
 
               <output
-                data-element="degreeDesc-length"
+                data-element="skillDesc-length"
                 class="form__output"
-                for="degreeDesc"
-                >0/128</output
+                for="skillDesc"
+                >0/256</output
               >
             </div>
 
-            <menu>
+            <menu class="form__options">
               <button
                 data-action="addItem"
-                data-item="degree"
+                data-item="skill"
                 class="form__button"
                 type="button"
               >
@@ -478,7 +561,7 @@
 
               <button
                 data-action="closeMenu"
-                data-dialog="degree-form"
+                data-dialog="skill-form"
                 class="form__button"
                 type="button"
               >
@@ -487,15 +570,9 @@
               </button>
             </menu>
           </dialog>
-        </fieldset>
 
-        <fieldset class="form__fieldset">
-          <legend class="form__legend">
-            habilidades <i class="fa-solid fa-tags"></i>
-          </legend>
-
-          <div data-element="skills-list" class="skills-list">
-            <dialog data-element="skills-confirmation">
+          <div data-element="skills-list" class="skills">
+            <dialog class="form__dialog" data-element="skills-confirmation">
               <p>deseja mesmo excluir esta habilidade?</p>
 
               <menu>
@@ -520,86 +597,6 @@
               </menu>
             </dialog>
           </div>
-
-          <menu>
-            <button
-              data-action="openMenu"
-              data-dialog="skill-form"
-              class="form__button"
-              type="button"
-            >
-              adicionar habilidade
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </menu>
-
-          <dialog data-element="skill-form">
-            <div class="form__field">
-              <label class="form__label" for="skillName">
-                habilidade <i class="fa-solid fa-tag"></i>
-              </label>
-
-              <input
-                class="form__input"
-                type="text"
-                id="skillName"
-                pattern="[a-zA-Z\u00C0-\u017F\s\.\-]*"
-                maxlength="64"
-              />
-
-              <output
-                data-element="skillName-length"
-                class="form__output"
-                for="skillName"
-                >0/64</output
-              >
-            </div>
-
-            <div class="form__field--textarea">
-              <label class="form__label--column" for="skillDesc">
-                descrição <i class="fa-solid fa-message"></i>
-              </label>
-
-              <textarea
-                class="form__textarea"
-                name=""
-                id="skillDesc"
-                cols="30"
-                rows="7"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
-                maxlength="128"
-              ></textarea>
-
-              <output
-                data-element="skillDesc-length"
-                class="form__output"
-                for="skillDesc"
-                >0/128</output
-              >
-            </div>
-
-            <menu>
-              <button
-                data-action="addItem"
-                data-item="skill"
-                class="form__button"
-                type="button"
-              >
-                adicionar
-                <i class="fa-solid fa-plus"></i>
-              </button>
-
-              <button
-                data-action="closeMenu"
-                data-dialog="skill-form"
-                class="form__button"
-                type="button"
-              >
-                cancelar
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </menu>
-          </dialog>
         </fieldset>
 
         <button class="form__submit" type="submit">
