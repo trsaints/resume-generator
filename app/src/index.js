@@ -14,11 +14,11 @@ import {
 import {
   addItem,
   removeItem,
-  saveBaseFormState,
-  syncFormState,
+  syncFormData,
 } from "./services/form_service.js";
 
 import {
+  clearForm,
   displayConfirmation,
   renderItem,
   unrenderItem,
@@ -36,6 +36,7 @@ const dependencies = {
   callbacks: {
     addItem,
     clearContent,
+    clearForm,
     closeMenu,
     displayConfirmation,
     getElement,
@@ -47,8 +48,7 @@ const dependencies = {
     removeItem,
     showElement,
     showPopup,
-    saveBaseFormState,
-    syncFormState,
+    syncFormData,
     unrenderItem,
   },
   components: {

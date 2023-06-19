@@ -1,22 +1,17 @@
-function syncFormState({ callbacks }) {
+function syncFormData(callbacks) {
   const form = callbacks.getElement("form");
-  const { name, job, desc, email, website } = form;
 
-  saveBaseFormState({ form });
+  const saveResume = () => {
+    const data = extractBaseFormData(form);
 
-  name.addEventListener("focusout", () => saveBaseFormState({ form }));
-  job.addEventListener("focusout", () => saveBaseFormState({ form }));
-  desc.addEventListener("focusout", () => saveBaseFormState({ form }));
-  email.addEventListener("focusout", () => saveBaseFormState({ form }));
-  website.addEventListener("focusout", () => saveBaseFormState({ form }));
-}
+    localStorage.setItem("resume", JSON.stringify(data));
 
-function saveBaseFormState({ form }) {
-  const data = extractBaseFormData(form);
+    console.warn("resume has been updated successfuly");
+  };
 
-  console.table(data);
+  saveResume();
 
-  localStorage.setItem("resume", JSON.stringify(data));
+  form.addEventListener("focusout", saveResume);
 }
 
 function extractBaseFormData(form) {
@@ -41,7 +36,6 @@ function addItem(callbacks, components, type) {
   resume[`${type}s`].push(itemToAdd);
 
   console.warn(`A new ${type} has been set`);
-  console.table(itemToAdd);
 
   localStorage.setItem("resume", JSON.stringify(resume));
 
@@ -162,4 +156,4 @@ function removeItem(type, id) {
   localStorage.setItem("resume", JSON.stringify(resume));
 }
 
-export { syncFormState, saveBaseFormState, addItem, removeItem };
+export { syncFormData, addItem, removeItem };

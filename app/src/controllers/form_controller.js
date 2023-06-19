@@ -5,13 +5,14 @@ export function initialize(deps) {
 function init({ callbacks, components }) {
   localStorage.removeItem("resume");
 
-  callbacks.syncFormState({ callbacks });
+  callbacks.clearForm(callbacks);
+  callbacks.syncFormData(callbacks);
 
-  setClickInteractions(callbacks, components);
+  setClickActions(callbacks, components);
   setInputMonitoring(callbacks);
 }
 
-function setClickInteractions(callbacks, components) {
+function setClickActions(callbacks, components) {
   const actions = {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
