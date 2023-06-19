@@ -1,3 +1,10 @@
+function clearForm(callbacks) {
+  const form = callbacks.getElement("form");
+
+  form.reset();
+  form.elements[1].focus();
+}
+
 function displayConfirmation(callbacks, target) {
   const card =
     target.closest("[data-element='experience']") ||
@@ -53,4 +60,4 @@ function updateCharacterCount(callbacks, target) {
   outputTarget.textContent = `${value.length}/${maxLength}`;
 }
 
-export { displayConfirmation, renderItem, unrenderItem, updateCharacterCount };
+export { clearForm, displayConfirmation, renderItem, unrenderItem, updateCharacterCount };
