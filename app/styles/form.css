@@ -32,7 +32,6 @@
 
 .form__dialog > .form__options {
   flex-direction: column;
-  align-items: center;
 }
 
 .form__button {
