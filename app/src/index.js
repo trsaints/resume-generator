@@ -13,9 +13,9 @@ import {
 
 import {
   addItem,
-  removeItem,
-  syncFormData,
-} from "./services/form_service.js";
+  getBaseData,
+  removeItem
+} from "./services/resume_service.js";
 
 import {
   clearForm,
@@ -39,26 +39,28 @@ const dependencies = {
     clearForm,
     closeMenu,
     displayConfirmation,
+    getBaseData,
     getElement,
     getElements,
     hideElement,
     openMenu,
-    updateCharacterCount,
     renderItem,
     removeItem,
     showElement,
     showPopup,
-    syncFormData,
     unrenderItem,
+    updateCharacterCount,
   },
   components: {
     DegreeCard,
     ExperienceCard,
     SkillCard,
+  },
+  models: {
     Degree,
     Experience,
-    Skill,
-  },
+    Skill
+  }
 };
 
 initialize(dependencies);

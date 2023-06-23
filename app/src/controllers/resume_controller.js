@@ -3,15 +3,15 @@ export default function initialize(deps) {
 }
 
 function init({ callbacks, components }) {
-  const resume = callbacks.renderResume({ callbacks, components });
+  const resume = callbacks.renderResume(callbacks, components);
   callbacks.setTitle(resume.name);
 
-  setInteractions({ callbacks })
+  setInteractions(callbacks);
 }
 
-function setInteractions({ callbacks }) {
+function setInteractions(callbacks) {
   const actions = {
-    printResume: () => callbacks.printResume({ callbacks }),
+    printResume: () => callbacks.printResume(callbacks),
   };
 
   document.addEventListener("click", ({ target }) => {

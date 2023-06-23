@@ -1,4 +1,4 @@
-export function renderResume({ callbacks, components }) {
+export function renderResume(callbacks, components) {
   const resume = JSON.parse(localStorage.getItem("resume"));
   const target = callbacks.getElement("resume");
   const resumePanel = new components.ResumePanel(resume);
@@ -16,7 +16,7 @@ export function setTitle(content) {
   title.textContent = `Currículo ─ ${content.toUpperCase()}`;
 }
 
-export function printResume({ callbacks }) {
+export function printResume(callbacks) {
   const details = callbacks.getElements("detail");
 
   details.forEach((detail) =>
