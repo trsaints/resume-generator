@@ -1,4 +1,4 @@
-import { initialize } from "./controllers/form_controller.js";
+import initialize from "./controllers/form_controller.js";
 
 import {
   clearContent,
@@ -14,7 +14,9 @@ import {
 import {
   addItem,
   getBaseData,
-  removeItem
+  removeItem,
+  clearActiveResume,
+  resetIds
 } from "./services/resume_service.js";
 
 import {
@@ -35,6 +37,7 @@ import Skill from "./models/Skill.js";
 const dependencies = {
   callbacks: {
     addItem,
+    clearActiveResume,
     clearContent,
     clearForm,
     closeMenu,
@@ -46,6 +49,7 @@ const dependencies = {
     openMenu,
     renderItem,
     removeItem,
+    resetIds,
     showElement,
     showPopup,
     unrenderItem,

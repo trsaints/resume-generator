@@ -8,22 +8,101 @@ function getBaseData(form) {
   return resume;
 }
 
-function addItem(callbacks, components, type) {
+function addItem(callbacks, type) {
   const resume = JSON.parse(localStorage.getItem("resume"));
 
   const types = `${type}s`;
 
   if (resume[types] === undefined) resume[types] = [];
 
-  const itemToAdd = createItem(callbacks, components, type);
-
+  const itemToAdd = createItem(callbacks, type);
   resume[types].push(itemToAdd);
 
   localStorage.setItem("resume", JSON.stringify(resume));
-
   console.warn(`A new ${type} has been set`);
 
   return itemToAdd;
+}
+
+function createItem(callbacks, type) {
+  const items = {
+    degree: (id) => getItem(callbacks, "degree", id),
+    experience: (id) => getItem(callbacks, "experience", id),
+    skill: (id) => getItem(callbacks, "skill", id),
+  };
+
+  const types = `${type}s`;
+
+  const latestIds = JSON.parse(localStorage.getItem("latest-ids")),
+    id = latestIds[types],
+    itemToCreate = items[type](id);
+
+  updateLatestId(type);
+
+  return itemToCreate;
+}
+
+function updateLatestId(type) {
+  const latestIds = JSON.parse(localStorage.getItem("latest-ids")),
+    types = `${type}s`;
+
+  latestIds[types]++;
+
+  localStorage.setItem("latest-ids", JSON.stringify(latestIds));
+}
+
+function getItem(callbacks, type, id) {
+  const form = callbacks.getElement("form"),
+    { elements } = form;
+
+  const items = {
+    experience: () => getExperience(elements, id),
+    degree: () => getDegree(elements, id),
+    skill: () => getSkill(elements, id),
+  };
+
+  return items[type](id);
+}
+
+function getExperience(elements, id) {
+  const { jobCompany, jobTitle, jobPeriod, jobLocation, jobDesc } = elements;
+
+  const exp = {
+    title: jobTitle.value,
+    company: jobCompany.value,
+    period: jobPeriod.value,
+    location: jobLocation.value,
+    desc: jobDesc.value,
+    id: id,
+  };
+
+  return exp;
+}
+
+function getDegree(elements, id) {
+  const { degreeSchool, degreeName, degreePeriod, degreeDesc } = elements;
+
+  const deg = {
+    title: degreeName.value,
+    school: degreeSchool.value,
+    period: degreePeriod.value,
+    desc: degreeDesc.value,
+    id: id,
+  };
+
+  return deg;
+}
+
+function getSkill(elements, id) {
+  const { skillName, skillDesc } = elements;
+
+  const skill = {
+    title: skillName.value,
+    desc: skillDesc.value,
+    id: id,
+  };
+
+  return skill;
 }
 
 function removeItem(type, id) {
@@ -35,108 +114,29 @@ function removeItem(type, id) {
   const itemIndex = resume[types].indexOf(itemToRemove);
   resume[types].splice(itemIndex);
 
-  console.warn(`Deleted ${type} of ID ${id}`);
-
   localStorage.setItem("resume", JSON.stringify(resume));
+  console.warn(`Deleted ${type} of ID ${id}`);
 }
 
-function createItem(callbacks, models, category) {
-  const items = {
-    degree: () => new models.Degree(getDegree(callbacks)),
-    experience: () => new models.Experience(getExperience(callbacks)),
-    skill: () => new models.Skill(getSkill(callbacks)),
+function clearActiveResume(form) {
+  localStorage.removeItem("resume");
+
+  const baseData = getBaseData(form);
+
+  localStorage.setItem("resume", JSON.stringify(baseData));
+  console.warn("Initial state has been set: active resume has been cleared");
+}
+
+function resetIds() {
+  localStorage.removeItem("latest-ids");
+
+  const latestIds = {
+    degrees: 0,
+    experiences: 0,
+    skills: 0,
   };
 
-  const item = items[category]();
-  const result = createGenericItem(category, item);
-
-  return result;
+  localStorage.setItem("latest-ids", JSON.stringify(latestIds));
 }
 
-function getExperience(callbacks) {
-  const form = callbacks.getElement("form");
-
-  const { jobCompany, jobTitle, jobPeriod, jobLocation, jobDesc } =
-    form.elements;
-
-  const exp = {
-    title: jobTitle.value,
-    company: jobCompany.value,
-    period: jobPeriod.value,
-    location: jobLocation.value,
-    desc: jobDesc.value,
-  };
-
-  return exp;
-}
-
-function getDegree(callbacks) {
-  const form = callbacks.getElement("form");
-
-  const { degreeSchool, degreeName, degreePeriod, degreeDesc } = form.elements;
-
-  const deg = {
-    title: degreeName.value,
-    school: degreeSchool.value,
-    period: degreePeriod.value,
-    desc: degreeDesc.value,
-  };
-
-  return deg;
-}
-
-function getSkill(callbacks) {
-  const form = callbacks.getElement("form");
-
-  const { skillName, skillDesc } = form.elements;
-
-  const skill = {
-    title: skillName.value,
-    desc: skillDesc.value,
-  };
-
-  return skill;
-}
-
-function createGenericItem(type, item) {
-  const component = {
-    degree: ({ title, school, period, desc, id }) => {
-      const obj = {
-        title: title,
-        school: school,
-        period: period,
-        desc: desc,
-        id: id,
-      };
-
-      return obj;
-    },
-
-    experience: ({ title, company, period, location, desc, id }) => {
-      const obj = {
-        title: title,
-        company: company,
-        period: period,
-        location: location,
-        desc: desc,
-        id: id,
-      };
-
-      return obj;
-    },
-
-    skill: ({ title, desc, id }) => {
-      const obj = {
-        title: title,
-        desc: desc,
-        id: id,
-      };
-
-      return obj;
-    },
-  };
-
-  return component[type](item);
-}
-
-export { addItem, removeItem, getBaseData };
+export { addItem, clearActiveResume, removeItem, getBaseData, resetIds };

@@ -1,6 +1,4 @@
 export default class Experience {
-  static latestId = 0;
-
   #title = "";
   #company = "";
   #period = "";
@@ -32,17 +30,12 @@ export default class Experience {
     return this.#id;
   }
 
-  #setId() {
-    this.#id = Experience.latestId;
-    Experience.latestId++;
-  }
-
-  constructor({ title, company, period, location, desc }) {
+  constructor({ title, company, period, location, desc, id }) {
     this.#title = title;
     this.#company = company;
     this.#period = period;
     this.#location = location;
     this.#desc = desc;
-    this.#setId();
+    this.#id = id;
   }
 }

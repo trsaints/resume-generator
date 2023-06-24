@@ -1,14 +1,7 @@
 export default class Skill {
-  static latestId = 0;
-
   #title = "";
   #desc = "";
-  #id = "";
-
-  #setId() {
-    this.#id = Skill.latestId;
-    Skill.latestId++;
-  }
+  #id = 0;
 
   get title() {
     return this.#title;
@@ -22,9 +15,9 @@ export default class Skill {
     return this.#id;
   }
 
-  constructor({ title, desc }) {
+  constructor({ title, desc, id }) {
     this.#title = title;
     this.#desc = desc;
-    this.#setId();
+    this.#id = id;
   }
 }

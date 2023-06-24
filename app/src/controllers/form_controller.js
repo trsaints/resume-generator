@@ -1,4 +1,4 @@
-export function initialize(deps) {
+export default function initialize(deps) {
   window.addEventListener("load", () => init(deps));
 }
 
@@ -15,23 +15,10 @@ function setClickActions(callbacks, components, models) {
   const actions = {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addItem: ({ dataset }) => {
-      const { item } = dataset;
-      const itemContent = callbacks.addItem(callbacks, models, item);
-      callbacks.closeMenu(`${item}-form`);
-      callbacks.renderItem(callbacks, components, item, itemContent);
-    },
-    displayConfirmation: (target) => {
-      callbacks.displayConfirmation(callbacks, target);
-    },
-    removeItem: (target) => {
-      const modal = target.closest("[data-item]");
-      const { item } = modal.dataset;
-      const [type, id] = item.split("-");
-      callbacks.removeItem(type, id);
-      callbacks.closeMenu(`${type}s-confirmation`);
-      callbacks.unrenderItem(callbacks, type, id);
-    },
+    addItem: ({ dataset }) => addItem(dataset, callbacks, components, models),
+    displayConfirmation: (target) =>
+      callbacks.displayConfirmation(callbacks, target),
+    removeItem: (target) => removeItem(target, callbacks),
   };
 
   document.addEventListener("click", ({ target }) => {
@@ -42,21 +29,15 @@ function setClickActions(callbacks, components, models) {
 }
 
 function setInputMonitoring(callbacks, form) {
-  form.addEventListener("input", ({ target }) => {
-    callbacks.updateCharacterCount(callbacks, target);
-  });
+  form.addEventListener("input", ({ target }) =>
+    callbacks.updateCharacterCount(callbacks, target)
+  );
 }
 
 function setInitialState(callbacks, form) {
-  localStorage.removeItem("resume");
-
-  const baseData = callbacks.getBaseData(form);
-
-  localStorage.setItem("resume", JSON.stringify(baseData));
-
+  callbacks.clearActiveResume(form);
+  callbacks.resetIds();
   callbacks.clearForm(callbacks);
-
-  console.warn("Initial state has been set: active resume has been cleared");
 }
 
 function setBaseDataSync(callbacks, form) {
@@ -67,11 +48,25 @@ function setBaseDataSync(callbacks, form) {
     if (shouldNotSync) return;
 
     const baseData = callbacks.getBaseData(form);
-
     localStorage.setItem("resume", JSON.stringify(baseData));
-
     console.warn("Active resume has been updated successfuly");
   };
 
   form.addEventListener("focusout", syncData);
+}
+
+function addItem(dataset, callbacks, components) {
+  const { type } = dataset;
+  const item = callbacks.addItem(callbacks, type);
+  callbacks.closeMenu(`${type}-form`);
+  callbacks.renderItem(callbacks, components, type, item);
+}
+
+function removeItem(target, callbacks) {
+  const modal = target.closest("[data-type]"),
+    { type } = modal.dataset,
+    [item, id] = type.split("-");
+  callbacks.removeItem(item, id);
+  callbacks.closeMenu(`${item}s-confirmation`);
+  callbacks.unrenderItem(callbacks, item, id);
 }

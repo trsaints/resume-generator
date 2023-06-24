@@ -18,7 +18,7 @@ function displayConfirmation(callbacks, target) {
   const modalName = `${dataset.element}s-confirmation`;
   callbacks.openMenu(modalName);
   const modal = callbacks.getElement(modalName);
-  modal.setAttribute("data-item", `${dataset.element}-${dataset.id}`);
+  modal.setAttribute("data-type", `${dataset.element}-${dataset.id}`);
 }
 
 function renderItem(callbacks, components, type, item) {
@@ -60,4 +60,10 @@ function updateCharacterCount(callbacks, target) {
   outputTarget.textContent = `${value.length}/${maxLength}`;
 }
 
-export { clearForm, displayConfirmation, renderItem, unrenderItem, updateCharacterCount };
+export {
+  clearForm,
+  displayConfirmation,
+  renderItem,
+  unrenderItem,
+  updateCharacterCount,
+};

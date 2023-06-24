@@ -1,6 +1,4 @@
 export default class Degree {
-  static latestId = 0;
-
   #title = "";
   #school = "";
   #period = "";
@@ -27,16 +25,11 @@ export default class Degree {
     return this.#id;
   }
 
-  #setId() {
-    this.#id = Degree.latestId;
-    Degree.latestId++;
-  }
-
-  constructor({ title, school, period, desc }) {
+  constructor({ title, school, period, desc, id }) {
     this.#title = title;
     this.#school = school;
     this.#period = period;
     this.#desc = desc;
-    this.#setId();
+    this.#id = id;
   }
 }
