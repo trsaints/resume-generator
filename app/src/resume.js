@@ -1,7 +1,7 @@
-import { renderResume, printResume, setTitle } from "./views/resume_view.js";
-import { getElement, getElements } from "./views/dom_view.js";
-import ResumePanel from "./components/ResumePanel.js";
+import ResumePage from "./components/ResumePage.js";
 import initialize from "./controllers/resume_controller.js";
+import { getElement, getElements } from "./views/dom_view.js";
+import { printResume, renderResume, setTitle } from "./views/resume_view.js";
 
 const dependencies = {
   callbacks: {
@@ -12,7 +12,7 @@ const dependencies = {
     setTitle
   },
   components: {
-    ResumePanel,
+    ResumePage,
   },
 };
 

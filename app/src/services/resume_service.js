@@ -139,4 +139,4 @@ function resetIds() {
   localStorage.setItem("latest-ids", JSON.stringify(latestIds));
 }
 
-export { addItem, clearActiveResume, removeItem, getBaseData, resetIds };
+export { addItem, clearActiveResume, getBaseData, removeItem, resetIds };

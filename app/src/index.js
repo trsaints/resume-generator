@@ -13,9 +13,9 @@ import {
 
 import {
   addItem,
+  clearActiveResume,
   getBaseData,
   removeItem,
-  clearActiveResume,
   resetIds
 } from "./services/resume_service.js";
 

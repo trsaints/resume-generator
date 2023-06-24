@@ -1,7 +1,7 @@
 export function renderResume(callbacks, components) {
   const resume = JSON.parse(localStorage.getItem("resume"));
   const target = callbacks.getElement("resume");
-  const resumePanel = new components.ResumePanel(resume);
+  const resumePanel = new components.ResumePage(resume);
 
   console.warn("Resume generated successfully");
 

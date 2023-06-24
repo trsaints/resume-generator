@@ -11,11 +11,11 @@ function init({ callbacks, components, models }) {
   setBaseDataSync(callbacks, form);
 }
 
-function setClickActions(callbacks, components, models) {
+function setClickActions(callbacks, components) {
   const actions = {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addItem: ({ dataset }) => addItem(dataset, callbacks, components, models),
+    addItem: ({ dataset }) => addItem(dataset, callbacks, components),
     displayConfirmation: (target) =>
       callbacks.displayConfirmation(callbacks, target),
     removeItem: (target) => removeItem(target, callbacks),
