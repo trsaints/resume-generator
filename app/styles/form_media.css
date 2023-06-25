@@ -46,7 +46,6 @@
 
   .form__fieldset:first-child {
     grid-template-areas: "name desc" "job desc" "email desc" "site desc" "location desc";
-    column-gap: 1rem;
   }
 
   .form__fieldset:first-child > :nth-child(2) {

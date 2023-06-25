@@ -53,8 +53,8 @@ function showWarning(components, message, status) {
 
   clearTimeout(reset);
 
-  warnMessage.appendChild(new components.Icon(warnStatus));
   warnMessage.appendChild(document.createTextNode(message));
+  warnMessage.appendChild(new components.Icon(warnStatus));
   warnMessage.classList.add(status);
 
   showElement("warn-message");

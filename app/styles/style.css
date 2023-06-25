@@ -9,7 +9,8 @@
   --c-main-l: hsl(196, 84%, 70%);
   --c-main: hsl(196, 84%, 60%);
   --c-main-d: hsl(196, 84%, 50%);
-  --c-main-ds: hsl(196, 84%, 40%);
+  --c-main-ds: hsl(196, 80%, 40%);
+  --c-main-xds: hsl(196, 80%, 30%);
   --c-white: hsl(260, 48%, 97%);
   --c-white-d: hsl(260, 48%, 92%);
   --c-green-ls: hsl(110, 60%, 77%);

@@ -69,7 +69,7 @@ function addItem(dataset, callbacks, components) {
   callbacks.renderItem(callbacks, components, type, item);
   callbacks.showWarning(
     components,
-    `${types[type]} adicionada com sucesso!`,
+    `${types[type]} adicionada com sucesso`,
     "success"
   );
 }
@@ -90,7 +90,7 @@ function removeItem(target, callbacks, components) {
   callbacks.unrenderItem(callbacks, item, id);
   callbacks.showWarning(
     components,
-    `${types[item]} removida com sucesso!`,
+    `${types[item]} removida com sucesso`,
     "success"
   );
 }
