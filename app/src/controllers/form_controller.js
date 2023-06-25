@@ -18,7 +18,7 @@ function setClickActions(callbacks, components) {
     addItem: ({ dataset }) => addItem(dataset, callbacks, components),
     displayConfirmation: (target) =>
       callbacks.displayConfirmation(callbacks, target),
-    removeItem: (target) => removeItem(target, callbacks),
+    removeItem: (target) => removeItem(target, callbacks, components),
   };
 
   document.addEventListener("click", ({ target }) => {
@@ -56,17 +56,41 @@ function setBaseDataSync(callbacks, form) {
 }
 
 function addItem(dataset, callbacks, components) {
+  const types = {
+    degree: "formação",
+    experience: "experiência",
+    skill: "competência",
+  };
+
   const { type } = dataset;
   const item = callbacks.addItem(callbacks, type);
+
   callbacks.closeMenu(`${type}-form`);
   callbacks.renderItem(callbacks, components, type, item);
+  callbacks.showWarning(
+    components,
+    `${types[type]} adicionada com sucesso!`,
+    "success"
+  );
 }
 
-function removeItem(target, callbacks) {
+function removeItem(target, callbacks, components) {
+  const types = {
+    degree: "formação",
+    experience: "experiência",
+    skill: "competência",
+  };
+
   const modal = target.closest("[data-type]"),
     { type } = modal.dataset,
     [item, id] = type.split("-");
+
   callbacks.removeItem(item, id);
   callbacks.closeMenu(`${item}s-confirmation`);
   callbacks.unrenderItem(callbacks, item, id);
+  callbacks.showWarning(
+    components,
+    `${types[item]} removida com sucesso!`,
+    "success"
+  );
 }

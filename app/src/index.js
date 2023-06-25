@@ -8,7 +8,7 @@ import {
   hideElement,
   openMenu,
   showElement,
-  showPopup,
+  showWarning,
 } from "./views/dom_view.js";
 
 import {
@@ -16,7 +16,7 @@ import {
   clearActiveResume,
   getBaseData,
   removeItem,
-  resetIds
+  resetIds,
 } from "./services/resume_service.js";
 
 import {
@@ -29,6 +29,7 @@ import {
 
 import DegreeCard from "./components/DegreeCard.js";
 import ExperienceCard from "./components/ExperienceCard.js";
+import Icon from "./components/Icon.js";
 import SkillCard from "./components/SkillCard.js";
 import Degree from "./models/Degree.js";
 import Experience from "./models/Experience.js";
@@ -51,7 +52,7 @@ const dependencies = {
     removeItem,
     resetIds,
     showElement,
-    showPopup,
+    showWarning,
     unrenderItem,
     updateCharacterCount,
   },
@@ -59,12 +60,13 @@ const dependencies = {
     DegreeCard,
     ExperienceCard,
     SkillCard,
+    Icon,
   },
   models: {
     Degree,
     Experience,
-    Skill
-  }
+    Skill,
+  },
 };
 
 initialize(dependencies);

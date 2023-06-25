@@ -32,15 +32,32 @@ function clearContent(element) {
   while (target.firstChild) target.removeChild(target.firstChild);
 }
 
-function showPopup(message) {
+function showWarning(components, message, status) {
   const warnMessage = getElement("warn-message");
+  clearContent("warn-message");
 
-  const reset = () => hideElement("popup");
+  const statusIcons = {
+    success: "circle-check",
+    fail: "circle-xmark",
+    warning: "circle-exclamation",
+  };
+
+  const warnStatus = statusIcons[status];
+
+  const reset = () => {
+    hideElement("warn-message");
+    clearContent("warn-message");
+    
+    warnMessage.classList.remove(status);
+  };
+
   clearTimeout(reset);
 
-  warnMessage.textContent = message;
+  warnMessage.appendChild(new components.Icon(warnStatus));
+  warnMessage.appendChild(document.createTextNode(message));
+  warnMessage.classList.add(status);
 
-  showElement("popup");
+  showElement("warn-message");
 
   setTimeout(reset, 3000);
 }
@@ -63,7 +80,7 @@ export {
   showElement,
   hideElement,
   clearContent,
-  showPopup,
+  showWarning,
   openMenu,
   closeMenu,
 };

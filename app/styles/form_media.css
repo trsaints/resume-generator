@@ -1,4 +1,9 @@
 @media screen and (min-width: 768px) {
+  .header__warning {
+    margin-inline: 4rem;
+    width: calc(100vw - 8rem);
+  }
+
   .main {
     padding: 4rem;
   }
@@ -26,6 +31,11 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .header__warning {
+    margin-inline: 8rem;
+    width: calc(100vw - 16rem);
+  }
+
   .main {
     padding: 4rem 8rem;
   }
@@ -63,7 +73,9 @@
     grid-area: desc;
   }
 
-  .experiences, .degrees, .skills {
+  .experiences,
+  .degrees,
+  .skills {
     grid-template-columns: repeat(2, 1fr);
   }
 }
