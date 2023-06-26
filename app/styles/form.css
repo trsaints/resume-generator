@@ -64,7 +64,11 @@
 .form__label,
 .form__label--column {
   padding: 0.25rem 0.75rem;
-  background-image: linear-gradient(to bottom, var(--c-main-ds), var(--c-main-d));
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-main-ds),
+    var(--c-main-d)
+  );
   white-space: nowrap;
   grid-area: label;
   border-top-right-radius: 0.25rem;
@@ -144,7 +148,11 @@
 }
 
 .form__submit {
-  background-color: var(--c-main);
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-main-d),
+    var(--c-main-ds)
+  );
 }
 
 .experiences,
