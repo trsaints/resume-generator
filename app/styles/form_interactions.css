@@ -16,6 +16,10 @@ details[open] summary {
   margin-bottom: 1rem;
 }
 
+.form__field:focus-within {
+  transform: scale(1.025);
+}
+
 .form__label:hover,
 .form__field:focus-within .form__label {
   transform: translateX(3%);
@@ -39,10 +43,41 @@ details[open] summary {
 .form__button:focus,
 .delete-button:hover,
 .delete-button:focus {
-  transform: scale(1.025);
+  transform: scale(1.03);
+}
+
+.form__button:hover,
+.form__button:focus {
+  background-image: linear-gradient(to bottom, var(--c-main), var(--c-main-xds));
+  color: var(--c-black);
+}
+
+.delete-button:hover,
+.delete-button:focus {
+  background-image: linear-gradient(to bottom, var(--c-red), var(--c-red-ds));
 }
 
 .form__button:active,
 .delete-button:active {
   transform: scale(1);
+}
+
+.form__button:active {
+  background-image: none;
+  background-color: var(--c-main-d);
+}
+
+.delete-button:active {
+  background-image: none;
+  background-color: var(--c-red);
+}
+
+.form__submit:hover {
+  transform: translateY(-5%);
+  box-shadow: 0 0 8px var(--c-main-xds);
+}
+
+.form__submit:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
