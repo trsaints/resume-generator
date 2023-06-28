@@ -13,15 +13,12 @@
   }
 
   .form__options {
+    flex-direction: row;
     justify-content: flex-end;
   }
 
   dialog .form__options {
     justify-content: center;
-  }
-
-  .form__dialog > .form__options {
-    flex-direction: row;
   }
 
   .form__button {

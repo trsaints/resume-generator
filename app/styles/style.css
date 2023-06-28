@@ -38,7 +38,6 @@
 body {
   font-family: "RedHat Display", sans-serif, monospace;
   color: var(--c-black-l);
-  font-size: 1.125rem;
   background-color: var(--c-white-d);
 }
 
