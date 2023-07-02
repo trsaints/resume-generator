@@ -1,6 +1,7 @@
 :root {
   --c-black: hsl(260, 14%, 4%);
   --c-black-l: hsl(260, 14%, 8%);
+  --c-gray-ds: hsl(257, 5%, 35%);
   --c-gray-d: hsl(257, 5%, 50%);
   --c-gray: hsl(257, 5%, 60%);
   --c-gray-l: hsl(255, 5%, 70%);

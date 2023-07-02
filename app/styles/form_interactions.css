@@ -19,6 +19,12 @@
   background-color: var(--c-main-d);
 }
 
+.form__input:focus + .form__output,
+.form__textarea:focus + .form__output {
+  background-color: var(--c-gray-ds);
+  color: var(--c-white);
+}
+
 .form__input:focus,
 .form__textarea:focus {
   background-color: var(--c-white);
@@ -83,14 +89,24 @@ details[open] summary {
   box-shadow: none;
 }
 
-.form__submit:hover {
-  transform: translateY(-5%);
-  box-shadow: 0 0 8px var(--c-main-xds);
+.form__submit:hover,
+.form__submit:focus {
+  transform: translateY(-5%) scale(1.025);
+  box-shadow: 0 0 8px var(--c-gray-ds);
 }
 
 .form__submit:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   box-shadow: none;
   background-image: none;
   background-color: var(--c-main-d);
+}
+
+.footer__link:hover {
+  text-decoration: none;
+}
+
+.footer__link:focus {
+  background-color: var(--c-main);
+  color: var(--c-black);
 }
