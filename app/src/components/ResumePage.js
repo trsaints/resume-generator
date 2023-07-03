@@ -71,8 +71,9 @@ export default class ResumePage {
   }
 
   #generateExperience({ title, company, period, location, desc }) {
-    const experiencePanel = new DOMElement("li", ["experience"]),
-      experienceDetails = new DOMElement("details", ["experience__details"]),
+    const experienceDetails = new DOMElement("details", [
+        "experience",
+      ]),
       experienceTitle = new DOMElement("summary", ["experience__title"]),
       experienceInfo = new DOMElement("ul", ["experience__info"]),
       experienceCompany = new DOMElement("li", ["experience__company"]),
@@ -80,7 +81,7 @@ export default class ResumePage {
       experienceLocation = new DOMElement("li", ["experience__location"]),
       experienceTask = new DOMElement("p", ["experience__desc"]);
 
-    const summaryIcon = new Icon("angles-down"),
+    const summaryIcon = new Icon("angles-right"),
       companyIcon = new Icon("building"),
       periodIcon = new Icon("calendar-days"),
       locationIcon = new Icon("location-dot");
@@ -107,21 +108,18 @@ export default class ResumePage {
 
     experienceDetails.setAttribute("data-element", "detail");
 
-    experiencePanel.appendChild(experienceDetails);
-
-    return experiencePanel;
+    return experienceDetails;
   }
 
   #generateDegree({ title, school, period, desc }) {
-    const degreePanel = new DOMElement("li", ["degree"]),
-      degreeDetails = new DOMElement("details", ["degree__details"]),
+    const degreeDetails = new DOMElement("details", ["degree"]),
       degreeTitle = new DOMElement("summary", ["degree__title"]),
       degreeInfo = new DOMElement("ul", ["degree__info"]),
       degreeSchool = new DOMElement("li", ["degree__school"]),
       degreeDate = new DOMElement("li", ["degree__date"]),
       degreeTask = new DOMElement("p", ["degree__desc"]);
 
-    const summaryIcon = new Icon("angles-down"),
+    const summaryIcon = new Icon("angles-right"),
       schoolIcon = new Icon("school"),
       periodIcon = new Icon("calendar-days");
 
@@ -144,18 +142,15 @@ export default class ResumePage {
 
     degreeDetails.setAttribute("data-element", "detail");
 
-    degreePanel.appendChild(degreeDetails);
-
-    return degreePanel;
+    return degreeDetails;
   }
 
   #generateSkill({ title, desc }) {
-    const skillPanel = new DOMElement("li", ["skill"]),
-      skillDetails = new DOMElement("details", ["skill__details"]),
+    const skillDetails = new DOMElement("details", ["skill"]),
       skillTitle = new DOMElement("summary", ["skill__title"]),
       skillTask = new DOMElement("p", ["skill__desc"]);
 
-    const summaryIcon = new Icon("angles-down");
+    const summaryIcon = new Icon("angles-right");
 
     skillTitle.appendChild(summaryIcon);
     skillTitle.appendChild(document.createTextNode(title));
@@ -165,15 +160,15 @@ export default class ResumePage {
     skillDetails.appendChild(skillTitle);
     skillDetails.appendChild(skillTask);
 
-    skillPanel.appendChild(skillDetails);
+    skillDetails.setAttribute("data-element", "detail");
 
-    return skillPanel;
+    return skillDetails;
   }
 
   #generateExperiences(experiences = []) {
     const experiencesPanel = new DOMElement("section", ["experiences"]),
       experiencesTitle = new DOMElement("h2", ["experiences__title"]),
-      experiencesList = new DOMElement("ul", ["experiences__list"]);
+      experiencesList = new DOMElement("div", ["experiences__list"]);
 
     const experienceIcon = new Icon("business-time");
 
@@ -194,7 +189,7 @@ export default class ResumePage {
   #generateDegrees(degrees = []) {
     const degreesPanel = new DOMElement("section", ["degrees"]),
       degreesTitle = new DOMElement("h2", ["degrees__title"]),
-      degreesList = new DOMElement("ul", ["degrees__list"]);
+      degreesList = new DOMElement("div", ["degrees__list"]);
 
     const graduationIcon = new Icon("graduation-cap");
 
@@ -215,7 +210,7 @@ export default class ResumePage {
   #generateSkills(skills = []) {
     const skillsPanel = new DOMElement("section", ["skills"]),
       skillsTitle = new DOMElement("h2", ["skills__title"]),
-      skillsList = new DOMElement("ul", ["skills__list"]);
+      skillsList = new DOMElement("div", ["skills__list"]);
 
     const tagsIcon = new Icon("tags");
 
