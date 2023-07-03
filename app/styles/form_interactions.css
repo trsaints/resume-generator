@@ -7,20 +7,25 @@
 }
 
 .form__label:hover,
-.form__field:focus-within .form__label {
-  transform: translateX(3%);
+.form__label--column:hover {
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-main-ds),
+    var(--c-main-d)
+  );
+  color: var(--c-black);
 }
 
-.form__label:hover,
-.form__label--column:hover,
 .form__field:focus-within .form__label,
 .form__field--textarea:focus-within .form__label--column {
   background-image: none;
   background-color: var(--c-main-d);
+  color: var(--c-black);
 }
 
 .form__input:focus + .form__output,
 .form__textarea:focus + .form__output {
+  border-color: var(--c-main-d);
   background-color: var(--c-gray-ds);
   color: var(--c-white);
 }
@@ -29,6 +34,10 @@
 .form__textarea:focus {
   background-color: var(--c-white);
   box-shadow: inset 0 0 4px 0 var(--c-gray-d);
+}
+
+.form__input:focus {
+  border-color: var(--c-main-d);
 }
 
 details:hover,

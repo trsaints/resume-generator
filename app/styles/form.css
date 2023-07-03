@@ -1,3 +1,5 @@
+@import url('./variables.css');
+
 .form {
   display: grid;
   gap: 2rem;
@@ -65,12 +67,13 @@
 .form__label,
 .form__label--column {
   padding: 0.25rem 0.75rem;
+  white-space: nowrap;
   background-image: linear-gradient(
     to bottom,
-    var(--c-main-ds),
-    var(--c-main-d)
+    var(--c-black),
+    var(--c-black-l)
   );
-  white-space: nowrap;
+  color: var(--c-white);
   grid-area: label;
   border-top-right-radius: 0.25rem;
   border-top-left-radius: 0.25rem;
@@ -88,7 +91,7 @@
 }
 
 .form__input {
-  border-top: 2px solid var(--c-main-d);
+  border-top: 2px solid var(--c-black);
   border-bottom-left-radius: 0.25rem;
   width: 100%;
 }
@@ -109,7 +112,7 @@
 }
 
 .form__input + .form__output {
-  border-top: 2px solid var(--c-main-d);
+  border-top: 2px solid var(--c-black);
   border-bottom-right-radius: 0.25rem;
   flex-shrink: 0;
 }
