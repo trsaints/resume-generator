@@ -1,34 +1,3 @@
-:root {
-  --c-black: hsl(260, 14%, 4%);
-  --c-black-l: hsl(260, 14%, 8%);
-  --c-gray-d: hsl(257, 5%, 50%);
-  --c-gray: hsl(257, 5%, 60%);
-  --c-gray-l: hsl(255, 5%, 70%);
-  --c-gray-ls: hsl(255, 5%, 80%);
-  --c-main-ls: hsl(196, 84%, 80%);
-  --c-main-l: hsl(196, 84%, 70%);
-  --c-main: hsl(196, 84%, 60%);
-  --c-main-d: hsl(196, 84%, 50%);
-  --c-main-ds: hsl(196, 84%, 40%);
-  --c-white: hsl(260, 48%, 97%);
-  --c-white-d: hsl(260, 48%, 92%);
-  --c-green-ls: hsl(110, 60%, 77%);
-  --c-green-l: hsl(110, 60%, 67%);
-  --c-green: hsl(110, 60%, 47%);
-  --c-green-d: hsl(110, 60%, 27%);
-  --c-green-ds: hsl(110, 60%, 17%);
-  --c-red-ls: hsl(0, 80%, 85%);
-  --c-red-l: hsl(0, 80%, 75%);
-  --c-red: hsl(0, 80%, 51%);
-  --c-red-d: hsl(0, 80%, 40%);
-  --c-red-ds: hsl(0, 80%, 25%);
-  --c-yellow-ls: hsl(64, 80%, 85%);
-  --c-yellow-l: hsl(64, 80%, 75%);
-  --c-yellow: hsl(64, 80%, 50%);
-  --c-yellow-d: hsl(64, 80%, 30%);
-  --c-yellow-ds: hsl(64, 80%, 20%);
-}
-
 @font-face {
   font-family: "RedHat Display";
   src: url("../../public/fonts/RedHatDisplay-VariableFont_wght.ttf");
@@ -37,7 +6,6 @@
 body {
   font-family: "RedHat Display", sans-serif, monospace;
   color: var(--c-black-l);
-  font-size: 1.125rem;
   background-color: var(--c-white-d);
 }
 
@@ -61,7 +29,7 @@ dialog[open] {
   border: none;
   border-radius: 0.5rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.5rem 2rem;
   padding: 0.75rem;
 }
 

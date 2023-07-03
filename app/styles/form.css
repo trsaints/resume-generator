@@ -1,3 +1,5 @@
+@import url('./variables.css');
+
 .form {
   display: grid;
   gap: 2rem;
@@ -6,7 +8,7 @@
 
 .form__fieldset {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem 2rem;
   padding: 0.75rem;
   background-color: var(--c-gray-ls);
   border-radius: 0.5rem;
@@ -26,6 +28,7 @@
 
 .form__options {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 1rem;
 }
@@ -41,16 +44,17 @@
 .form__field,
 .form__field--textarea {
   border-radius: 0.25rem;
-  background-color: var(--c-white);
-  display: flex;
+  display: grid;
 }
 
 .form__field {
-  align-self: flex-start;
+  grid-template-areas: "label blank" "field counter";
+  grid-template-columns: 1fr 4rem;
 }
 
 .form__field--textarea {
-  flex-direction: column;
+  grid-template-areas: "label" "field" "counter";
+  align-self: flex-start;
 }
 
 .form__label,
@@ -62,31 +66,34 @@
 
 .form__label,
 .form__label--column {
-  display: flex;
   padding: 0.25rem 0.75rem;
-  background-color: var(--c-main);
   white-space: nowrap;
-  gap: 0.25rem;
-  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-black),
+    var(--c-black-l)
+  );
+  color: var(--c-white);
+  grid-area: label;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .form__label {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-.form__label--column {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  max-width: 11rem;
 }
 
 .form__input,
 .form__textarea {
-  padding: 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  grid-area: field;
+  background-color: var(--c-white-d);
 }
 
 .form__input {
-  width: calc(100% - 7rem);
+  border-top: 2px solid var(--c-black);
+  border-bottom-left-radius: 0.25rem;
+  width: 100%;
 }
 
 .form__textarea {
@@ -101,11 +108,11 @@
   display: grid;
   align-items: center;
   text-align: center;
+  grid-area: counter;
 }
 
 .form__input + .form__output {
-  flex-basis: 4rem;
-  border-top-right-radius: 0.25rem;
+  border-top: 2px solid var(--c-black);
   border-bottom-right-radius: 0.25rem;
   flex-shrink: 0;
 }
@@ -127,7 +134,11 @@
 
 .form__button,
 .delete-button {
-  background-color: var(--c-black);
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-black-l),
+    var(--c-black)
+  );
   color: var(--c-white);
 }
 
@@ -141,7 +152,11 @@
 }
 
 .form__submit {
-  background-color: var(--c-main);
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-main-d),
+    var(--c-main-ds)
+  );
 }
 
 .experiences,
@@ -168,13 +183,13 @@
   border-radius: 0.25rem;
   padding: 1rem;
   overflow-x: hidden;
+  align-self: flex-start;
 }
 
 .experience__title,
 .degree__title,
 .skill__title {
   font-weight: 700;
-  margin-bottom: 1rem;
   font-size: 20px;
   text-transform: capitalize;
   overflow-x: hidden;

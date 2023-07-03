@@ -1,0 +1,47 @@
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 2px dotted var(--c-main-d);
+}
+
+a:active {
+  outline: none;
+  background-color: var(--c-main-d);
+  color: var(--c-black);
+  box-shadow: 4px 4px 0 1px black;
+}
+
+details:hover,
+details:focus-within {
+  transform: translateY(-4%);
+  box-shadow: 0 0 8px 0 var(--c-gray-d);
+}
+
+details[open] .fa-angles-right {
+  transform: rotate(90deg);
+}
+
+details:focus-within summary {
+  color: var(--c-main-xds);
+}
+
+details[open] summary {
+  margin-bottom: 1rem;
+}
+
+.resume-options__btn:hover,
+.resume-options__btn:focus {
+  background-image: none;
+  background-color: var(--c-main-d);
+  transform: scale(1.025);
+  box-shadow: 0 0 8px var(--c-gray-d);
+}
+
+.resume-options__btn:active {
+  box-shadow: none;
+  transform: scale(1);
+}
