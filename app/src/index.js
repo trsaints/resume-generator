@@ -19,10 +19,14 @@ import {
   resetIds,
 } from "./services/resume_service.js";
 
+import { getValidityState } from "./services/form_service.js";
+
 import {
   clearForm,
   displayConfirmation,
+  displayInputValidity,
   renderItem,
+  setFieldValidity,
   unrenderItem,
   updateCharacterCount,
 } from "./views/form_view.js";
@@ -43,14 +47,17 @@ const dependencies = {
     clearForm,
     closeMenu,
     displayConfirmation,
+    displayInputValidity,
     getBaseData,
     getElement,
     getElements,
+    getValidityState,
     hideElement,
     openMenu,
     renderItem,
     removeItem,
     resetIds,
+    setFieldValidity,
     showElement,
     showWarning,
     unrenderItem,
