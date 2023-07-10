@@ -1,5 +1,6 @@
 .form__field:focus-within {
-  transform: translateX(1%)
+  transform: translateX(1%);
+  z-index: 10;
 }
 
 .form__field--textarea:focus-within {
@@ -23,6 +24,13 @@
   color: var(--c-black);
 }
 
+.form__field.invalid .form__label,
+.form__field--textarea.invalid .form__label--column {
+  background-image: none;
+  background-color: var(--c-red-l);
+  color: var(--c-black);
+}
+
 .form__input:focus + .form__output,
 .form__textarea:focus + .form__output {
   border-color: var(--c-main-d);
@@ -38,6 +46,20 @@
 
 .form__input:focus {
   border-color: var(--c-main-d);
+}
+
+.form__field.invalid .form__input,
+.form__field.invalid .form__output {
+  border-color: var(--c-red-l);
+}
+
+.form__field.invalid:focus-within .form__warning--invalid,
+.form__field--textarea.invalid:focus-within .form__warning--invalid {
+  padding: 0.5rem;
+  top: 100%;
+  background-color: var(--c-red-l);
+  height: auto;
+  width: 100%;
 }
 
 details:hover,

@@ -1,4 +1,4 @@
-@import url('./variables.css');
+@import url("./variables.css");
 
 .form {
   display: grid;
@@ -45,6 +45,8 @@
 .form__field--textarea {
   border-radius: 0.25rem;
   display: grid;
+  position: relative;
+  isolation: isolate;
 }
 
 .form__field {
@@ -121,6 +123,15 @@
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   padding-block: 0.25rem;
+}
+
+.form__warning--invalid {
+  position: absolute;
+  border-radius: 0.25rem;
+  pointer-events: none;
+  overflow: hidden;
+  height: 0;
+  width: 0;
 }
 
 .form__button,

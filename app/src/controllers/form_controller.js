@@ -29,9 +29,10 @@ function setClickActions(callbacks, components) {
 }
 
 function setInputMonitoring(callbacks, form) {
-  form.addEventListener("input", ({ target }) =>
-    callbacks.updateCharacterCount(callbacks, target)
-  );
+  form.addEventListener("input", ({ target }) => {
+    callbacks.updateCharacterCount(callbacks, target);
+    validateInput(callbacks, target);
+  });
 }
 
 function setInitialState(callbacks, form) {
@@ -53,6 +54,18 @@ function setBaseDataSync(callbacks, form) {
   };
 
   form.addEventListener("focusout", syncData);
+}
+
+function validateInput(callbacks, target) {
+  const validityState = callbacks.getValidityState(target);
+
+  callbacks.setFieldValidity(target);
+
+  callbacks.displayInputValidity(
+    callbacks,
+    target,
+    validityState.validityMessage
+  );
 }
 
 function addItem(dataset, callbacks, components) {

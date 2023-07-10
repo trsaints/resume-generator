@@ -52,6 +52,8 @@
             <output data-element="name-length" class="form__output" for="name"
               >0/36</output
             >
+
+            <p data-element="name-warning" class="form__warning--invalid" aria-live="polite"></p>
           </div>
 
           <div class="form__field">
@@ -72,6 +74,8 @@
             <output data-element="job-length" class="form__output" for="job"
               >0/36</output
             >
+
+            <p data-element="job-warning" class="form__warning--invalid" aria-live="polite"></p>
           </div>
 
           <div class="form__field">
@@ -96,6 +100,8 @@
               for="address"
               >0/36</output
             >
+
+            <p data-element="address-warning" class="form__warning--invalid" aria-live="polite"></p>
           </div>
 
           <div class="form__field">
@@ -116,6 +122,8 @@
             <output data-element="email-length" class="form__output" for="email"
               >0/36</output
             >
+
+            <p data-element="email-warning" class="form__warning--invalid" aria-live="polite"></p>
           </div>
 
           <div class="form__field">
@@ -138,6 +146,8 @@
               for="website"
               >0/128</output
             >
+
+            <p data-element="website-warning" class="form__warning--invalid" aria-live="polite"></p>
           </div>
 
           <div class="form__field--textarea">
@@ -159,6 +169,8 @@
             <output data-element="desc-length" class="form__output" for="desc"
               >0/256</output
             >
+
+            <p data-element="desc-warning" class="form__warning--invalid" aria-live="polite"></p>
           </div>
         </fieldset>
 
@@ -199,6 +211,8 @@
                 for="jobTitle"
                 >0/36</output
               >
+
+              <p data-element="jobTitle-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field">
@@ -220,6 +234,8 @@
                 for="jobCompany"
                 >0/24</output
               >
+
+              <p data-element="jobCompany-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field">
@@ -241,6 +257,8 @@
                 for="jobPeriod"
                 >0/24</output
               >
+
+              <p data-element="jobPeriod-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field">
@@ -262,6 +280,8 @@
                 for="jobLocation"
                 >0/36</output
               >
+
+              <p data-element="jobLocation-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field--textarea">
@@ -284,6 +304,8 @@
                 for="jobDesc"
                 >0/256</output
               >
+
+              <p data-element="jobDesc-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <menu class="form__options">
@@ -379,6 +401,8 @@
                 for="degreeName"
                 >0/36</output
               >
+
+              <p data-element="degreeName-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field">
@@ -400,6 +424,8 @@
                 for="degreeSchool"
                 >0/24</output
               >
+
+              <p data-element="degreeSchool-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field">
@@ -422,6 +448,8 @@
                 for="degreePeriod"
                 >0/24</output
               >
+
+              <p data-element="degreePeriod-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field--textarea">
@@ -444,6 +472,8 @@
                 for="degreeDesc"
                 >0/256</output
               >
+
+              <p data-element="degreeDesc-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <menu class="form__options">
@@ -470,7 +500,10 @@
           </dialog>
 
           <div data-element="degrees-list" class="degrees">
-            <dialog class="form__dialog--delete" data-element="degrees-confirmation">
+            <dialog
+              class="form__dialog--delete"
+              data-element="degrees-confirmation"
+            >
               <p class="form__warning">deseja mesmo excluir esta formação?</p>
 
               <menu class="form__options">
@@ -534,6 +567,8 @@
                 for="skillName"
                 >0/36</output
               >
+
+              <p data-element="skillName-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <div class="form__field--textarea">
@@ -556,6 +591,8 @@
                 for="skillDesc"
                 >0/256</output
               >
+
+              <p data-element="skillDesc-warning" class="form__warning--invalid" aria-live="polite"></p>
             </div>
 
             <menu class="form__options">
@@ -582,7 +619,10 @@
           </dialog>
 
           <div data-element="skills-list" class="skills">
-            <dialog class="form__dialog--delete" data-element="skills-confirmation">
+            <dialog
+              class="form__dialog--delete"
+              data-element="skills-confirmation"
+            >
               <p class="form__warning">
                 deseja mesmo excluir esta competência?
               </p>

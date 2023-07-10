@@ -60,10 +60,35 @@ function updateCharacterCount(callbacks, target) {
   outputTarget.textContent = `${value.length}/${maxLength}`;
 }
 
+function displayInputValidity(callbacks, target, message) {
+  const id = target.getAttribute("id");
+
+  if (!id) return;
+
+  const warningTarget = callbacks.getElement(`${id}-warning`);
+
+  if (!warningTarget) return;
+
+  warningTarget.textContent = message;
+}
+
+function setFieldValidity(target) {
+  const targetField = target.parentNode;
+
+  if (targetField.classList.contains("invalid"))
+    targetField.classList.remove("invalid");
+
+  if (target.checkValidity()) return;
+
+  targetField.classList.add("invalid");
+}
+
 export {
   clearForm,
   displayConfirmation,
+  displayInputValidity,
   renderItem,
+  setFieldValidity,
   unrenderItem,
   updateCharacterCount,
 };
