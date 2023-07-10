@@ -15,11 +15,10 @@ import {
   addItem,
   clearActiveResume,
   getBaseData,
+  getValidityState,
   removeItem,
   resetIds,
-} from "./services/resume_service.js";
-
-import { getValidityState } from "./services/form_service.js";
+} from "./services/form_service.js";
 
 import {
   clearForm,
