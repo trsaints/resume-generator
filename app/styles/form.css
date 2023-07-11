@@ -82,7 +82,7 @@
 }
 
 .form__label {
-  max-width: 11rem;
+  max-width: max-content;
 }
 
 .form__input,

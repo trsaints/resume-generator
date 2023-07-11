@@ -50,6 +50,10 @@ details[open] summary {
   display: none;
 }
 
+.note {
+  font-size: 0.8rem;
+}
+
 .header__warning {
   position: fixed;
   top: 0.5rem;
