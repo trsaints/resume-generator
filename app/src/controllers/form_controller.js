@@ -11,7 +11,12 @@ function addItem(dataset, callbacks, components, form) {
 
   const { type } = dataset;
 
-  const fieldsetIsInvalid = !validateItemFieldset(callbacks, components, form, type);
+  const fieldsetIsInvalid = !validateItemFieldset(
+    callbacks,
+    components,
+    form,
+    type
+  );
 
   if (fieldsetIsInvalid) return;
 
@@ -113,54 +118,40 @@ function setSubmitMonitoring(callbacks, components, form) {
 }
 
 function validateSubmit(callbacks, components, form) {
-  const { elements } = form,
-    fieldsToCheck = ["name", "job", "address", "email", "website", "desc"],
-    invalidFields = [];
+  const fieldsToCheck = ["name", "job", "address", "email", "website", "desc"];
 
-  let formIsValid = true;
-
-  for (const field of fieldsToCheck) {
-    const fieldIsValid = validateInput(callbacks, components, elements[field]);
-
-    if (fieldIsValid) continue;
-
-    callbacks.showWarning(
-      components,
-      "Existem campos indevidamente preenchidos",
-      "warning"
-    );
-
-    formIsValid = false;
-
-    invalidFields.push(elements[field]);
-  }
-
-  if (!formIsValid) invalidFields[0].focus();
-
-  return formIsValid;
+  return validateFieldset(callbacks, components, form, fieldsToCheck);
 }
 
 function validateItemFieldset(callbacks, components, form, type) {
+  const typesFields = {
+    degree: ["degreeName", "degreeSchool", "degreePeriod", "degreeDesc"],
+    experience: [
+      "jobTitle",
+      "jobCompany",
+      "jobPeriod",
+      "jobLocation",
+      "jobDesc",
+    ],
+    skill: ["skillName", "skillDesc"],
+  };
+
+  return validateFieldset(callbacks, components, form, typesFields[type]);
+}
+
+function validateFieldset(callbacks, components, form, fields) {
   const { elements } = form,
-    typesFields = {
-      degree: ["degreeName", "degreeSchool", "degreePeriod", "degreeDesc"],
-      experience: [
-        "jobTitle",
-        "jobCompany",
-        "jobPeriod",
-        "jobLocation",
-        "jobDesc",
-      ],
-      skill: ["skillName", "skillDesc"],
-    },
     invalidFields = [];
 
   let fieldsetIsValid = true;
 
-  for (const field of typesFields[type]) {
-    const fieldIsValid = validateInput(callbacks, components, elements[field]);
+  for (const field of fields) {
+    const validityState = callbacks.getValidityState(elements[field]);
 
-    if (fieldIsValid) continue;
+    callbacks.setFieldValidity(validityState);
+    callbacks.setValidityMessage(callbacks, components, validityState);
+
+    if (validityState.valid) continue;
 
     callbacks.showWarning(
       components,
