@@ -57,9 +57,11 @@
 .form__field--textarea.invalid:focus-within .form__warning--invalid {
   padding: 0.5rem;
   top: 100%;
-  background-color: var(--c-red-l);
+  left: 0.5rem;
+  background-color: var(--c-yellow-l);
+  border: 2px solid var(--c-yellow-d);
   height: auto;
-  width: 100%;
+  width: auto;
 }
 
 details:hover,
