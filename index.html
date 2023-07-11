@@ -35,7 +35,8 @@
 
           <div class="form__field">
             <label class="form__label" for="name">
-              nome <span class="note">(Obrigatório)</span> <i class="fa-solid fa-person"></i>
+              nome <span class="note">(Obrigatório)</span>
+              <i class="fa-solid fa-person"></i>
             </label>
 
             <input
@@ -53,7 +54,11 @@
               >0/36</output
             >
 
-            <p data-element="name-warning" class="form__warning--invalid" aria-live="polite"></p>
+            <p
+              data-element="name-warning"
+              class="form__warning--invalid"
+              aria-live="polite"
+            ></p>
           </div>
 
           <div class="form__field">
@@ -75,12 +80,17 @@
               >0/36</output
             >
 
-            <p data-element="job-warning" class="form__warning--invalid" aria-live="polite"></p>
+            <p
+              data-element="job-warning"
+              class="form__warning--invalid"
+              aria-live="polite"
+            ></p>
           </div>
 
           <div class="form__field">
             <label class="form__label" for="address">
-              endereço <span class="note">(Obrigatório)</span> <i class="fa-solid fa-location-dot"></i>
+              endereço <span class="note">(Obrigatório)</span>
+              <i class="fa-solid fa-location-dot"></i>
             </label>
 
             <input
@@ -101,12 +111,17 @@
               >0/36</output
             >
 
-            <p data-element="address-warning" class="form__warning--invalid" aria-live="polite"></p>
+            <p
+              data-element="address-warning"
+              class="form__warning--invalid"
+              aria-live="polite"
+            ></p>
           </div>
 
           <div class="form__field">
             <label class="form__label" for="email">
-              email <span class="note">(Obrigatório)</span> <i class="fa-solid fa-envelope"></i>
+              email <span class="note">(Obrigatório)</span>
+              <i class="fa-solid fa-envelope"></i>
             </label>
 
             <input
@@ -123,12 +138,16 @@
               >0/36</output
             >
 
-            <p data-element="email-warning" class="form__warning--invalid" aria-live="polite"></p>
+            <p
+              data-element="email-warning"
+              class="form__warning--invalid"
+              aria-live="polite"
+            ></p>
           </div>
 
           <div class="form__field">
             <label class="form__label" for="website">
-              site  <i class="fa-solid fa-globe"></i>
+              site <i class="fa-solid fa-globe"></i>
             </label>
 
             <input
@@ -146,12 +165,17 @@
               >0/128</output
             >
 
-            <p data-element="website-warning" class="form__warning--invalid" aria-live="polite"></p>
+            <p
+              data-element="website-warning"
+              class="form__warning--invalid"
+              aria-live="polite"
+            ></p>
           </div>
 
           <div class="form__field--textarea">
             <label class="form__label--column" for="desc">
-              descrição <span class="note">(Obrigatório)</span> <i class="fa-solid fa-circle-info"></i>
+              descrição <span class="note">(Obrigatório)</span>
+              <i class="fa-solid fa-circle-info"></i>
             </label>
 
             <textarea
@@ -169,7 +193,11 @@
               >0/256</output
             >
 
-            <p data-element="desc-warning" class="form__warning--invalid" aria-live="polite"></p>
+            <p
+              data-element="desc-warning"
+              class="form__warning--invalid"
+              aria-live="polite"
+            ></p>
           </div>
         </fieldset>
 
@@ -200,7 +228,9 @@
                 class="form__input"
                 type="text"
                 id="jobTitle"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                required
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,36}"
+                minlength="2"
                 maxlength="36"
               />
 
@@ -211,7 +241,11 @@
                 >0/36</output
               >
 
-              <p data-element="jobTitle-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="jobTitle-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field">
@@ -223,7 +257,9 @@
                 class="form__input"
                 type="text"
                 id="jobCompany"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                required
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,24}"
+                minlength="2"
                 maxlength="24"
               />
 
@@ -234,7 +270,11 @@
                 >0/24</output
               >
 
-              <p data-element="jobCompany-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="jobCompany-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field">
@@ -246,7 +286,9 @@
                 class="form__input"
                 type="text"
                 id="jobPeriod"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                required
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,24}"
+                minlength="2"
                 maxlength="24"
               />
 
@@ -257,7 +299,11 @@
                 >0/24</output
               >
 
-              <p data-element="jobPeriod-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="jobPeriod-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field">
@@ -269,7 +315,9 @@
                 class="form__input"
                 type="text"
                 id="jobLocation"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                required
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,36}"
+                minlength="2"
                 maxlength="36"
               />
 
@@ -280,7 +328,11 @@
                 >0/36</output
               >
 
-              <p data-element="jobLocation-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="jobLocation-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field--textarea">
@@ -304,7 +356,11 @@
                 >0/256</output
               >
 
-              <p data-element="jobDesc-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="jobDesc-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <menu class="form__options">
@@ -390,7 +446,9 @@
                 class="form__input"
                 type="text"
                 id="degreeName"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,36}"
+                required
+                minlength="2"
                 maxlength="36"
               />
 
@@ -401,7 +459,11 @@
                 >0/36</output
               >
 
-              <p data-element="degreeName-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="degreeName-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field">
@@ -413,7 +475,9 @@
                 class="form__input"
                 type="text"
                 id="degreeSchool"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,24}"
+                required
+                minlength="2"
                 maxlength="24"
               />
 
@@ -424,7 +488,11 @@
                 >0/24</output
               >
 
-              <p data-element="degreeSchool-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="degreeSchool-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field">
@@ -437,7 +505,9 @@
                 class="form__input"
                 type="text"
                 id="degreePeriod"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,24}"
+                required
+                minlength="2"
                 maxlength="24"
               />
 
@@ -448,7 +518,11 @@
                 >0/24</output
               >
 
-              <p data-element="degreePeriod-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="degreePeriod-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field--textarea">
@@ -472,7 +546,11 @@
                 >0/256</output
               >
 
-              <p data-element="degreeDesc-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="degreeDesc-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <menu class="form__options">
@@ -556,7 +634,9 @@
                 class="form__input"
                 type="text"
                 id="skillName"
-                pattern="[a-zA-Z\u00C0-\u017F\s\.\-]*"
+                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,36}"
+                required
+                minlength="2"
                 maxlength="36"
               />
 
@@ -567,7 +647,11 @@
                 >0/36</output
               >
 
-              <p data-element="skillName-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="skillName-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <div class="form__field--textarea">
@@ -591,7 +675,11 @@
                 >0/256</output
               >
 
-              <p data-element="skillDesc-warning" class="form__warning--invalid" aria-live="polite"></p>
+              <p
+                data-element="skillDesc-warning"
+                class="form__warning--invalid"
+                aria-live="polite"
+              ></p>
             </div>
 
             <menu class="form__options">

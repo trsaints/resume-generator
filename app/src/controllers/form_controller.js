@@ -2,21 +2,26 @@ export default function initialize(deps) {
   window.addEventListener("load", () => init(deps));
 }
 
-function addItem(dataset, callbacks, components) {
-  const types = {
+function addItem(dataset, callbacks, components, form) {
+  const typeTranslation = {
     degree: "formação",
     experience: "experiência",
     skill: "competência",
   };
 
   const { type } = dataset;
+
+  const fieldsetIsInvalid = !validateItemFieldset(callbacks, components, form, type);
+
+  if (fieldsetIsInvalid) return;
+
   const item = callbacks.addItem(callbacks, type);
 
   callbacks.closeMenu(`${type}-form`);
   callbacks.renderItem(callbacks, components, type, item);
   callbacks.showWarning(
     components,
-    `${types[type]} adicionada com sucesso`,
+    `${typeTranslation[type]} adicionada com sucesso`,
     "success"
   );
 }
@@ -25,7 +30,7 @@ function init({ callbacks, components, models }) {
   const form = callbacks.getElement("form");
 
   setInitialState(callbacks, form);
-  setClickActions(callbacks, components, models);
+  setClickActions(callbacks, components, form);
   setInputMonitoring(callbacks, components, form);
   setBaseDataSync(callbacks, form);
   setSubmitMonitoring(callbacks, components, form);
@@ -67,11 +72,11 @@ function setBaseDataSync(callbacks, form) {
   form.addEventListener("focusout", syncData);
 }
 
-function setClickActions(callbacks, components) {
+function setClickActions(callbacks, components, form) {
   const actions = {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addItem: ({ dataset }) => addItem(dataset, callbacks, components),
+    addItem: ({ dataset }) => addItem(dataset, callbacks, components, form),
     displayConfirmation: (target) =>
       callbacks.displayConfirmation(callbacks, target),
     removeItem: (target) => removeItem(target, callbacks, components),
@@ -133,6 +138,44 @@ function validateSubmit(callbacks, components, form) {
   if (!formIsValid) invalidFields[0].focus();
 
   return formIsValid;
+}
+
+function validateItemFieldset(callbacks, components, form, type) {
+  const { elements } = form,
+    typesFields = {
+      degree: ["degreeName", "degreeSchool", "degreePeriod", "degreeDesc"],
+      experience: [
+        "jobTitle",
+        "jobCompany",
+        "jobPeriod",
+        "jobLocation",
+        "jobDesc",
+      ],
+      skill: ["skillName", "skillDesc"],
+    },
+    invalidFields = [];
+
+  let fieldsetIsValid = true;
+
+  for (const field of typesFields[type]) {
+    const fieldIsValid = validateInput(callbacks, components, elements[field]);
+
+    if (fieldIsValid) continue;
+
+    callbacks.showWarning(
+      components,
+      "Existem campos indevidamente preenchidos",
+      "warning"
+    );
+
+    fieldsetIsValid = false;
+
+    invalidFields.push(elements[field]);
+  }
+
+  if (!fieldsetIsValid) invalidFields[0].focus();
+
+  return fieldsetIsValid;
 }
 
 function validateInput(callbacks, components, target) {
