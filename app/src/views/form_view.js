@@ -60,8 +60,9 @@ function updateCharacterCount(callbacks, target) {
   outputTarget.textContent = `${value.length}/${maxLength}`;
 }
 
-function displayInputValidity(callbacks, target, message) {
-  const id = target.getAttribute("id");
+function setValidityMessage(callbacks, components, validityState) {
+  const { validationTarget, validityMessage } = validityState,
+    id = validationTarget.getAttribute("id");
 
   if (!id) return;
 
@@ -69,16 +70,19 @@ function displayInputValidity(callbacks, target, message) {
 
   if (!warningTarget) return;
 
-  warningTarget.textContent = message;
+  callbacks.clearContent(`${id}-warning`);
+
+  warningTarget.appendChild(new components.Icon("circle-exclamation"));
+  warningTarget.appendChild(document.createTextNode(validityMessage));
 }
 
-function setFieldValidity(target) {
-  const targetField = target.parentNode;
+function setFieldValidity({ validationTarget }) {
+  const targetField = validationTarget.parentNode;
 
   if (targetField.classList.contains("invalid"))
     targetField.classList.remove("invalid");
 
-  if (target.checkValidity()) return;
+  if (validationTarget.checkValidity()) return;
 
   targetField.classList.add("invalid");
 }
@@ -86,9 +90,9 @@ function setFieldValidity(target) {
 export {
   clearForm,
   displayConfirmation,
-  displayInputValidity,
   renderItem,
   setFieldValidity,
+  setValidityMessage,
   unrenderItem,
   updateCharacterCount,
 };

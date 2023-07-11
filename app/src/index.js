@@ -23,9 +23,9 @@ import {
 import {
   clearForm,
   displayConfirmation,
-  displayInputValidity,
   renderItem,
   setFieldValidity,
+  setValidityMessage,
   unrenderItem,
   updateCharacterCount,
 } from "./views/form_view.js";
@@ -46,7 +46,6 @@ const dependencies = {
     clearForm,
     closeMenu,
     displayConfirmation,
-    displayInputValidity,
     getBaseData,
     getElement,
     getElements,
@@ -57,6 +56,7 @@ const dependencies = {
     removeItem,
     resetIds,
     setFieldValidity,
+    setValidityMessage,
     showElement,
     showWarning,
     unrenderItem,

@@ -45,10 +45,11 @@ function getValidityState(target) {
         valid: false,
         validityMessage: validationMessages[type],
         validationType: validationTypes[i],
+        validationTarget: target,
       };
   }
 
-  return { valid: true, validityMessage: "" };
+  return { valid: true, validityMessage: "", validationTarget: target };
 }
 
 function addItem(callbacks, type) {
