@@ -31,18 +31,18 @@ function addItem(dataset, callbacks, components, form) {
   );
 }
 
-function init({ callbacks, components, models }) {
+function init({ callbacks, components }) {
   const form = callbacks.getElement("form");
 
   setInitialState(callbacks, form);
   setClickActions(callbacks, components, form);
   setInputMonitoring(callbacks, components, form);
   setBaseDataSync(callbacks, form);
-  setSubmitMonitoring(callbacks, components, form);
+  setSubmitValidation(callbacks, components, form);
 }
 
 function removeItem(target, callbacks, components) {
-  const types = {
+  const typesTranslation = {
     degree: "formação",
     experience: "experiência",
     skill: "competência",
@@ -50,16 +50,16 @@ function removeItem(target, callbacks, components) {
 
   const modal = target.closest("[data-type]"),
     { type } = modal.dataset,
-    [item, id] = type.split("-");
+    [itemType, id] = type.split("-"),
+    modalName = `${itemType}s-confirmation`;
 
-  callbacks.removeItem(item, id);
-  callbacks.closeMenu(`${item}s-confirmation`);
-  callbacks.unrenderItem(callbacks, item, id);
-  callbacks.showWarning(
-    components,
-    `${types[item]} removida com sucesso`,
-    "success"
-  );
+  callbacks.removeItem(itemType, id);
+  callbacks.closeMenu(modalName);
+  callbacks.unrenderItem(callbacks, itemType, id);
+
+  const warningMessage = `${typesTranslation[itemType]} removida com sucesso`;
+
+  callbacks.showWarning(components, warningMessage, "success");
 }
 
 function setBaseDataSync(callbacks, form) {
@@ -70,6 +70,7 @@ function setBaseDataSync(callbacks, form) {
     if (shouldNotSync) return;
 
     const baseData = callbacks.getBaseData(form);
+
     localStorage.setItem("resume", JSON.stringify(baseData));
     console.warn("Active resume has been updated successfuly");
   };
@@ -78,7 +79,7 @@ function setBaseDataSync(callbacks, form) {
 }
 
 function setClickActions(callbacks, components, form) {
-  const actions = {
+  const mainActions = {
     openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
     closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
     addItem: ({ dataset }) => addItem(dataset, callbacks, components, form),
@@ -87,11 +88,13 @@ function setClickActions(callbacks, components, form) {
     removeItem: (target) => removeItem(target, callbacks, components),
   };
 
-  document.addEventListener("click", ({ target }) => {
+  const performMainAction = ({ target }) => {
     const { action } = target.dataset;
 
-    if (actions[action]) actions[action](target);
-  });
+    if (mainActions[action]) mainActions[action](target);
+  };
+
+  document.addEventListener("click", performMainAction);
 }
 
 function setInitialState(callbacks, form) {
@@ -101,23 +104,27 @@ function setInitialState(callbacks, form) {
 }
 
 function setInputMonitoring(callbacks, components, form) {
-  form.addEventListener("input", ({ target }) => {
+  const respondToInput = ({ target }) => {
     callbacks.updateCharacterCount(callbacks, target);
     validateInput(callbacks, components, target);
-  });
+  };
+
+  form.addEventListener("input", respondToInput);
 }
 
-function setSubmitMonitoring(callbacks, components, form) {
-  form.addEventListener("submit", (evt) => {
-    const formIsValid = validateSubmit(callbacks, components, form);
+function setSubmitValidation(callbacks, components, form) {
+  const preventInvalidSubmit = (evt) => {
+    const formIsValid = validateRequiredFields(callbacks, components, form);
 
     if (formIsValid) return;
 
     evt.preventDefault();
-  });
+  };
+
+  form.addEventListener("submit", preventInvalidSubmit);
 }
 
-function validateSubmit(callbacks, components, form) {
+function validateRequiredFields(callbacks, components, form) {
   const fieldsToCheck = ["name", "job", "address", "email", "website", "desc"];
 
   return validateFieldset(callbacks, components, form, fieldsToCheck);
@@ -146,18 +153,13 @@ function validateFieldset(callbacks, components, form, fields) {
   let fieldsetIsValid = true;
 
   for (const field of fields) {
-    const validityState = callbacks.getValidityState(elements[field]);
+    const fieldIsValid = validateInput(callbacks, components, elements[field]);
 
-    callbacks.setFieldValidity(validityState);
-    callbacks.setValidityMessage(callbacks, components, validityState);
+    if (fieldIsValid) continue;
 
-    if (validityState.valid) continue;
+    const warningMessage = "Existem campos indevidamente preenchidos";
 
-    callbacks.showWarning(
-      components,
-      "Existem campos indevidamente preenchidos",
-      "warning"
-    );
+    callbacks.showWarning(components, warningMessage, "warning");
 
     fieldsetIsValid = false;
 

@@ -2,23 +2,24 @@ function clearForm(callbacks) {
   const form = callbacks.getElement("form");
 
   form.reset();
-  form.elements[1].focus();
+  form.elements["name"].focus();
 }
 
 function displayConfirmation(callbacks, target) {
   const card =
-    target.closest("[data-element='experience']") ||
-    target.closest("[data-element='degree']") ||
-    target.closest("[data-element='skill']");
-
-  const { dataset } = card;
+      target.closest("[data-element='experience']") ||
+      target.closest("[data-element='degree']") ||
+      target.closest("[data-element='skill']"),
+    { dataset } = card;
 
   if (dataset.id === undefined) return;
 
-  const modalName = `${dataset.element}s-confirmation`;
+  const modalName = `${dataset.element}s-confirmation`,
+    modal = callbacks.getElement(modalName),
+    typeTarget = `${dataset.element}-${dataset.id}`;
+
   callbacks.openMenu(modalName);
-  const modal = callbacks.getElement(modalName);
-  modal.setAttribute("data-type", `${dataset.element}-${dataset.id}`);
+  modal.setAttribute("data-type", typeTarget);
 }
 
 function renderItem(callbacks, components, type, item) {
@@ -42,9 +43,9 @@ function renderItem(callbacks, components, type, item) {
 function unrenderItem(callbacks, type, id) {
   const cards = callbacks.getElements(type);
 
-  cards.forEach((card) => {
-    if (card.dataset.id === id) card.remove();
-  });
+  const checkAndRemove = (card) => card.dataset.id == id ? card.remove() : "";
+
+  cards.forEach(checkAndRemove);
 }
 
 function updateCharacterCount(callbacks, target) {
@@ -72,8 +73,11 @@ function setValidityMessage(callbacks, components, validityState) {
 
   callbacks.clearContent(`${id}-warning`);
 
-  warningTarget.appendChild(new components.Icon("circle-exclamation"));
-  warningTarget.appendChild(document.createTextNode(validityMessage));
+  const warningIcon = new components.Icon("circle-exclamation"),
+    warningMessage = document.createTextNode(validityMessage);
+
+  warningTarget.appendChild(warningIcon);
+  warningTarget.appendChild(warningMessage);
 }
 
 function setFieldValidity({ validationTarget }) {
