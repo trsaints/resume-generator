@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "RedHat Display";
+  font-family: "RedHat Display", monospace;
   color: var(--c-black-l);
   background-color: var(--c-white);
 }
@@ -15,20 +15,30 @@ body {
   margin: 3rem 1.5rem;
 }
 
-.header {
+.header,
+.main,
+.experiences__list,
+.degrees__list,
+.skills__list,
+.experience,
+.degree,
+.skill,
+.resume-options {
   display: grid;
-  margin-bottom: 3rem;
-  row-gap: 2rem;
-  column-gap: 4rem;
 }
 
+.header,
 .main {
-  display: grid;
   row-gap: 2rem;
   column-gap: 4rem;
 }
 
-summary {
+.header {
+  margin-bottom: 3rem;
+}
+
+summary,
+.resume-options__btn {
   cursor: pointer;
 }
 
@@ -45,27 +55,45 @@ i {
   content: "";
 }
 
-.about__title {
-  font-size: 2rem;
+.about__title,
+.experience__title,
+.degree__title,
+.skill__title {
   font-weight: 700;
+}
+
+.about__title,
+.about__job,
+.experience__info,
+.degree__info {
   margin-bottom: 1rem;
 }
 
-[class*="__title"] {
+.about__title {
+  font-size: 2rem;
+}
+
+[class*="__title"],
+.about__job {
   text-transform: capitalize;
 }
 
-.about__job {
+.about__job,
+.experience__date,
+.experience__company,
+.experience__location,
+.degree__school,
+.degree__date {
   background-color: var(--c-gray-ls);
   max-width: max-content;
-  padding: 0.25rem 0.75rem;
-  font-size: 1rem;
   border-radius: 1rem;
-  margin-bottom: 1rem;
+}
+
+.about__job {
+  padding: 0.25rem 0.75rem;
 }
 
 .info {
-  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -81,18 +109,31 @@ i {
 
 .experiences__title,
 .degrees__title,
+.skills__title,
+.experience__date,
+.experience__company,
+.experience__location,
+.degree__school,
+.degree__date,
+.resume-options__btn {
+  text-transform: uppercase;
+}
+
+.experiences__title,
+.degrees__title,
 .skills__title {
   font-size: 1.375rem;
   font-weight: 600;
-  text-transform: uppercase;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid;
 }
 
 .experiences__list,
 .degrees__list,
-.skills__list {
-  display: grid;
+.skills__list,
+.experience,
+.degree,
+.skill {
   gap: 1rem;
 }
 
@@ -103,14 +144,11 @@ i {
   padding: 1rem;
   overflow-x: hidden;
   align-self: flex-start;
-  display: grid;
-  gap: 1rem;
 }
 
 .experience__title,
 .degree__title,
 .skill__title {
-  font-weight: 700;
   font-size: 1.25rem;
 }
 
@@ -119,7 +157,6 @@ i {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  margin-bottom: 1rem;
 }
 
 .experience__date,
@@ -127,16 +164,11 @@ i {
 .experience__location,
 .degree__school,
 .degree__date {
-  background-color: var(--c-gray-ls);
-  max-width: max-content;
   padding: 0.25rem 0.5rem;
-  font-size: .875rem;
-  border-radius: 1rem;
-  text-transform: uppercase;
+  font-size: 0.875rem;
 }
 
 .resume-options {
-  display: grid;
   justify-content: center;
 }
 
@@ -148,8 +180,6 @@ i {
   );
   padding: 1rem 2rem;
   border-radius: 0.5rem;
-  cursor: pointer;
-  text-transform: uppercase;
   font-weight: 500;
   margin-top: 1rem;
 }

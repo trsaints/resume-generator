@@ -8,9 +8,14 @@ a:focus {
   outline: 2px dotted var(--c-main-d);
 }
 
+a:active,
+.resume-options__btn:hover,
+.resume-options__btn:focus {
+  background-color: var(--c-main-d);
+}
+
 a:active {
   outline: none;
-  background-color: var(--c-main-d);
   color: var(--c-black);
   box-shadow: 4px 4px 0 1px black;
 }
@@ -36,7 +41,6 @@ details[open] summary {
 .resume-options__btn:hover,
 .resume-options__btn:focus {
   background-image: none;
-  background-color: var(--c-main-d);
   transform: scale(1.025);
   box-shadow: 0 0 8px var(--c-gray-d);
 }
