@@ -34,9 +34,6 @@ import DegreeCard from "./components/DegreeCard.js";
 import ExperienceCard from "./components/ExperienceCard.js";
 import Icon from "./components/Icon.js";
 import SkillCard from "./components/SkillCard.js";
-import Degree from "./models/Degree.js";
-import Experience from "./models/Experience.js";
-import Skill from "./models/Skill.js";
 
 const dependencies = {
   callbacks: {
@@ -67,12 +64,7 @@ const dependencies = {
     ExperienceCard,
     SkillCard,
     Icon,
-  },
-  models: {
-    Degree,
-    Experience,
-    Skill,
-  },
+  }
 };
 
 initialize(dependencies);
