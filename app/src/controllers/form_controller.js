@@ -157,7 +157,7 @@ function validateFieldset(callbacks, components, form, fields) {
 
     if (fieldIsValid) continue;
 
-    const warningMessage = "Existem campos indevidamente preenchidos";
+    const warningMessage = "Preencha os campos corretamente";
 
     callbacks.showWarning(components, warningMessage, "warning");
 
