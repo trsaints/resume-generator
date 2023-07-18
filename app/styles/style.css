@@ -24,13 +24,15 @@ textarea {
   max-width: 100%;
 }
 
+textarea {
+  resize: vertical;
+}
+
 dialog[open] {
   background-color: var(--c-gray-ls);
   border: none;
   border-radius: 0.5rem;
   display: grid;
-  gap: 0.5rem 2rem;
-  padding: 0.75rem;
 }
 
 details[open] summary {
@@ -70,7 +72,7 @@ details[open] summary {
   position: fixed;
   top: 0.5rem;
   margin-inline: 1rem;
-  width: calc(100vw - 2rem);
+  width: calc(100% - 2rem);
   z-index: 100;
   padding: 0.5rem 1rem;
   background-color: var(--c-white);
