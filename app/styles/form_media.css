@@ -1,7 +1,7 @@
 @media screen and (min-width: 768px) {
   .header__warning {
     margin-inline: 4rem;
-    width: calc(100vw - 8rem);
+    width: calc(100% - 8rem);
   }
 
   .main {
@@ -9,7 +9,7 @@
   }
 
   .form {
-    max-width: calc(100vw - 8rem);
+    max-width: 100%;
   }
 
   .form__options {
@@ -33,61 +33,11 @@
 
 @media screen and (min-width: 1024px) {
   .header__warning {
-    margin-inline: 8rem;
-    width: calc(100vw - 16rem);
+    margin-inline: 10rem;
+    width: calc(100% - 20rem);
   }
 
   .main {
-    padding: 4rem 8rem;
-  }
-
-  .form {
-    max-width: calc(100vw - 16rem);
-  }
-
-  .form__fieldset:first-child,
-  .form__dialog--add {
-    grid-template-columns: 3fr 2fr;
-  }
-
-  .form__fieldset:first-child {
-    grid-template-rows: repeat(4, 1fr);
-  }
-
-  .form__field {
-    align-self: flex-start;
-  }
-
-  .form__fieldset:first-child .form__field,
-  .form__dialog--add .form__field {
-    grid-column: 1 / 2;
-  }
-
-  .form__fieldset:first-child .form__field {
-    grid-row: auto;
-  }
-
-  .form__fieldset:first-child > :last-child,
-  .form__dialog--add .form__field--textarea {
-    grid-row: 1 / 5;
-  } 
-
-  .form__fieldset:first-child > :last-child {
-    grid-column: 2 / 3;
-  }
-
-  .experiences,
-  .degrees,
-  .skills {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .form__dialog--add .form__field--textarea {
-    grid-column: 2 / 5;
-  }
-
-  .form__dialog--add .form__options {
-    grid-column: 1 / 5;
-    grid-row: 6 / 6;
+    padding: 4rem 10rem;
   }
 }
