@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="./app/styles/form.css" />
     <link rel="stylesheet" href="./app/styles/form_media.css" />
     <link rel="stylesheet" href="./app/styles/form_interactions.css" />
-    <script src="./app/src/index.js" type="module" defer></script>
     <title>Gerador de Currículo Online</title>
   </head>
   <body>
@@ -30,16 +29,18 @@
       <form data-element="form" action="./resume.html" class="form" novalidate>
         <fieldset class="form__fieldset">
           <legend class="form__legend">
-            dados pessoais <i class="fa-solid fa-magnifying-glass"></i>
+            dados pessoais
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           </legend>
 
           <div class="form__field">
             <label class="form__label" for="name">
               nome <span class="note">(Obrigatório)</span>
-              <i class="fa-solid fa-person"></i>
+              <i class="fa-solid fa-person" aria-hidden="true"></i>
             </label>
 
             <input
+              aria-describedby="name-warning"
               class="form__input"
               type="text"
               id="name"
@@ -55,6 +56,7 @@
             >
 
             <p
+              id="name-warning"
               data-element="name-warning"
               class="form__warning--invalid"
               aria-live="polite"
@@ -63,7 +65,8 @@
 
           <div class="form__field">
             <label class="form__label" for="job">
-              cargo atual <i class="fa-solid fa-briefcase"></i>
+              cargo atual
+              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
             </label>
 
             <input
@@ -90,7 +93,7 @@
           <div class="form__field">
             <label class="form__label" for="address">
               endereço <span class="note">(Obrigatório)</span>
-              <i class="fa-solid fa-location-dot"></i>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
             </label>
 
             <input
@@ -121,7 +124,7 @@
           <div class="form__field">
             <label class="form__label" for="email">
               email <span class="note">(Obrigatório)</span>
-              <i class="fa-solid fa-envelope"></i>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             </label>
 
             <input
@@ -147,7 +150,7 @@
 
           <div class="form__field">
             <label class="form__label" for="website">
-              site <i class="fa-solid fa-globe"></i>
+              site <i class="fa-solid fa-globe" aria-hidden="true"></i>
             </label>
 
             <input
@@ -173,9 +176,9 @@
           </div>
 
           <div class="form__field--textarea">
-            <label class="form__label--column" for="desc">
+            <label class="form__label" for="desc">
               descrição <span class="note">(Obrigatório)</span>
-              <i class="fa-solid fa-circle-info"></i>
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
             </label>
 
             <textarea
@@ -186,7 +189,6 @@
               required
               minlength="2"
               maxlength="256"
-              pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]{2,256}"
             ></textarea>
 
             <output data-element="desc-length" class="form__output" for="desc"
@@ -203,25 +205,28 @@
 
         <fieldset class="form__fieldset">
           <legend class="form__legend">
-            experiências <i class="fa-solid fa-business-time"></i>
+            experiências
+            <i class="fa-solid fa-business-time" aria-hidden="true"></i>
           </legend>
 
           <menu class="form__options">
-            <button
-              data-action="openMenu"
-              data-dialog="experience-form"
-              class="form__button"
-              type="button"
-            >
-              adicionar experiência
-              <i class="fa-solid fa-plus"></i>
-            </button>
+            <li class="form__option">
+              <button
+                data-action="openMenu"
+                data-dialog="experience-form"
+                class="form__button"
+                type="button"
+              >
+                adicionar experiência
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              </button>
+            </li>
           </menu>
 
           <dialog class="form__dialog--add" data-element="experience-form">
             <div class="form__field">
               <label class="form__label" for="jobTitle">
-                cargo <i class="fa-solid fa-briefcase"></i>
+                cargo <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
               </label>
 
               <input
@@ -250,7 +255,7 @@
 
             <div class="form__field">
               <label class="form__label" for="jobCompany">
-                empresa <i class="fa-solid fa-building"></i>
+                empresa <i class="fa-solid fa-building" aria-hidden="true"></i>
               </label>
 
               <input
@@ -279,7 +284,8 @@
 
             <div class="form__field">
               <label class="form__label" for="jobPeriod">
-                período <i class="fa-solid fa-calendar-days"></i>
+                período
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
               </label>
 
               <input
@@ -308,7 +314,8 @@
 
             <div class="form__field">
               <label class="form__label" for="jobLocation">
-                localização <i class="fa-solid fa-location-dot"></i>
+                localização
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
               </label>
 
               <input
@@ -336,16 +343,15 @@
             </div>
 
             <div class="form__field--textarea">
-              <label class="form__label--column" for="jobDesc">
-                descrição <i class="fa-solid fa-message"></i>
+              <label class="form__label" for="jobDesc">
+                descrição <i class="fa-solid fa-message" aria-hidden="true"></i>
               </label>
 
               <textarea
                 class="form__textarea"
-                name=""
+                name="job-desc"
                 id="jobDesc"
                 rows="7"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
                 maxlength="256"
               ></textarea>
 
@@ -364,25 +370,29 @@
             </div>
 
             <menu class="form__options">
-              <button
-                data-action="addItem"
-                data-type="experience"
-                class="form__button"
-                type="button"
-              >
-                adicionar
-                <i class="fa-solid fa-plus"></i>
-              </button>
+              <li class="form__option">
+                <button
+                  data-action="addItem"
+                  data-type="experience"
+                  class="form__button"
+                  type="button"
+                >
+                  adicionar
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+              </li>
 
-              <button
-                data-action="closeMenu"
-                data-dialog="experience-form"
-                class="form__button"
-                type="button"
-              >
-                cancelar
-                <i class="fa-solid fa-xmark"></i>
-              </button>
+              <li class="form__option">
+                <button
+                  data-action="closeMenu"
+                  data-dialog="experience-form"
+                  class="form__button"
+                  type="button"
+                >
+                  cancelar
+                  <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+              </li>
             </menu>
           </dialog>
 
@@ -396,24 +406,28 @@
               </p>
 
               <menu class="form__options">
-                <button
-                  data-action="removeItem"
-                  class="form__button"
-                  type="button"
-                >
-                  excluir
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
+                <li class="form__option">
+                  <button
+                    data-action="removeItem"
+                    class="form__button"
+                    type="button"
+                  >
+                    excluir
+                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                  </button>
+                </li>
 
-                <button
-                  data-action="closeMenu"
-                  data-dialog="experiences-confirmation"
-                  class="form__button"
-                  type="button"
-                >
-                  cancelar
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
+                <li class="form__option">
+                  <button
+                    data-action="closeMenu"
+                    data-dialog="experiences-confirmation"
+                    class="form__button"
+                    type="button"
+                  >
+                    cancelar
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                  </button>
+                </li>
               </menu>
             </dialog>
           </div>
@@ -421,25 +435,29 @@
 
         <fieldset class="form__fieldset">
           <legend class="form__legend">
-            formações <i class="fa-solid fa-graduation-cap"></i>
+            formações
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
           </legend>
 
           <menu class="form__options">
-            <button
-              data-action="openMenu"
-              data-dialog="degree-form"
-              class="form__button"
-              type="button"
-            >
-              adicionar formação
-              <i class="fa-solid fa-plus"></i>
-            </button>
+            <li class="form__option">
+              <button
+                data-action="openMenu"
+                data-dialog="degree-form"
+                class="form__button"
+                type="button"
+              >
+                adicionar formação
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              </button>
+            </li>
           </menu>
 
           <dialog class="form__dialog--add" data-element="degree-form">
             <div class="form__field">
               <label class="form__label" for="degreeName">
-                curso <i class="fa-solid fa-file-contract"></i>
+                curso
+                <i class="fa-solid fa-file-contract" aria-hidden="true"></i>
               </label>
 
               <input
@@ -468,7 +486,8 @@
 
             <div class="form__field">
               <label class="form__label" for="degreeSchool">
-                instituição <i class="fa-solid fa-school"></i>
+                instituição
+                <i class="fa-solid fa-school" aria-hidden="true"></i>
               </label>
 
               <input
@@ -498,7 +517,7 @@
             <div class="form__field">
               <label class="form__label" for="degreePeriod">
                 período
-                <i class="fa-solid fa-calendar-days"></i>
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
               </label>
 
               <input
@@ -526,16 +545,15 @@
             </div>
 
             <div class="form__field--textarea">
-              <label class="form__label--column" for="degreeDesc">
-                descrição <i class="fa-solid fa-message"></i>
+              <label class="form__label" for="degreeDesc">
+                descrição <i class="fa-solid fa-message" aria-hidden="true"></i>
               </label>
 
               <textarea
                 class="form__textarea"
-                name=""
+                name="degree-desc"
                 id="degreeDesc"
                 rows="7"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
                 maxlength="256"
               ></textarea>
 
@@ -554,25 +572,29 @@
             </div>
 
             <menu class="form__options">
-              <button
-                data-action="addItem"
-                data-type="degree"
-                class="form__button"
-                type="button"
-              >
-                adicionar
-                <i class="fa-solid fa-plus"></i>
-              </button>
+              <li class="form__option">
+                <button
+                  data-action="addItem"
+                  data-type="degree"
+                  class="form__button"
+                  type="button"
+                >
+                  adicionar
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+              </li>
 
-              <button
-                data-action="closeMenu"
-                data-dialog="degree-form"
-                class="form__button"
-                type="button"
-              >
-                cancelar
-                <i class="fa-solid fa-xmark"></i>
-              </button>
+              <li class="form__option">
+                <button
+                  data-action="closeMenu"
+                  data-dialog="degree-form"
+                  class="form__button"
+                  type="button"
+                >
+                  cancelar
+                  <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+              </li>
             </menu>
           </dialog>
 
@@ -584,24 +606,28 @@
               <p class="form__warning">deseja mesmo excluir esta formação?</p>
 
               <menu class="form__options">
-                <button
-                  data-action="removeItem"
-                  class="form__button"
-                  type="button"
-                >
-                  excluir
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
+                <li class="form__option">
+                  <button
+                    data-action="removeItem"
+                    class="form__button"
+                    type="button"
+                  >
+                    excluir
+                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                  </button>
+                </li>
 
-                <button
-                  data-action="closeMenu"
-                  data-dialog="degrees-confirmation"
-                  class="form__button"
-                  type="button"
-                >
-                  cancelar
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
+                <li class="form__option">
+                  <button
+                    data-action="closeMenu"
+                    data-dialog="degrees-confirmation"
+                    class="form__button"
+                    type="button"
+                  >
+                    cancelar
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                  </button>
+                </li>
               </menu>
             </dialog>
           </div>
@@ -609,25 +635,27 @@
 
         <fieldset class="form__fieldset">
           <legend class="form__legend">
-            competências <i class="fa-solid fa-tags"></i>
+            competências <i class="fa-solid fa-tags" aria-hidden="true"></i>
           </legend>
 
           <menu class="form__options">
-            <button
-              data-action="openMenu"
-              data-dialog="skill-form"
-              class="form__button"
-              type="button"
-            >
-              adicionar competência
-              <i class="fa-solid fa-plus"></i>
-            </button>
+            <li class="form__option">
+              <button
+                data-action="openMenu"
+                data-dialog="skill-form"
+                class="form__button"
+                type="button"
+              >
+                adicionar competência
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              </button>
+            </li>
           </menu>
 
           <dialog class="form__dialog--add" data-element="skill-form">
             <div class="form__field">
               <label class="form__label" for="skillName">
-                competência <i class="fa-solid fa-tag"></i>
+                competência <i class="fa-solid fa-tag" aria-hidden="true"></i>
               </label>
 
               <input
@@ -655,16 +683,15 @@
             </div>
 
             <div class="form__field--textarea">
-              <label class="form__label--column" for="skillDesc">
-                descrição <i class="fa-solid fa-message"></i>
+              <label class="form__label" for="skillDesc">
+                descrição <i class="fa-solid fa-message" aria-hidden="true"></i>
               </label>
 
               <textarea
                 class="form__textarea"
-                name=""
+                name="skill-desc"
                 id="skillDesc"
                 rows="7"
-                pattern="[a-zA-Z\u00C0-\u017F\s\d.\-,]*"
                 maxlength="256"
               ></textarea>
 
@@ -683,25 +710,29 @@
             </div>
 
             <menu class="form__options">
-              <button
-                data-action="addItem"
-                data-type="skill"
-                class="form__button"
-                type="button"
-              >
-                adicionar
-                <i class="fa-solid fa-plus"></i>
-              </button>
+              <li class="form__option">
+                <button
+                  data-action="addItem"
+                  data-type="skill"
+                  class="form__button"
+                  type="button"
+                >
+                  adicionar
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+              </li>
 
-              <button
-                data-action="closeMenu"
-                data-dialog="skill-form"
-                class="form__button"
-                type="button"
-              >
-                cancelar
-                <i class="fa-solid fa-xmark"></i>
-              </button>
+              <li class="form__option">
+                <button
+                  data-action="closeMenu"
+                  data-dialog="skill-form"
+                  class="form__button"
+                  type="button"
+                >
+                  cancelar
+                  <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+              </li>
             </menu>
           </dialog>
 
@@ -715,31 +746,36 @@
               </p>
 
               <menu class="form__options">
-                <button
-                  data-action="removeItem"
-                  class="form__button"
-                  type="button"
-                >
-                  excluir
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
+                <li class="form__option">
+                  <button
+                    data-action="removeItem"
+                    class="form__button"
+                    type="button"
+                  >
+                    excluir
+                    <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                  </button>
+                </li>
 
-                <button
-                  data-action="closeMenu"
-                  data-dialog="skills-confirmation"
-                  class="form__button"
-                  type="button"
-                >
-                  cancelar
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
+                <li class="form__option">
+                  <button
+                    data-action="closeMenu"
+                    data-dialog="skills-confirmation"
+                    class="form__button"
+                    type="button"
+                  >
+                    cancelar
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                  </button>
+                </li>
               </menu>
             </dialog>
           </div>
         </fieldset>
 
         <button class="form__submit" type="submit">
-          gerar currículo <i class="fa-solid fa-file-circle-plus"></i>
+          gerar currículo
+          <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i>
         </button>
       </form>
     </main>
@@ -758,5 +794,7 @@
         >
       </p>
     </footer>
+
+    <script src="./app/src/index.js" type="module"></script>
   </body>
 </html>
