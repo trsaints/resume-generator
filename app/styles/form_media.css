@@ -21,10 +21,6 @@
     justify-content: center;
   }
 
-  .form__button {
-    max-width: 20rem;
-  }
-
   .form__submit {
     width: 24rem;
     justify-self: center;

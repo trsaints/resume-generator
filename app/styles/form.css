@@ -114,8 +114,16 @@
   justify-content: center;
 }
 
-.form__button {
+.form__dialog--add .form__option {
   flex: 1;
+}
+
+.form__fieldset > .form__options > .form__option {
+  width: 20rem;
+}
+
+.form__button {
+  width: 100%;
 }
 
 .form__field,
