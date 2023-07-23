@@ -5,8 +5,8 @@
 }
 
 @media screen and (min-width: 768px), print {
-  .main,
-  .header {
+  .resume > .main,
+  .resume > .header {
     grid-template-columns: 3fr 2fr;
   }
 
@@ -14,7 +14,7 @@
     grid-template-areas: "experiences skills" "degrees skills";
   }
 
-  .header {
+  .resume > .header {
     grid-template-areas: "naming addressing";
   }
 
@@ -58,7 +58,7 @@
     margin: 0;
   }
 
-  .resume-options,
+  .header__options,
   .experience__desc,
   .degree__desc,
   .skill__desc {

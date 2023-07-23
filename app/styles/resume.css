@@ -23,12 +23,12 @@ body {
 .experience,
 .degree,
 .skill,
-.resume-options {
+.header__options {
   display: grid;
 }
 
-.header,
-.main {
+.resume > .header,
+.resume > .main {
   row-gap: 2rem;
   column-gap: 4rem;
 }
@@ -38,7 +38,7 @@ body {
 }
 
 summary,
-.resume-options__btn {
+button {
   cursor: pointer;
 }
 
@@ -115,7 +115,7 @@ i {
 .experience__location,
 .degree__school,
 .degree__date,
-.resume-options__btn {
+.header__button {
   text-transform: uppercase;
 }
 
@@ -168,11 +168,11 @@ i {
   font-size: 0.875rem;
 }
 
-.resume-options {
+.header__options {
   justify-content: center;
 }
 
-.resume-options__btn {
+.header__button {
   background-image: linear-gradient(
     to bottom,
     var(--c-main-d),

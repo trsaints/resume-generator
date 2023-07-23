@@ -13,7 +13,6 @@
 
 .form {
   gap: 2rem;
-  width: calc(100vw - 2rem);
 }
 
 .form__fieldset,
@@ -119,7 +118,7 @@
 }
 
 .form__fieldset > .form__options > .form__option {
-  width: 20rem;
+  width: calc(100vw - 3.5rem);
 }
 
 .form__button {

@@ -12,9 +12,18 @@
     max-width: 100%;
   }
 
+  .form__fieldset,
+  .form__dialog--add {
+    padding: 1rem;
+  }
+
   .form__options {
     flex-direction: row;
     justify-content: flex-end;
+  }
+
+  .form__fieldset > .form__options > .form__option {
+    width: 20rem;
   }
 
   dialog .form__options {
