@@ -56,7 +56,6 @@
 
 .form__legend,
 .form__label,
-.form__label--column,
 .form__button,
 .form__submit,
 .experiences__title,
@@ -86,7 +85,7 @@
 
 .form__legend,
 .form__label,
-.form__label--column .experience__title,
+.experience__title,
 .degree__title,
 .skill__title {
   white-space: nowrap;
@@ -169,14 +168,12 @@
 }
 
 .form__label,
-.form__label--column,
 .form__button,
 .delete-button {
   color: var(--c-white);
 }
 
-.form__label,
-.form__label--column {
+.form__label {
   padding: 0.25rem 0.75rem;
   background-image: linear-gradient(
     to bottom,
@@ -186,10 +183,10 @@
   grid-area: label;
   border-top-right-radius: 0.25rem;
   border-top-left-radius: 0.25rem;
+  position: relative;
 }
 
 .form__label,
-.form__label--column,
 .experience__period,
 .experience__company,
 .experience__location,
@@ -280,6 +277,7 @@
 .form__submit,
 .delete-button {
   border-radius: 0.125rem;
+  white-space: nowrap;
 }
 
 .form__button,

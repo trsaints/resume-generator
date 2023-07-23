@@ -13,20 +13,43 @@
   background-color: var(--c-red-l);
 }
 
+.form__field.invalid .form__label::after,
+.form__field--textarea.invalid .form__label::after {
+  content: "!";
+  position: absolute;
+  right: -2.5rem;
+  bottom: 0.25rem;
+  background-color: var(--c-black);
+  width: 2rem;
+  height: 1.75rem;
+  color: var(--c-white);
+  text-align: center;
+  font-weight: bold;
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+  display: inline-block;
+  clip-path: polygon(
+    12.5% 0%,
+    100% 0%,
+    100% 100%,
+    12.5% 100%,
+    12.5% 65%,
+    0% 50%,
+    12.5% 35%
+  );
+}
+
 .form__label:hover,
-.form__label--column:hover,
 .form__field:focus-within .form__label,
-.form__field--textarea:focus-within .form__label--column,
+.form__field--textarea:focus-within .form__label,
 .form__field.invalid .form__label,
-.form__field--textarea.invalid .form__label--column,
+.form__field--textarea.invalid .form__label,
 .form__button:hover,
 .form__button:focus,
 .footer__link:focus {
   color: var(--c-black);
 }
 
-.form__label:hover,
-.form__label--column:hover {
+.form__label:hover {
   background-image: linear-gradient(
     to bottom,
     var(--c-main-ds),
@@ -35,9 +58,9 @@
 }
 
 .form__field:focus-within .form__label,
-.form__field--textarea:focus-within .form__label--column,
+.form__field--textarea:focus-within .form__label,
 .form__field.invalid .form__label,
-.form__field--textarea.invalid .form__label--column,
+.form__field--textarea.invalid .form__label,
 .form__button:active,
 .delete-button:active,
 .form__submit:active {
@@ -45,14 +68,14 @@
 }
 
 .form__field:focus-within .form__label,
-.form__field--textarea:focus-within .form__label--column,
+.form__field--textarea:focus-within .form__label,
 .form__button:active,
 .form__submit:active {
   background-color: var(--c-main-d);
 }
 
 .form__field.invalid .form__label,
-.form__field--textarea.invalid .form__label--column {
+.form__field--textarea.invalid .form__label {
   background-color: var(--c-red-l);
 }
 

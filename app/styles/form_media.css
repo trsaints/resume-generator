@@ -40,4 +40,14 @@
   .main {
     padding: 4rem 10rem;
   }
+
+  .form__dialog--add {
+    width: 24rem;
+  }
+
+  .experiences,
+  .degrees,
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
