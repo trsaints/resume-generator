@@ -2,43 +2,64 @@ export default function initialize(deps) {
   window.addEventListener("load", () => init(deps));
 }
 
-function init({ callbacks, components, models }) {
+function addItem(dataset, callbacks, components, form) {
+  const typeTranslation = {
+    degree: "formação",
+    experience: "experiência",
+    skill: "competência",
+  };
+
+  const { type } = dataset;
+
+  const fieldsetIsInvalid = !validateItemFieldset(
+    callbacks,
+    components,
+    form,
+    type
+  );
+
+  if (fieldsetIsInvalid) return;
+
+  const item = callbacks.addItem(callbacks, type);
+
+  callbacks.closeMenu(`${type}-form`);
+  callbacks.renderItem(callbacks, components, type, item);
+  callbacks.showWarning(
+    components,
+    `${typeTranslation[type]} adicionada com sucesso`,
+    "success"
+  );
+}
+
+function init({ callbacks, components }) {
   const form = callbacks.getElement("form");
 
   setInitialState(callbacks, form);
-  setClickActions(callbacks, components, models);
-  setInputMonitoring(callbacks, form);
+  setClickActions(callbacks, components, form);
+  setInputMonitoring(callbacks, components, form);
   setBaseDataSync(callbacks, form);
+  setSubmitValidation(callbacks, components, form);
 }
 
-function setClickActions(callbacks, components) {
-  const actions = {
-    openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
-    closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
-    addItem: ({ dataset }) => addItem(dataset, callbacks, components),
-    displayConfirmation: (target) =>
-      callbacks.displayConfirmation(callbacks, target),
-    removeItem: (target) => removeItem(target, callbacks, components),
+function removeItem(target, callbacks, components) {
+  const typesTranslation = {
+    degree: "formação",
+    experience: "experiência",
+    skill: "competência",
   };
 
-  document.addEventListener("click", ({ target }) => {
-    const { action } = target.dataset;
+  const modal = target.closest("[data-type]"),
+    { type } = modal.dataset,
+    [itemType, id] = type.split("-"),
+    modalName = `${itemType}s-confirmation`;
 
-    if (actions[action]) actions[action](target);
-  });
-}
+  callbacks.removeItem(itemType, id);
+  callbacks.closeMenu(modalName);
+  callbacks.unrenderItem(callbacks, itemType, id);
 
-function setInputMonitoring(callbacks, form) {
-  form.addEventListener("input", ({ target }) => {
-    callbacks.updateCharacterCount(callbacks, target);
-    validateInput(callbacks, target);
-  });
-}
+  const warningMessage = `${typesTranslation[itemType]} removida com sucesso`;
 
-function setInitialState(callbacks, form) {
-  callbacks.clearActiveResume(form);
-  callbacks.resetIds();
-  callbacks.clearForm(callbacks);
+  callbacks.showWarning(components, warningMessage, "success");
 }
 
 function setBaseDataSync(callbacks, form) {
@@ -49,6 +70,7 @@ function setBaseDataSync(callbacks, form) {
     if (shouldNotSync) return;
 
     const baseData = callbacks.getBaseData(form);
+
     localStorage.setItem("resume", JSON.stringify(baseData));
     console.warn("Active resume has been updated successfuly");
   };
@@ -56,54 +78,104 @@ function setBaseDataSync(callbacks, form) {
   form.addEventListener("focusout", syncData);
 }
 
-function validateInput(callbacks, target) {
+function setClickActions(callbacks, components, form) {
+  const mainActions = {
+    openMenu: ({ dataset }) => callbacks.openMenu(dataset.dialog),
+    closeMenu: ({ dataset }) => callbacks.closeMenu(dataset.dialog),
+    addItem: ({ dataset }) => addItem(dataset, callbacks, components, form),
+    displayConfirmation: (target) =>
+      callbacks.displayConfirmation(callbacks, target),
+    removeItem: (target) => removeItem(target, callbacks, components),
+  };
+
+  const performMainAction = ({ target }) => {
+    const { action } = target.dataset;
+
+    if (mainActions[action]) mainActions[action](target);
+  };
+
+  document.addEventListener("click", performMainAction);
+}
+
+function setInitialState(callbacks, form) {
+  callbacks.clearActiveResume(form);
+  callbacks.resetIds();
+  callbacks.clearForm(callbacks);
+}
+
+function setInputMonitoring(callbacks, components, form) {
+  const respondToInput = ({ target }) => {
+    callbacks.updateCharacterCount(callbacks, target);
+    validateInput(callbacks, components, target);
+  };
+
+  form.addEventListener("input", respondToInput);
+}
+
+function setSubmitValidation(callbacks, components, form) {
+  const preventInvalidSubmit = (evt) => {
+    const formIsValid = validateRequiredFields(callbacks, components, form);
+
+    if (formIsValid) return;
+
+    evt.preventDefault();
+  };
+
+  form.addEventListener("submit", preventInvalidSubmit);
+}
+
+function validateRequiredFields(callbacks, components, form) {
+  const fieldsToCheck = ["name", "job", "address", "email", "website", "desc"];
+
+  return validateFieldset(callbacks, components, form, fieldsToCheck);
+}
+
+function validateItemFieldset(callbacks, components, form, type) {
+  const typesFields = {
+    degree: ["degreeName", "degreeSchool", "degreePeriod", "degreeDesc"],
+    experience: [
+      "jobTitle",
+      "jobCompany",
+      "jobPeriod",
+      "jobLocation",
+      "jobDesc",
+    ],
+    skill: ["skillName", "skillDesc"],
+  };
+
+  return validateFieldset(callbacks, components, form, typesFields[type]);
+}
+
+function validateFieldset(callbacks, components, form, fields) {
+  const { elements } = form,
+    invalidFields = [];
+
+  let fieldsetIsValid = true;
+
+  for (const field of fields) {
+    const fieldIsValid = validateInput(callbacks, components, elements[field]);
+
+    if (fieldIsValid) continue;
+
+    const warningMessage = "Preencha os campos corretamente";
+
+    callbacks.showWarning(components, warningMessage, "warning");
+
+    fieldsetIsValid = false;
+
+    invalidFields.push(elements[field]);
+  }
+
+  if (!fieldsetIsValid) invalidFields[0].focus();
+
+  return fieldsetIsValid;
+}
+
+function validateInput(callbacks, components, target) {
   const validityState = callbacks.getValidityState(target);
 
-  callbacks.setFieldValidity(target);
+  callbacks.setFieldValidity(validityState);
+  callbacks.setValidityMessage(callbacks, components, validityState);
 
-  callbacks.displayInputValidity(
-    callbacks,
-    target,
-    validityState.validityMessage
-  );
-}
-
-function addItem(dataset, callbacks, components) {
-  const types = {
-    degree: "formação",
-    experience: "experiência",
-    skill: "competência",
-  };
-
-  const { type } = dataset;
-  const item = callbacks.addItem(callbacks, type);
-
-  callbacks.closeMenu(`${type}-form`);
-  callbacks.renderItem(callbacks, components, type, item);
-  callbacks.showWarning(
-    components,
-    `${types[type]} adicionada com sucesso`,
-    "success"
-  );
-}
-
-function removeItem(target, callbacks, components) {
-  const types = {
-    degree: "formação",
-    experience: "experiência",
-    skill: "competência",
-  };
-
-  const modal = target.closest("[data-type]"),
-    { type } = modal.dataset,
-    [item, id] = type.split("-");
-
-  callbacks.removeItem(item, id);
-  callbacks.closeMenu(`${item}s-confirmation`);
-  callbacks.unrenderItem(callbacks, item, id);
-  callbacks.showWarning(
-    components,
-    `${types[item]} removida com sucesso`,
-    "success"
-  );
+  return validityState.valid;
 }

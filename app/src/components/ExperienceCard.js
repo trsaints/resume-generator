@@ -61,6 +61,7 @@ export default class ExperienceCard {
 
   #generateOptions() {
     const experienceOptions = new DOMElement("menu", ["experience__options"]),
+      experienceOption = new DOMElement("li", ["experience__option"]),
       deleteButton = new DOMElement("button", ["delete-button"]);
 
     const deleteIcon = new Icon("trash-can");
@@ -72,7 +73,9 @@ export default class ExperienceCard {
     deleteButton.appendChild(deleteSpan);
     deleteButton.appendChild(deleteIcon);
 
-    experienceOptions.appendChild(deleteButton);
+    experienceOption.appendChild(deleteButton);
+
+    experienceOptions.appendChild(experienceOption);
 
     return experienceOptions;
   }

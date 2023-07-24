@@ -24,13 +24,16 @@ textarea {
   max-width: 100%;
 }
 
-dialog[open] {
+textarea {
+  resize: vertical;
+}
+
+:where(dialog[open]) {
   background-color: var(--c-gray-ls);
   border: none;
   border-radius: 0.5rem;
   display: grid;
-  gap: 0.5rem 2rem;
-  padding: 0.75rem;
+  gap: 1rem;
 }
 
 details[open] summary {
@@ -50,17 +53,35 @@ details[open] summary {
   display: none;
 }
 
+.note {
+  font-size: 0.8rem;
+}
+
+.header__warning,
+.main__title,
+.footer {
+  text-align: center;
+}
+
+.header__warning,
+.main__title,
+.footer__title {
+  font-weight: bold;
+}
+
 .header__warning {
   position: fixed;
   top: 0.5rem;
   margin-inline: 1rem;
-  width: calc(100vw - 2rem);
+  width: calc(100% - 2rem);
   z-index: 100;
   padding: 0.5rem 1rem;
-  text-align: center;
   background-color: var(--c-white);
   border-radius: 0.25rem;
-  font-weight: bold;
+}
+
+.header__warning::first-letter {
+  text-transform: uppercase;
 }
 
 .header__warning.success {
@@ -96,21 +117,17 @@ details[open] summary {
 
 .main__title {
   font-size: 2rem;
-  font-weight: bold;
   text-transform: uppercase;
-  text-align: center;
   margin-bottom: 2rem;
 }
 
 .footer {
   background-color: var(--c-black-l);
   color: var(--c-white);
-  text-align: center;
 }
 
 .footer__title {
   margin-bottom: 1.5rem;
-  font-weight: bold;
 }
 
 .footer__link {

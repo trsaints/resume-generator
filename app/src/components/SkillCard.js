@@ -39,6 +39,7 @@ export default class SkillCard {
 
   #generateOptions() {
     const skillOptions = new DOMElement("menu", ["skill__options"]),
+      skillOption = new DOMElement("li", ["skill__option"]),
       deleteButton = new DOMElement("button", ["delete-button"]);
 
     const deleteIcon = new Icon("trash-can");
@@ -50,7 +51,9 @@ export default class SkillCard {
     deleteButton.appendChild(deleteSpan);
     deleteButton.appendChild(deleteIcon);
     
-    skillOptions.appendChild(deleteButton);
+    skillOption.appendChild(deleteButton);
+
+    skillOptions.appendChild(skillOption);
 
     return skillOptions;
   }

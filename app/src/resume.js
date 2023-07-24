@@ -9,7 +9,7 @@ const dependencies = {
     getElements,
     printResume,
     renderResume,
-    setTitle
+    setTitle,
   },
   components: {
     ResumePage,

@@ -8,9 +8,14 @@ a:focus {
   outline: 2px dotted var(--c-main-d);
 }
 
+a:active,
+.header__button:hover,
+.header__button:focus {
+  background-color: var(--c-main-d);
+}
+
 a:active {
   outline: none;
-  background-color: var(--c-main-d);
   color: var(--c-black);
   box-shadow: 4px 4px 0 1px black;
 }
@@ -33,15 +38,14 @@ details[open] summary {
   margin-bottom: 1rem;
 }
 
-.resume-options__btn:hover,
-.resume-options__btn:focus {
+.header__button:hover,
+.header__button:focus {
   background-image: none;
-  background-color: var(--c-main-d);
   transform: scale(1.025);
   box-shadow: 0 0 8px var(--c-gray-d);
 }
 
-.resume-options__btn:active {
+.header__button:active {
   box-shadow: none;
   transform: scale(1);
 }

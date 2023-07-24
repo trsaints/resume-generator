@@ -15,20 +15,26 @@
     <link rel="stylesheet" href="./app/styles/resume.css" />
     <link rel="stylesheet" href="./app/styles/resume_interactions.css" />
     <link rel="stylesheet" href="./app/styles/resume_media.css" />
-    <script defer src="./app/src/resume.js" type="module"></script>
-    <title>Resume</title>
+    <title>Currículo</title>
   </head>
   <body>
-    <menu class="resume-options">
-      <button
-        class="resume-options__btn"
-        data-action="printResume"
-        type="button"
-      >
-        baixar currículo <i class="fa-solid fa-download" aria-hidden="true"></i>
-      </button>
-    </menu>
+    <header class="header">
+      <menu class="header__options">
+        <li class="header__option">
+          <button
+            class="header__button"
+            data-action="printResume"
+            type="button"
+          >
+            baixar currículo
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+          </button>
+        </li>
+      </menu>
+    </header>
 
     <div data-element="resume" class="resume"></div>
+
+    <script src="./app/src/resume.js" type="module"></script>
   </body>
 </html>

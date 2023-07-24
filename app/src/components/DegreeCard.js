@@ -50,6 +50,7 @@ export default class DegreeCard {
 
   #generateOptions() {
     const degreeOptions = new DOMElement("menu", ["degree__options"]),
+      degreeOption = new DOMElement("li", ["degree__option"]),
       deleteButton = new DOMElement("button", ["delete-button"]);
 
     const deleteIcon = new Icon("trash-can");
@@ -61,7 +62,9 @@ export default class DegreeCard {
     deleteButton.appendChild(deleteSpan);
     deleteButton.appendChild(deleteIcon);
 
-    degreeOptions.appendChild(deleteButton);
+    degreeOption.appendChild(deleteButton);
+
+    degreeOptions.appendChild(degreeOption);
 
     return degreeOptions;
   }
