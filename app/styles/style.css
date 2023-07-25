@@ -9,6 +9,16 @@ body {
   background-color: var(--c-white-d);
 }
 
+input,
+output,
+textarea,
+button,
+label,
+summary,
+a {
+  transition: all 0.1s ease;
+}
+
 ::marker {
   content: "";
 }
@@ -133,4 +143,10 @@ details[open] summary {
 .footer__link {
   color: var(--c-main);
   text-decoration: underline;
+}
+
+@media screen and not (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
