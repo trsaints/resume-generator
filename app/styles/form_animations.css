@@ -14,6 +14,22 @@
   }
 }
 
+@keyframes slide-in-flag {
+  0% {
+    right: 100%;
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+  }
+  
+  100% {
+    right: -2.25rem;
+    opacity: 1;
+  }
+}
+
 @keyframes unload-warning {
   0% {
     opacity: 0;
@@ -55,6 +71,10 @@
   .success::after,
   .fail::after {
     animation: unload-progress 3s linear forwards;
+  }
+
+  .invalid .form__label::after {
+    animation: slide-in-flag 0.1s ease forwards;
   }
 
   .invalid:focus-within .form__warning--invalid {
