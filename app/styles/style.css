@@ -9,6 +9,7 @@ body {
   background-color: var(--c-white-d);
 }
 
+details,
 input,
 output,
 textarea,
