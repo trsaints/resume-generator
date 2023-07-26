@@ -1,4 +1,4 @@
-@keyframes slide-in-warning {
+@keyframes slide-in-y {
   0% {
     opacity: 0;
     top: -100%;
@@ -10,11 +10,11 @@
 
   100% {
     opacity: 1;
-    top: 100%;
+    top: var(--end-position);
   }
 }
 
-@keyframes slide-in-flag {
+@keyframes slide-in-x {
   0% {
     right: 100%;
     opacity: 0;
@@ -23,9 +23,9 @@
   75% {
     opacity: 0;
   }
-  
+
   100% {
-    right: -2.25rem;
+    right: var(--end-position);
     opacity: 1;
   }
 }
@@ -73,11 +73,18 @@
     animation: unload-progress 3s linear forwards;
   }
 
+  dialog[open] {
+    --end-position: 0;
+    animation: slide-in-y 0.2s ease forwards;
+  }
+
   .invalid .form__label::after {
-    animation: slide-in-flag 0.1s ease forwards;
+    --end-position: -2.25rem;
+    animation: slide-in-x 0.1s ease forwards;
   }
 
   .invalid:focus-within .form__warning--invalid {
-    animation: slide-in-warning 0.2s ease forwards;
+    --end-position: 100%;
+    animation: slide-in-y 0.2s ease forwards;
   }
 }
