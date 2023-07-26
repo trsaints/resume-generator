@@ -1,7 +1,21 @@
-@keyframes slide-in-y {
+@keyframes fade-in {
   0% {
     opacity: 0;
-    top: -100%;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-y {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--start-position));
   }
 
   75% {
@@ -10,13 +24,13 @@
 
   100% {
     opacity: 1;
-    top: var(--end-position);
+    transform: translateY(var(--end-position));
   }
 }
 
-@keyframes slide-in-x {
+@keyframes slide-x {
   0% {
-    right: 100%;
+    transform: translateX(var(--start-position));
     opacity: 0;
   }
 
@@ -25,7 +39,7 @@
   }
 
   100% {
-    right: var(--end-position);
+    transform: translateX(var(--end-position));
     opacity: 1;
   }
 }
@@ -61,10 +75,14 @@
 }
 
 @media screen and not (prefers-reduced-motion) {
+  body {
+    animation: fade-in 0.2s ease-out forwards;
+  }
+
   .warning,
   .success,
   .fail {
-    animation: unload-warning 3.25s forwards;
+    animation: unload-warning 3.2s forwards;
   }
 
   .warning::after,
@@ -74,17 +92,26 @@
   }
 
   dialog[open] {
+    --start-position: -100%;
     --end-position: 0;
-    animation: slide-in-y 0.2s ease forwards;
+    animation: slide-y 0.3s ease forwards;
+  }
+
+  .form__fieldset {
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-x 0.3s ease-in forwards;
   }
 
   .invalid .form__label::after {
-    --end-position: -2.25rem;
-    animation: slide-in-x 0.1s ease forwards;
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-x 0.2s ease-in forwards;
   }
 
   .invalid:focus-within .form__warning--invalid {
-    --end-position: 100%;
-    animation: slide-in-y 0.2s ease forwards;
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-y 0.2s ease-in forwards;
   }
 }
