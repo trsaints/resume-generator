@@ -9,6 +9,17 @@ body {
   background-color: var(--c-white-d);
 }
 
+details,
+input,
+output,
+textarea,
+button,
+label,
+summary,
+a {
+  transition: all 0.1s ease;
+}
+
 ::marker {
   content: "";
 }

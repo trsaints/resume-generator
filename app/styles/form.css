@@ -1,5 +1,27 @@
 @import url("./variables.css");
 
+.header__warning::after {
+  display: block;
+  position: absolute;
+  content: "";
+  height: 0.25rem;
+  top: calc(100% - 0.25rem);
+  left: 0;
+  width: 100%;
+}
+
+.warning::after {
+  background-color: var(--c-yellow-ds);
+}
+
+.success::after {
+  background-color: var(--c-green-ds);
+}
+
+.fail::after {
+  background-color: var(--c-red-ds);
+}
+
 .form,
 .form__fieldset,
 .form__field,

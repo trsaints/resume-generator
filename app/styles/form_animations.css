@@ -1,0 +1,121 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-y {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--start-position));
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(var(--end-position));
+  }
+}
+
+@keyframes slide-x {
+  0% {
+    transform: translateX(var(--start-position));
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(var(--end-position));
+    opacity: 1;
+  }
+}
+
+@keyframes unload-warning {
+  0% {
+    opacity: 0;
+    top: -100%;
+  }
+
+  5% {
+    opacity: 1;
+    top: 0.5rem;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes unload-progress {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@media screen and not (prefers-reduced-motion) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    animation: fade-in 0.2s ease-out forwards;
+  }
+
+  .warning,
+  .success,
+  .fail {
+    animation: unload-warning 3.2s forwards;
+  }
+
+  .warning::after,
+  .success::after,
+  .fail::after {
+    animation: unload-progress 3s linear forwards;
+  }
+
+  dialog[open] {
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-y 0.3s ease forwards;
+  }
+
+  .form__fieldset {
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-x 0.3s ease-in forwards;
+  }
+
+  .invalid .form__label::after {
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-x 0.2s ease-in forwards;
+  }
+
+  .invalid:focus-within .form__warning--invalid {
+    --start-position: -100%;
+    --end-position: 0;
+    animation: slide-y 0.2s ease-in forwards;
+  }
+}

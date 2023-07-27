@@ -33,33 +33,40 @@ function clearContent(element) {
 }
 
 function showWarning(components, message, status) {
-  const warnMessage = getElement("warn-message");
-  clearContent("warn-message");
+  const warnMessage = getElement("warn-message"),
+    { classList } = warnMessage;
 
-  const statusIcons = {
-    success: "circle-check",
-    fail: "circle-xmark",
-    warning: "circle-exclamation",
-  };
+  const statusClasses = ["fail", "success", "warning"],
+    statusIcons = {
+      success: "circle-check",
+      fail: "circle-xmark",
+      warning: "circle-exclamation",
+    },
+    warnStatus = statusIcons[status];
 
-  const warnStatus = statusIcons[status];
+  const resetStatus = () => {
+      hideElement("warn-message");
+      clearContent("warn-message");
 
-  const reset = () => {
-    hideElement("warn-message");
-    clearContent("warn-message");
-    
-    warnMessage.classList.remove(status);
-  };
+      statusClasses.forEach(removeStatus);
+    },
+    setStatus = () => {
+      warnMessage.appendChild(document.createTextNode(message));
+      warnMessage.appendChild(new components.Icon(warnStatus));
+      classList.add(status);
 
-  clearTimeout(reset);
+      showElement("warn-message");
+    },
+    removeStatus = (selector) => {
+      if (classList.contains(selector)) classList.remove(selector);
+    };
 
-  warnMessage.appendChild(document.createTextNode(message));
-  warnMessage.appendChild(new components.Icon(warnStatus));
-  warnMessage.classList.add(status);
+  resetStatus();
 
-  showElement("warn-message");
+  setStatus();
 
-  setTimeout(reset, 3000);
+  setTimeout(resetStatus, 3000);
+  clearTimeout(resetStatus);
 }
 
 function openMenu(modal) {
