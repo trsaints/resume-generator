@@ -145,9 +145,3 @@ details[open] summary {
   color: var(--c-main);
   text-decoration: underline;
 }
-
-@media screen and not (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: smooth;
-  }
-}

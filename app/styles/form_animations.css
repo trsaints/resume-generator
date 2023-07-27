@@ -75,6 +75,10 @@
 }
 
 @media screen and not (prefers-reduced-motion) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     animation: fade-in 0.2s ease-out forwards;
   }
