@@ -1,0 +1,16 @@
+details,
+input,
+output,
+textarea,
+button,
+label,
+summary,
+a {
+  transition: all 0.1s ease;
+}
+
+@media screen and not (prefers-reduced-motion) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
